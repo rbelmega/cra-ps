@@ -25,7 +25,7 @@ class CodeBlock extends React.Component {
     return (
       <pre>
         <code className={this.props.language} ref="code">
-          {this.props.literal}
+          {this.props.value}
         </code>
       </pre>
     );

@@ -36,7 +36,7 @@ const universalLoader = (req, res) => {
     // Render App in React
     const routeMarkup = renderToString(
       <Provider store={store}>
-          <Routes history={history} />
+        <Routes history={history} />
       </Provider>
     );
 
