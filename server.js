@@ -2,7 +2,7 @@
 require('newrelic');
 const path = require('path');
 const  Express = require('express');
-const StartKeepAlive = require("./heroku-alive");
+const StartKeepAlive = require("./src/server/heroku-alive");
 const app = Express();
 const port = 3000;
 

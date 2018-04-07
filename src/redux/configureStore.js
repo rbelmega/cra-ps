@@ -8,7 +8,7 @@ import { routerMiddleware } from 'react-router-redux';
 export const history = createHistory();
 
 // Grab the state from a global injected into server-generated HTML
-const preloadedState = window.__PRELOADED_STATE__ж;
+const preloadedState = window.__PRELOADED_STATE__;
 
 const configureStore = () => {
   const middlewares = [thunk, createLogger(), routerMiddleware(history)];
