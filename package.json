@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "babel-node": "6.5.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react-app": "^3.1.1",
     "express": "^4.16.3",
@@ -28,7 +27,7 @@
   },
   "scripts": {
     "start": "npm run build && npm run run:server",
-    "run:server": "babel-node  --presets es2015 ./server.js",
+    "run:server": "node ./server.js",
     "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

@@ -1,4 +1,4 @@
-import http from 'http'; //importing http
+const http = require('http'); //importing http
 
 class StartKeepAlive {
   run() {
@@ -26,4 +26,4 @@ class StartKeepAlive {
   }
 }
 
-export default StartKeepAlive;
+module.exports = StartKeepAlive;
