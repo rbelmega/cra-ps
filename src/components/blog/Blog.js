@@ -217,8 +217,7 @@ view
           <article>
             <ReactMarkdown
               source={this.markdownFile || ''}
-              renderers={
-                Object.assign({}, ReactMarkdown.renderers, {
+              renderers={Object.assign({}, ReactMarkdown.renderers, {
                 code: CodeBlock,
               })}
             />
