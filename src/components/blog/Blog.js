@@ -15,7 +15,8 @@ class Blog extends React.Component {
       .then(data => data.text())
       .then(data => {
         data = `
-        Im always asking myself: should I be an engineer to write a code (a good/an efficient code)? If I have to answer in one word - than yes. But I want to give a bit wider answer.
+
+Im always asking myself: should I be an engineer to write a code (a good/an efficient code)? If I have to answer in one word - than yes. But I want to give a bit wider answer.
 In our daily work we sometimes have to deal with resolving routine tasks:
 
 - sort some array;
