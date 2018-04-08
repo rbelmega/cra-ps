@@ -11,6 +11,10 @@ const app = express();
 const router = express.Router();
 // root (/) should always serve our server rendered page
 // other static resources should just be served as they are
+router.use('/api', (req, res) => {
+  res.sendFile(path.resolve(__dirname, `../data${req.url}`));
+});
+
 router.use(
   express.static(path.resolve(__dirname, '../..', 'build/'), { maxAge: '30d' })
 );

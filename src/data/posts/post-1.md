@@ -14,7 +14,7 @@ a.sort();
 ```
 ```
 var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
- a.sort(function (a,b) {
+a.sort(function (a,b) {
      return a - b;
  })
 ```
