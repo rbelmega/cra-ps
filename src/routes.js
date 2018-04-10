@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-import App from './App';
+import App from './components/main/App';
 import Blog from './components/blog/Blog';
 
 export default ({ history }) => (

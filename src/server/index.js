@@ -15,10 +15,11 @@ router.use('/api', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../data${req.url}`));
 });
 
+router.use('^/$', serverRenderer);
+
 router.use(
   express.static(path.resolve(__dirname, '../..', 'build/'), { maxAge: '30d' })
 );
-router.use('*', serverRenderer);
 
 // tell the app to use the above rules
 app.use(router);
