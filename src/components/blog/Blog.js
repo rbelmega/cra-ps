@@ -10,7 +10,9 @@ class Blog extends React.Component {
   }
 
   fetchData() {
-    const { match: { params } } = this.props;
+    const {
+      match: { params },
+    } = this.props;
     fetch(`/api/posts/post-${params.id}.md`)
       .then(data => data.text())
       .then(data => {

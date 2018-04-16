@@ -1,10 +1,5 @@
 import React from 'react';
 import BlogList from '../blog-list/BlogList';
-import $ from 'jquery';
-
-let token = '321136775.3cb013a.1ad40a92d27f452d8320bb1c45b0baf5';
-let username = 'rbelmega';
-let num_photos = 10;
 
 class Footer extends React.Component {
   componentDidMount() {
@@ -16,18 +11,12 @@ class Footer extends React.Component {
     const { fetchPosts } = this.props;
     fetchPosts();
 
-    $.ajax({
-      url:
-        'https://api.instagram.com/v1/users/321136775/media/recent?access_token=' +
-        token,
-      dataType: 'JSONP',
-      jsonpCallback: 'callback',
-      type: 'GET',
-      success: function(data) {
+    fetch('/api2/instagram')
+      .then(data => data.json())
+      .then(data => {
         self.data = data.data;
         self.forceUpdate();
-      },
-    });
+      });
   }
 
   render() {

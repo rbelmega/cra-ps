@@ -1,8 +1,11 @@
 import express from 'express';
+import 'isomorphic-fetch';
 // we'll talk about this in a minute:
 import serverRenderer from './middleware/renderer';
 const StartKeepAlive = require('./heroku-alive');
 const alive = new StartKeepAlive();
+
+const INSTAGRAM_TOKEN = process.env.INSTAGRAM_TOKEN;
 
 const PORT = process.env.PORT || 3000;
 const path = require('path');
@@ -13,6 +16,17 @@ const router = express.Router();
 // other static resources should just be served as they are
 router.use('/api', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../data${req.url}`));
+});
+
+router.use('/api2/instagram', (req, res) => {
+  fetch(
+    'https://api.instagram.com/v1/users/321136775/media/recent?access_token=' +
+      INSTAGRAM_TOKEN
+  )
+    .then(data => data.json())
+    .then(data => {
+      res.send(data);
+    });
 });
 
 router.use('^/$', serverRenderer);
