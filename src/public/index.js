@@ -91,9 +91,7 @@
         var r = i(e);
         return (
           void 0 !== t
-            ? 'string' == typeof n
-              ? r.fill(t, n)
-              : r.fill(t)
+            ? 'string' == typeof n ? r.fill(t, n) : r.fill(t)
             : r.fill(0),
           r
         );
@@ -509,9 +507,7 @@
               t <= 0
                 ? s(e, t)
                 : void 0 !== n
-                  ? 'string' == typeof r
-                    ? s(e, t).fill(n, r)
-                    : s(e, t).fill(n)
+                  ? 'string' == typeof r ? s(e, t).fill(n, r) : s(e, t).fill(n)
                   : s(e, t)
             );
           })(null, e, t, n);
@@ -1268,9 +1264,7 @@
               (r |=
                 a >= 49 && a <= 54
                   ? a - 49 + 10
-                  : a >= 17 && a <= 22
-                    ? a - 17 + 10
-                    : 15 & a);
+                  : a >= 17 && a <= 22 ? a - 17 + 10 : 15 & a);
           }
           return r;
         }
@@ -2909,9 +2903,7 @@
               o = n.cmp(r);
             return o < 0 || (1 === i && 0 === o)
               ? t.div
-              : 0 !== t.div.negative
-                ? t.div.isubn(1)
-                : t.div.iaddn(1);
+              : 0 !== t.div.negative ? t.div.isubn(1) : t.div.iaddn(1);
           }),
           (o.prototype.modn = function(e) {
             r(e <= 67108863);
@@ -3296,9 +3288,7 @@
             return (
               0 === r
                 ? ((n.words[0] = 0), (n.length = 1))
-                : r > 0
-                  ? n.isub(this.p)
-                  : n.strip(),
+                : r > 0 ? n.isub(this.p) : n.strip(),
               n
             );
           }),
@@ -3635,9 +3625,7 @@
                 ? '00000' + e
                 : 2 === e.length
                   ? '000000' + e
-                  : 1 === e.length
-                    ? '0000000' + e
-                    : e;
+                  : 1 === e.length ? '0000000' + e : e;
     }
     (t.inherits = i),
       (t.toArray = function(e, t) {
@@ -5662,19 +5650,13 @@
                 staticContext: c,
               };
             return r
-              ? e
-                ? a.a.createElement(r, f)
-                : null
+              ? e ? a.a.createElement(r, f) : null
               : i
-                ? e
-                  ? i(f)
-                  : null
+                ? e ? i(f) : null
                 : n
                   ? 'function' == typeof n
                     ? n(f)
-                    : D(n)
-                      ? null
-                      : a.a.Children.only(n)
+                    : D(n) ? null : a.a.Children.only(n)
                   : null;
           }),
           t
@@ -6085,10 +6067,8 @@
             c = r.certificate.decode(d, 'der').tbsCertificate
               .subjectPublicKeyInfo;
           case 'PUBLIC KEY':
-            switch (
-              (c || (c = r.PublicKey.decode(d, 'der')),
-              (u = c.algorithm.algorithm.join('.')))
-            ) {
+            switch ((c || (c = r.PublicKey.decode(d, 'der')),
+            (u = c.algorithm.algorithm.join('.')))) {
               case '1.2.840.113549.1.1.1':
                 return r.RSAPublicKey.decode(c.subjectPublicKey.data, 'der');
               case '1.2.840.10045.2.1':
@@ -6125,11 +6105,10 @@
               return p.push(h.update(f)), p.push(h.final()), t.concat(p);
             })((d = r.EncryptedPrivateKey.decode(d, 'der')), n);
           case 'PRIVATE KEY':
-            switch (
-              (u = (c = r.PrivateKey.decode(d, 'der')).algorithm.algorithm.join(
-                '.'
-              ))
-            ) {
+            switch ((u = (c = r.PrivateKey.decode(
+              d,
+              'der'
+            )).algorithm.algorithm.join('.'))) {
               case '1.2.840.113549.1.1.1':
                 return r.RSAPrivateKey.decode(c.subjectPrivateKey, 'der');
               case '1.2.840.10045.2.1':
@@ -6999,9 +6978,7 @@
                             t.attribute
                               ? (q = ve(Z)) === x
                                 ? (U(H, J), (W = null))
-                                : u(q)
-                                  ? (W = null)
-                                  : U(H, J)
+                                : u(q) ? (W = null) : U(H, J)
                               : U(H, J))),
                       (L = W))
                     : (a || U(I, J),
@@ -7252,38 +7229,36 @@
         };
     function o(e) {
       var t;
-      switch (
-        ((this.encoding = (function(e) {
-          var t = (function(e) {
-            if (!e) return 'utf8';
-            for (var t; ; )
-              switch (e) {
-                case 'utf8':
-                case 'utf-8':
-                  return 'utf8';
-                case 'ucs2':
-                case 'ucs-2':
-                case 'utf16le':
-                case 'utf-16le':
-                  return 'utf16le';
-                case 'latin1':
-                case 'binary':
-                  return 'latin1';
-                case 'base64':
-                case 'ascii':
-                case 'hex':
-                  return e;
-                default:
-                  if (t) return;
-                  (e = ('' + e).toLowerCase()), (t = !0);
-              }
-          })(e);
-          if ('string' != typeof t && (r.isEncoding === i || !i(e)))
-            throw new Error('Unknown encoding: ' + e);
-          return t || e;
-        })(e)),
-        this.encoding)
-      ) {
+      switch (((this.encoding = (function(e) {
+        var t = (function(e) {
+          if (!e) return 'utf8';
+          for (var t; ; )
+            switch (e) {
+              case 'utf8':
+              case 'utf-8':
+                return 'utf8';
+              case 'ucs2':
+              case 'ucs-2':
+              case 'utf16le':
+              case 'utf-16le':
+                return 'utf16le';
+              case 'latin1':
+              case 'binary':
+                return 'latin1';
+              case 'base64':
+              case 'ascii':
+              case 'hex':
+                return e;
+              default:
+                if (t) return;
+                (e = ('' + e).toLowerCase()), (t = !0);
+            }
+        })(e);
+        if ('string' != typeof t && (r.isEncoding === i || !i(e)))
+          throw new Error('Unknown encoding: ' + e);
+        return t || e;
+      })(e)),
+      this.encoding)) {
         case 'utf16le':
           (this.text = u), (this.end = c), (t = 4);
           break;
@@ -7303,13 +7278,7 @@
     function a(e) {
       return e <= 127
         ? 0
-        : e >> 5 == 6
-          ? 2
-          : e >> 4 == 14
-            ? 3
-            : e >> 3 == 30
-              ? 4
-              : -1;
+        : e >> 5 == 6 ? 2 : e >> 4 == 14 ? 3 : e >> 3 == 30 ? 4 : -1;
     }
     function s(e) {
       var t = this.lastTotal - this.lastNeed,
@@ -7393,9 +7362,7 @@
           (n = this.lastNeed), (this.lastNeed = 0);
         } else n = 0;
         return n < e.length
-          ? t
-            ? t + this.text(e, n)
-            : this.text(e, n)
+          ? t ? t + this.text(e, n) : this.text(e, n)
           : t || '';
       }),
       (o.prototype.end = function(e) {
@@ -7983,9 +7950,7 @@
       }),
       (n.prototype.listeners = function(e) {
         return this._events && this._events[e]
-          ? r(this._events[e])
-            ? [this._events[e]]
-            : this._events[e].slice()
+          ? r(this._events[e]) ? [this._events[e]] : this._events[e].slice()
           : [];
       }),
       (n.prototype.listenerCount = function(e) {
@@ -9694,9 +9659,7 @@
           var h = o[d];
           '.' === h
             ? i(o, d)
-            : '..' === h
-              ? (i(o, d), l++)
-              : l && (i(o, d), l--);
+            : '..' === h ? (i(o, d), l++) : l && (i(o, d), l--);
         }
         if (!u) for (; l--; l) o.unshift('..');
         !u || '' === o[0] || (o[0] && r(o[0])) || o.unshift('');
@@ -9712,11 +9675,7 @@
       i =
         'undefined' != typeof self
           ? self
-          : 'undefined' != typeof window
-            ? window
-            : void 0 !== e
-              ? e
-              : r;
+          : 'undefined' != typeof window ? window : void 0 !== e ? e : r;
       var a = Object(o.a)(i);
       t.a = a;
     }.call(this, n(11), n(297)(e)));
@@ -9749,12 +9708,8 @@
       b = o ? o.toStringTag : void 0;
     var m = function(e) {
       return null == e
-        ? void 0 === e
-          ? p
-          : h
-        : b && b in Object(e)
-          ? f(e)
-          : d(e);
+        ? void 0 === e ? p : h
+        : b && b in Object(e) ? f(e) : d(e);
     };
     var y = (function(e, t) {
       return function(n) {
@@ -9850,9 +9805,7 @@
           var i = e[r];
           '.' === i
             ? e.splice(r, 1)
-            : '..' === i
-              ? (e.splice(r, 1), n++)
-              : n && (e.splice(r, 1), n--);
+            : '..' === i ? (e.splice(r, 1), n++) : n && (e.splice(r, 1), n--);
         }
         if (t) for (; n--; n) e.unshift('..');
         return e;
@@ -11021,11 +10974,7 @@
     (t.ft_1 = function(e, t, n, r) {
       return 0 === e
         ? i(t, n, r)
-        : 1 === e || 3 === e
-          ? a(t, n, r)
-          : 2 === e
-            ? o(t, n, r)
-            : void 0;
+        : 1 === e || 3 === e ? a(t, n, r) : 2 === e ? o(t, n, r) : void 0;
     }),
       (t.ch32 = i),
       (t.maj32 = o),
@@ -11814,9 +11763,7 @@
       (e.exports = function(e, t) {
         return 'rmd160' === (e = e.toLowerCase()) || 'ripemd160' === e
           ? new l('rmd160', t)
-          : 'md5' === e
-            ? new i(s, t)
-            : new l(e, t);
+          : 'md5' === e ? new i(s, t) : new l(e, t);
       });
   },
   function(e, t, n) {
@@ -12675,9 +12622,7 @@
           : t.objectMode
             ? 1
             : e != e
-              ? t.flowing && t.length
-                ? t.buffer.head.data.length
-                : t.length
+              ? t.flowing && t.length ? t.buffer.head.data.length : t.length
               : (e > t.highWaterMark &&
                   (t.highWaterMark = (function(e) {
                     return (
@@ -12695,9 +12640,7 @@
                   })(e)),
                 e <= t.length
                   ? e
-                  : t.ended
-                    ? t.length
-                    : ((t.needReadable = !0), 0));
+                  : t.ended ? t.length : ((t.needReadable = !0), 0));
       }
       function S(e) {
         var t = e._readableState;
@@ -13331,9 +13274,7 @@ object-assign
           t.push(c),
             c.repeat && (h += '(?:' + d + h + ')*'),
             (a += h = c.optional
-              ? c.partial
-                ? d + '(' + h + ')?'
-                : '(?:' + d + '(' + h + '))?'
+              ? c.partial ? d + '(' + h + ')?' : '(?:' + d + '(' + h + '))?'
               : d + '(' + h + ')');
         }
       }
@@ -14064,9 +14005,7 @@ object-assign
         (y =
           'object' === (void 0 === e ? 'undefined' : x(e)) && e
             ? e
-            : 'undefined' != typeof window
-              ? window
-              : {}),
+            : 'undefined' != typeof window ? window : {}),
           (g = y.DeepDiff) &&
             S.push(function() {
               void 0 !== g &&
@@ -14448,9 +14387,7 @@ object-assign
       }
       return -1 !== (a = t.indexOf('?')) && i > a
         ? t
-        : -1 !== (a = t.indexOf('#')) && i > a
-          ? t
-          : 'javascript:void(0)';
+        : -1 !== (a = t.indexOf('#')) && i > a ? t : 'javascript:void(0)';
     };
   },
   function(e, t, n) {
@@ -15739,9 +15676,7 @@ object-assign
               ((x = null),
               (_ = t.charAt(C)) === o
                 ? (x = o)
-                : _ === a
-                  ? (x = a)
-                  : _ === h && (x = p),
+                : _ === a ? (x = a) : _ === h && (x = p),
               x)
             ) {
               if (!g) return;
@@ -19623,9 +19558,7 @@ object-assign
                         s ||
                           (t && 'function' == typeof t.then
                             ? t.then(o, i)
-                            : t instanceof Error
-                              ? i(t)
-                              : o(t));
+                            : t instanceof Error ? i(t) : o(t));
                       };
                       function i() {
                         n || ((n = !0), t.apply(null, arguments));
@@ -20466,9 +20399,7 @@ object-assign
         get: function(e) {
           return null == e
             ? u.call(this)
-            : e < 0
-              ? this[e + this.length]
-              : this[e];
+            : e < 0 ? this[e + this.length] : this[e];
         },
         pushStack: function(e) {
           var t = k.merge(this.constructor(), e);
@@ -21003,9 +20934,7 @@ object-assign
                   ? function(e, t) {
                       return void 0 !== t.getElementsByTagName
                         ? t.getElementsByTagName(e)
-                        : n.qsa
-                          ? t.querySelectorAll(e)
-                          : void 0;
+                        : n.qsa ? t.querySelectorAll(e) : void 0;
                     }
                   : function(e, t) {
                       var n,
@@ -21116,12 +21045,8 @@ object-assign
                             ? -1
                             : t === h || (t.ownerDocument === _ && v(_, t))
                               ? 1
-                              : f
-                                ? j(f, e) - j(f, t)
-                                : 0
-                          : 4 & r
-                            ? -1
-                            : 1)
+                              : f ? j(f, e) - j(f, t) : 0
+                          : 4 & r ? -1 : 1)
                       );
                     }
                   : function(e, t) {
@@ -21137,24 +21062,14 @@ object-assign
                           ? -1
                           : t === h
                             ? 1
-                            : i
-                              ? -1
-                              : o
-                                ? 1
-                                : f
-                                  ? j(f, e) - j(f, t)
-                                  : 0;
+                            : i ? -1 : o ? 1 : f ? j(f, e) - j(f, t) : 0;
                       if (i === o) return fe(e, t);
                       for (n = e; (n = n.parentNode); ) a.unshift(n);
                       for (n = t; (n = n.parentNode); ) s.unshift(n);
                       for (; a[r] === s[r]; ) r++;
                       return r
                         ? fe(a[r], s[r])
-                        : a[r] === _
-                          ? -1
-                          : s[r] === _
-                            ? 1
-                            : 0;
+                        : a[r] === _ ? -1 : s[r] === _ ? 1 : 0;
                     }),
                 h)
               : h;
@@ -21197,9 +21112,7 @@ object-assign
               ? o
               : n.attributes || !b
                 ? e.getAttribute(t)
-                : (o = e.getAttributeNode(t)) && o.specified
-                  ? o.value
-                  : null;
+                : (o = e.getAttributeNode(t)) && o.specified ? o.value : null;
           }),
           (oe.escape = function(e) {
             return (e + '').replace(te, ne);
@@ -21970,9 +21883,7 @@ object-assign
         return (
           n && (e = ':not(' + e + ')'),
           1 === t.length && 1 === r.nodeType
-            ? k.find.matchesSelector(r, e)
-              ? [r]
-              : []
+            ? k.find.matchesSelector(r, e) ? [r] : []
             : k.find.matches(
                 e,
                 k.grep(t, function(e) {
@@ -22050,9 +21961,7 @@ object-assign
         return e.nodeType
           ? ((this[0] = e), (this.length = 1), this)
           : g(e)
-            ? void 0 !== n.ready
-              ? n.ready(e)
-              : e(k)
+            ? void 0 !== n.ready ? n.ready(e) : e(k)
             : k.makeArray(e, this);
       }).prototype =
         k.fn),
@@ -22569,9 +22478,7 @@ object-assign
               if (void 0 !== t) {
                 n = (t = Array.isArray(t)
                   ? t.map(G)
-                  : (t = G(t)) in r
-                    ? [t]
-                    : t.match(L) || []).length;
+                  : (t = G(t)) in r ? [t] : t.match(L) || []).length;
                 for (; n--; ) delete r[t[n]];
               }
               (void 0 === t || k.isEmptyObject(r)) &&
@@ -22603,11 +22510,7 @@ object-assign
                   ('false' !== e &&
                     ('null' === e
                       ? null
-                      : e === +e + ''
-                        ? +e
-                        : ee.test(e)
-                          ? JSON.parse(e)
-                          : e))
+                      : e === +e + '' ? +e : ee.test(e) ? JSON.parse(e) : e))
                 );
               })(n);
             } catch (e) {}
@@ -22663,9 +22566,7 @@ object-assign
                     if (o && void 0 === t)
                       return void 0 !== (n = Z.get(o, e))
                         ? n
-                        : void 0 !== (n = ne(o, e))
-                          ? n
-                          : void 0;
+                        : void 0 !== (n = ne(o, e)) ? n : void 0;
                     this.each(function() {
                       Z.set(this, e, t);
                     });
@@ -22860,9 +22761,7 @@ object-assign
         },
         toggle: function(e) {
           return 'boolean' == typeof e
-            ? e
-              ? this.show()
-              : this.hide()
+            ? e ? this.show() : this.hide()
             : this.each(function() {
                 ae(this) ? k(this).show() : k(this).hide();
               });
@@ -23308,17 +23207,9 @@ object-assign
             which: function(e) {
               var t = e.button;
               return null == e.which && ke.test(e.type)
-                ? null != e.charCode
-                  ? e.charCode
-                  : e.keyCode
+                ? null != e.charCode ? e.charCode : e.keyCode
                 : !e.which && void 0 !== t && Se.test(e.type)
-                  ? 1 & t
-                    ? 1
-                    : 2 & t
-                      ? 3
-                      : 4 & t
-                        ? 2
-                        : 0
+                  ? 1 & t ? 1 : 2 & t ? 3 : 4 & t ? 2 : 0
                   : e.which;
             },
           },
@@ -24037,9 +23928,7 @@ object-assign
               return 1 !== e.elem.nodeType ||
                 (null != e.elem[e.prop] && null == e.elem.style[e.prop])
                 ? e.elem[e.prop]
-                : (t = k.css(e.elem, e.prop, '')) && 'auto' !== t
-                  ? t
-                  : 0;
+                : (t = k.css(e.elem, e.prop, '')) && 'auto' !== t ? t : 0;
             },
             set: function(e) {
               k.fx.step[e.prop]
@@ -24506,9 +24395,7 @@ object-assign
                         : (e.setAttribute(t, n + ''), n)
                     : i && 'get' in i && null !== (r = i.get(e, t))
                       ? r
-                      : null == (r = k.find.attr(e, t))
-                        ? void 0
-                        : r);
+                      : null == (r = k.find.attr(e, t)) ? void 0 : r);
           },
           attrHooks: {
             type: {
@@ -24585,9 +24472,7 @@ object-assign
                   ? i && 'set' in i && void 0 !== (r = i.set(e, n, t))
                     ? r
                     : (e[t] = n)
-                  : i && 'get' in i && null !== (r = i.get(e, t))
-                    ? r
-                    : e[t]
+                  : i && 'get' in i && null !== (r = i.get(e, t)) ? r : e[t]
               );
           },
           propHooks: {
@@ -24688,9 +24573,7 @@ object-assign
             var n = typeof e,
               r = 'string' === n || Array.isArray(e);
             return 'boolean' == typeof t && r
-              ? t
-                ? this.addClass(e)
-                : this.removeClass(e)
+              ? t ? this.addClass(e) : this.removeClass(e)
               : g(e)
                 ? this.each(function(n) {
                     k(this).toggleClass(e.call(this, n, mt(this), t), t);
@@ -24757,9 +24640,7 @@ object-assign
                 ? n
                 : 'string' == typeof (n = i.value)
                   ? n.replace(gt, '')
-                  : null == n
-                    ? ''
-                    : n
+                  : null == n ? '' : n
               : void 0;
         },
       }),
@@ -25054,9 +24935,7 @@ object-assign
             k.each(e[s] || [], function(e, s) {
               var c = s(t, n, r);
               return 'string' != typeof c || o || i[c]
-                ? o
-                  ? !(u = c)
-                  : void 0
+                ? o ? !(u = c) : void 0
                 : (t.dataTypes.unshift(c), a(c), !1);
             }),
             u
@@ -25858,9 +25737,7 @@ object-assign
                             o['offset' + e],
                             o['client' + e]
                           ))
-                        : void 0 === i
-                          ? k.css(t, n, s)
-                          : k.style(t, n, i, s);
+                        : void 0 === i ? k.css(t, n, s) : k.style(t, n, i, s);
                   },
                   t,
                   a ? i : void 0,
@@ -29239,31 +29116,21 @@ object-assign
           ? (t & n) | (~t & r)
           : e <= 47
             ? (t | ~n) ^ r
-            : e <= 63
-              ? (t & r) | (n & ~r)
-              : t ^ (n | ~r);
+            : e <= 63 ? (t & r) | (n & ~r) : t ^ (n | ~r);
     }
     function d(e) {
       return e <= 15
         ? 0
         : e <= 31
           ? 1518500249
-          : e <= 47
-            ? 1859775393
-            : e <= 63
-              ? 2400959708
-              : 2840853838;
+          : e <= 47 ? 1859775393 : e <= 63 ? 2400959708 : 2840853838;
     }
     function h(e) {
       return e <= 15
         ? 1352829926
         : e <= 31
           ? 1548603684
-          : e <= 47
-            ? 1836072691
-            : e <= 63
-              ? 2053994217
-              : 0;
+          : e <= 47 ? 1836072691 : e <= 63 ? 2053994217 : 0;
     }
     r.inherits(f, c),
       (t.ripemd160 = f),
@@ -30142,9 +30009,7 @@ object-assign
       (f.prototype.dbl = function() {
         return this.isInfinity()
           ? this
-          : this.curve.extended
-            ? this._extDbl()
-            : this._projDbl();
+          : this.curve.extended ? this._extDbl() : this._projDbl();
       }),
       (f.prototype._extAdd = function(e) {
         var t = this.y.redSub(this.x).redMul(e.y.redSub(e.x)),
@@ -30191,9 +30056,7 @@ object-assign
           ? e
           : e.isInfinity()
             ? this
-            : this.curve.extended
-              ? this._extAdd(e)
-              : this._projAdd(e);
+            : this.curve.extended ? this._extAdd(e) : this._projAdd(e);
       }),
       (f.prototype.mul = function(e) {
         return this._hasDoubles(e)
@@ -30858,9 +30721,7 @@ object-assign
           ? this
           : this.curve.zeroA
             ? this._zeroDbl()
-            : this.curve.threeA
-              ? this._threeDbl()
-              : this._dbl();
+            : this.curve.threeA ? this._threeDbl() : this._dbl();
       }),
       (l.prototype._zeroDbl = function() {
         var e, t, n;
@@ -32911,9 +32772,7 @@ object-assign
         throw new TypeError('invalid key length ' + t.length);
       return 'stream' === s.type
         ? new a(s.module, t, n, !0)
-        : 'auth' === s.type
-          ? new r(s.module, t, n, !0)
-          : new f(s.module, t, n);
+        : 'auth' === s.type ? new r(s.module, t, n, !0) : new f(s.module, t, n);
     }
     n(2)(f, s),
       (f.prototype._update = function(e) {
@@ -33180,9 +33039,7 @@ object-assign
         throw new TypeError('invalid iv length ' + n.length);
       return 'stream' === s.type
         ? new a(s.module, t, n)
-        : 'auth' === s.type
-          ? new i(s.module, t, n)
-          : new f(s.module, t, n);
+        : 'auth' === s.type ? new i(s.module, t, n) : new f(s.module, t, n);
     }
     (f.prototype._final = function() {
       var e = this._cache.flush();
@@ -34047,9 +33904,7 @@ object-assign
     function l(e, t, n, r) {
       return 0 === e
         ? (t & n) | (~t & r)
-        : 2 === e
-          ? (t & n) | (t & r) | (n & r)
-          : t ^ n ^ r;
+        : 2 === e ? (t & n) | (t & r) | (n & r) : t ^ n ^ r;
     }
     r(u, i),
       (u.prototype.init = function() {
@@ -34119,9 +33974,7 @@ object-assign
     function f(e, t, n, r) {
       return 0 === e
         ? (t & n) | (~t & r)
-        : 2 === e
-          ? (t & n) | (t & r) | (n & r)
-          : t ^ n ^ r;
+        : 2 === e ? (t & n) | (t & r) | (n & r) : t ^ n ^ r;
     }
     r(u, i),
       (u.prototype.init = function() {
@@ -36410,12 +36263,8 @@ object-assign
         null == e
           ? t
           : Array.isArray(e)
-            ? Array.isArray(t)
-              ? (e.push.apply(e, t), e)
-              : (e.push(t), e)
-            : Array.isArray(t)
-              ? [e].concat(t)
-              : [e, t]
+            ? Array.isArray(t) ? (e.push.apply(e, t), e) : (e.push(t), e)
+            : Array.isArray(t) ? [e].concat(t) : [e, t]
       );
     }
     function M(e, t, n) {
@@ -36659,9 +36508,7 @@ object-assign
         e.hasOwnProperty(i) &&
           ((t = e[i])
             ? (this[i] = t(n))
-            : 'target' === i
-              ? (this.target = r)
-              : (this[i] = n[i]));
+            : 'target' === i ? (this.target = r) : (this[i] = n[i]));
       return (
         (this.isDefaultPrevented = (null != n.defaultPrevented
         ? n.defaultPrevented
@@ -37092,9 +36939,7 @@ object-assign
                     ':' +
                     n.lineNumber +
                     ')'
-                  : o
-                    ? ' (created by ' + o + ')'
-                    : ''));
+                  : o ? ' (created by ' + o + ')' : ''));
             break e;
           default:
             i = '';
@@ -37372,9 +37217,7 @@ object-assign
             ('select' === s || ('input' === s && 'file' === i.type)
               ? (o = Pt)
               : Fe(i)
-                ? It
-                  ? (o = Lt)
-                  : ((o = Dt), (a = Nt))
+                ? It ? (o = Lt) : ((o = Dt), (a = Nt))
                 : !(s = i.nodeName) ||
                   'input' !== s.toLowerCase() ||
                   ('checkbox' !== i.type && 'radio' !== i.type) ||
@@ -37618,9 +37461,7 @@ object-assign
             if ('Unidentified' !== t) return t;
           }
           return 'keypress' === e.type
-            ? 13 === (e = en(e))
-              ? 'Enter'
-              : String.fromCharCode(e)
+            ? 13 === (e = en(e)) ? 'Enter' : String.fromCharCode(e)
             : 'keydown' === e.type || 'keyup' === e.type
               ? nn[e.keyCode] || 'Unidentified'
               : '';
@@ -37642,9 +37483,7 @@ object-assign
         which: function(e) {
           return 'keypress' === e.type
             ? en(e)
-            : 'keydown' === e.type || 'keyup' === e.type
-              ? e.keyCode
-              : 0;
+            : 'keydown' === e.type || 'keyup' === e.type ? e.keyCode : 0;
         },
       }),
       on = Vt.extend({ dataTransfer: null }),
@@ -37667,18 +37506,14 @@ object-assign
         deltaX: function(e) {
           return 'deltaX' in e
             ? e.deltaX
-            : 'wheelDeltaX' in e
-              ? -e.wheelDeltaX
-              : 0;
+            : 'wheelDeltaX' in e ? -e.wheelDeltaX : 0;
         },
         deltaY: function(e) {
           return 'deltaY' in e
             ? e.deltaY
             : 'wheelDeltaY' in e
               ? -e.wheelDeltaY
-              : 'wheelDelta' in e
-                ? -e.wheelDelta
-                : 0;
+              : 'wheelDelta' in e ? -e.wheelDelta : 0;
         },
         deltaZ: null,
         deltaMode: null,
@@ -38051,9 +37886,7 @@ object-assign
           o =
             r.window === r
               ? r.document
-              : 9 === r.nodeType
-                ? r
-                : r.ownerDocument;
+              : 9 === r.nodeType ? r : r.ownerDocument;
         if (!(i = !o)) {
           e: {
             (o = Rn(o)), (i = w.onSelect);
@@ -38397,9 +38230,7 @@ object-assign
           (t.index = r),
           e
             ? null !== (r = t.alternate)
-              ? (r = r.index) < n
-                ? ((t.effectTag = 2), n)
-                : r
+              ? (r = r.index) < n ? ((t.effectTag = 2), n) : r
               : ((t.effectTag = 2), n)
             : n
         );
@@ -39432,9 +39263,7 @@ object-assign
             0 !== J
               ? J
               : Z
-                ? ie
-                  ? 1
-                  : ne
+                ? ie ? 1 : ne
                 : 1 & e.mode
                   ? _e
                     ? 10 * (1 + (((h() + 50) / 10) | 0))
@@ -40375,12 +40204,8 @@ object-assign
               for (var i = e; ; ) {
                 if (5 === i.tag || 6 === i.tag)
                   n
-                    ? r
-                      ? w(t, i.stateNode, n)
-                      : v(t, i.stateNode, n)
-                    : r
-                      ? g(t, i.stateNode)
-                      : y(t, i.stateNode);
+                    ? r ? w(t, i.stateNode, n) : v(t, i.stateNode, n)
+                    : r ? g(t, i.stateNode) : y(t, i.stateNode);
                 else if (4 !== i.tag && null !== i.child) {
                   (i.child.return = i), (i = i.child);
                   continue;
@@ -41370,9 +41195,7 @@ object-assign
           ? ni(e, s)
           : 'dangerouslySetInnerHTML' === a
             ? Jr(e, s)
-            : 'children' === a
-              ? Zr(e, s)
-              : yt(e, a, s, r);
+            : 'children' === a ? Zr(e, s) : yt(e, a, s, r);
       }
       switch (n) {
         case 'input':
@@ -41888,9 +41711,7 @@ object-assign
               (t ||
                 (t = !(
                   !(t = e
-                    ? 9 === e.nodeType
-                      ? e.documentElement
-                      : e.firstChild
+                    ? 9 === e.nodeType ? e.documentElement : e.firstChild
                     : null) ||
                   1 !== t.nodeType ||
                   !t.hasAttribute('data-reactroot')

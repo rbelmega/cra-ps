@@ -4,10 +4,11 @@ import fs from 'fs';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Helmet from 'react-helmet';
-
+import 'isomorphic-fetch';
 import { Provider } from 'react-redux';
 import createServerStore from '../../../src/redux/configureServerStore';
 import Routes from '../../../src/routes';
+import * as api from '../../data/api';
 
 // A simple helper function to prepare the HTML markup
 const prepHTML = (data, { html, head, body }) => {
@@ -29,32 +30,37 @@ const universalLoader = (req, res) => {
 
       return res.status(404).end();
     }
+    Promise.all([api.fetchBio(), api.fetchPosts()]).then(
+      ([bioData, postsData]) => {
+        // Compile an initial state
+        let initialState = { bioData, postsData };
+        // Create a store and sense of history based on the current path
+        const { store, history } = createServerStore(req.path, initialState);
 
-    // Create a store and sense of history based on the current path
-    const { store, history } = createServerStore(req.path);
+        // Render App in React
+        const routeMarkup = renderToString(
+          <Provider store={store}>
+            <Routes history={history} />
+          </Provider>
+        );
 
-    // Render App in React
-    const routeMarkup = renderToString(
-      <Provider store={store}>
-        <Routes history={history} />
-      </Provider>
+        // Let Helmet know to insert the right tags
+        const helmet = Helmet.renderStatic();
+
+        // Form the final HTML response
+        const html = prepHTML(htmlData, {
+          html: helmet.htmlAttributes.toString(),
+          head:
+            helmet.title.toString() +
+            helmet.meta.toString() +
+            helmet.link.toString(),
+          body: routeMarkup,
+        });
+
+        // Up, up, and away...
+        res.send(html);
+      }
     );
-
-    // Let Helmet know to insert the right tags
-    const helmet = Helmet.renderStatic();
-
-    // Form the final HTML response
-    const html = prepHTML(htmlData, {
-      html: helmet.htmlAttributes.toString(),
-      head:
-        helmet.title.toString() +
-        helmet.meta.toString() +
-        helmet.link.toString(),
-      body: routeMarkup,
-    });
-
-    // Up, up, and away...
-    res.send(html);
   });
 };
 

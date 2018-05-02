@@ -6,9 +6,7 @@ import createHistory from 'history/createMemoryHistory';
 import dataStore from '../reducers/index';
 
 // Create a store and history based on a path
-const createServerStore = (path = '/') => {
-  const initialState = {};
-
+const createServerStore = (path = '/', initialState = {}) => {
   // We don't have a DOM, so let's create some fake history and push the current path
   const history = createHistory({ initialEntries: [path] });
 
