@@ -29,7 +29,8 @@ router.use('/api2/instagram', (req, res) => {
     });
 });
 
-router.use('^/$', serverRenderer);
+router.use('/', serverRenderer);
+// router.use('^/$', serverRenderer);
 
 router.use(
   express.static(path.resolve(__dirname, '../..', 'build/'), { maxAge: '30d' })
