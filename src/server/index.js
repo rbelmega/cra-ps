@@ -29,12 +29,12 @@ router.use('/api2/instagram', (req, res) => {
     });
 });
 
-router.use('/', serverRenderer);
-// router.use('^/$', serverRenderer);
-
 router.use(
-  express.static(path.resolve(__dirname, '../..', 'build/'), { maxAge: '30d' })
+  express.static(path.resolve(__dirname, '../..', 'build/'))
 );
+
+router.use('*', serverRenderer);
+// router.use('^/$', serverRenderer);
 
 // tell the app to use the above rules
 app.use(router);
