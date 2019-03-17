@@ -13,6 +13,7 @@
     "npm": "^5.8.0",
     "prettier": "^1.11.1",
     "react": "^16.3.1",
+    "react-app-polyfill": "^0.2.2",
     "react-dom": "^16.3.1",
     "react-helmet": "^5.2.0",
     "react-markdown": "^3.3.0",
@@ -20,7 +21,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "next",
-    "react-scripts": "1.1.4",
+    "react-scripts": "2.1.8",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
@@ -35,5 +36,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "prettier": "prettier --single-quote --trailing-comma es5 --write \"./{src,e2e}/**/*.{jsx,js,scss,css}\""
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

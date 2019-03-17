@@ -2,13 +2,13 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
-import createHistory from 'history/createMemoryHistory';
+import { createMemoryHistory } from 'history';
 import dataStore from '../reducers/index';
 
 // Create a store and history based on a path
 const createServerStore = (path = '/', initialState = {}) => {
   // We don't have a DOM, so let's create some fake history and push the current path
-  const history = createHistory({ initialEntries: [path] });
+  const history = createMemoryHistory({ initialEntries: [path] });
 
   // All the middlewares
   const middleware = [thunk, routerMiddleware(history)];
