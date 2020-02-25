@@ -8,4 +8,7 @@ const MapStateToProps = state => {
   };
 };
 
-export default connect(MapStateToProps, actions)(Footer);
+export default connect(
+  MapStateToProps,
+  actions
+)(Footer);

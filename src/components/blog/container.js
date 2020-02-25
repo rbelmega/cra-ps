@@ -11,4 +11,9 @@ const MapStateToProps = (state, { params }) => {
   };
 };
 
-export default withRouter(connect(MapStateToProps, actions)(Blog));
+export default withRouter(
+  connect(
+    MapStateToProps,
+    actions
+  )(Blog)
+);

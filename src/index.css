@@ -625,3 +625,8 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #898989;
 }
+
+.privacy-policy ul,
+.privacy-policy h2 {
+  color: #ffffff;
+}

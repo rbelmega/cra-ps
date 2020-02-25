@@ -9,4 +9,7 @@ const MapStateToProps = state => {
   };
 };
 
-export default connect(MapStateToProps, actions)(Body);
+export default connect(
+  MapStateToProps,
+  actions
+)(Body);

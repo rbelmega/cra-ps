@@ -29,9 +29,7 @@ router.use('/api2/instagram', (req, res) => {
     });
 });
 
-router.use(
-  express.static(path.resolve(__dirname, '../..', 'build/'))
-);
+router.use(express.static(path.resolve(__dirname, '../..', 'build/')));
 
 router.use('*', serverRenderer);
 // router.use('^/$', serverRenderer);
