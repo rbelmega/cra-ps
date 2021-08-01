@@ -14,6 +14,11 @@ const app = express();
 const router = express.Router();
 // root (/) should always serve our server rendered page
 // other static resources should just be served as they are
+
+router.use('/.well-known/acme-challenge/sPOLZJlWdxXKmzA-BP6r6FjIQYN-iTA8vm8NQbA4mVE', function(req, res) {
+  res.send('sPOLZJlWdxXKmzA-BP6r6FjIQYN-iTA8vm8NQbA4mVE.EvRjYLH3luPn69sTwa56hSZYDSkKrCx1mLUfIwq-WbU');
+})
+
 router.use('/api', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../data${req.url}`));
 });
