@@ -9,6 +9,10 @@ const port = 3000;
 const alive = new StartKeepAlive();
 alive.run();
 
+app.get('/.well-known/acme-challenge/sPOLZJlWdxXKmzA-BP6r6FjIQYN-iTA8vm8NQbA4mVE', function(req, res) {
+  res.send('sPOLZJlWdxXKmzA-BP6r6FjIQYN-iTA8vm8NQbA4mVE.EvRjYLH3luPn69sTwa56hSZYDSkKrCx1mLUfIwq-WbU')
+})
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
