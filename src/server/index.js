@@ -31,7 +31,10 @@ router.use('/api2/instagram', (req, res) => {
     .then(data => data.json())
     .then(data => {
       res.send(data);
-    });
+    }).catch(err => {
+      console.log(err);
+      return []
+  });
 });
 
 router.use(express.static(path.resolve(__dirname, '../..', 'build/')));
