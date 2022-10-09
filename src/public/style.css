@@ -374,15 +374,15 @@ a {
 
 /* Gray Scale */
 .profile-image {
-  -webkit-filter: grayscale(80%);
-  filter: grayscale(80%);
+  -webkit-filter: grayscale(60%);
+  filter: grayscale(60%);
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
 .profile-image:hover {
-  -webkit-filter: grayscale(30%);
-  filter: grayscale(30%);
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
 }
 
 .instagram-wrapper img {
