@@ -29,6 +29,7 @@ class Bio extends React.Component {
               ))}
           </article>
           <p
+            className="bio-description"
             style={{
               margin: '50px 0  0',
             }}

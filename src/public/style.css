@@ -368,21 +368,21 @@ a {
   height: 255px;
   overflow: hidden;
   margin: auto;
-  background: url('/resources/img/me.jpg');
+  background: url('/resources/img/me.jpeg');
   background-size: cover;
 }
 
 /* Gray Scale */
 .profile-image {
-  -webkit-filter: grayscale(40%);
-  filter: grayscale(40%);
+  -webkit-filter: grayscale(80%);
+  filter: grayscale(80%);
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
 .profile-image:hover {
-  -webkit-filter: grayscale(80%);
-  filter: grayscale(80%);
+  -webkit-filter: grayscale(30%);
+  filter: grayscale(30%);
 }
 
 .instagram-wrapper img {
