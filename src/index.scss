@@ -377,32 +377,25 @@ a {
   height: 255px;
   overflow: hidden;
   margin: auto;
-  background: url('./resources/img/me.jpeg');
+  background: url('../public/assets/img/me.jpeg');
   background-size: cover;
 }
 
 /* Gray Scale */
 .profile-image {
-  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 
 .profile-image:hover {
-  -webkit-filter: grayscale(30%);
   filter: grayscale(30%);
 }
 
 .instagram-wrapper img {
-  -webkit-filter: grayscale(30%) brightness(90%);
   filter: grayscale(30%) brightness(90%);
-
-  -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
 .instagram-wrapper img:hover {
-  -webkit-filter: grayscale(0) brightness(120%);
   filter: grayscale(0) brightness(120%);
 }
 
@@ -491,12 +484,12 @@ contacts-component {
 /* app */
 @font-face {
   font-family: myriad;
-  src: url(./resources/fonts/myriad-set-pro_thin.ttf);
+  src: url(../public/assets/fonts/myriad-set-pro_thin.ttf);
 }
 
 @font-face {
   font-family: myriad-md;
-  src: url(./resources/fonts/myriad-set-pro_medium.ttf);
+  src: url(../public/assets/fonts/myriad-set-pro_medium.ttf);
 }
 
 * {

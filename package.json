@@ -3,38 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react-app": "^3.1.1",
-    "express": "^4.16.3",
-    "history": "^4.7.2",
-    "ignore-styles": "^5.0.1",
-    "isomorphic-fetch": "^2.2.1",
-    "newrelic": "^3.3.0",
-    "prettier": "^1.11.1",
-    "react": "^16.3.1",
-    "react-app-polyfill": "^0.2.2",
-    "react-dom": "^16.3.1",
-    "react-helmet": "^5.2.0",
-    "react-markdown": "^3.3.0",
-    "react-redux": "^5.0.7",
-    "react-router": "4.3.1",
-    "react-router-dom": "4.3.1",
-    "react-router-redux": "next",
-    "react-scripts": "2.1.8",
-    "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
-    "source-map-explorer": "^1.5.0"
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "react-markdown": "^8.0.3",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^3.0.1",
+    "sass": "^1.55.0",
+    "source-map-explorer": "^2.5.3"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
-    "start": "npm run build && npm run run:server",
-    "run:server": "node ./src/server/bootstrap.js",
-    "start-react": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "prettier": "prettier --single-quote --trailing-comma es5 --write \"./{src,e2e}/**/*.{jsx,js,scss,css}\""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node src/server",
+    "prettier": "prettier --single-quote --trailing-comma es5 --write \"./{src,pages}/**/*.{jsx,js,scss}\""
   },
   "browserslist": [
     ">0.2%",

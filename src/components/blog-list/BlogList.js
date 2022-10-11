@@ -1,20 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
-export const BlogList = ({ posts = [] }) => (
-  <div className="blog">
-    {posts.map(post => {
-      return (
-        <p key={post.file}>
-          <i className="fa fa-list-alt" />
-          <span className="date">{post.date}</span>
-          <Link to={`/blog/${post.id}`}>
-            <span className="post">{post.name}</span>
-          </Link>
-        </p>
-      );
-    })}
-  </div>
-);
+export const BlogList = () => {
+  const [posts, setPosts] = useState([]);
 
-export default BlogList;
+  useEffect(() => {
+    fetch('./posts.json')
+      .then((resp) => resp.json())
+      .then((data) => {
+        setPosts(data);
+      });
+  }, []);
+
+  return (
+    <div className="blog">
+      {posts.map((post) => {
+        return (
+          <p key={post.file}>
+            <i className="fa fa-list-alt" />
+            <span className="date">{post.date}</span>
+            <Link href={`/blog/${post.id}`}>
+              <span className="post">{post.name}</span>
+            </Link>
+          </p>
+        );
+      })}
+    </div>
+  );
+};

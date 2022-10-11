@@ -1,18 +1,16 @@
-import React from 'react';
-// import {Timeline} from 'react-twitter-widgets'
+import React, { useEffect, useState } from 'react';
 
-class Twitter extends React.Component {
-  constructor() {
-    super();
+export const Twitter = () => {
+  const [classLoaded, setClassLoaded] = useState(
+    typeof window !== 'undefined' && window.twttr ? 'loaded' : ''
+  );
 
-    if (typeof window !== 'undefined') {
-      this.classLoaded = window.twttr ? 'loaded' : '';
+  const getScript = () => {
+    if (typeof window === 'undefined') {
+      return;
     }
-  }
 
-  getScript() {
-    let self = this;
-    window.twttr = (function(d, s, id) {
+    window.twttr = (function (d, s, id) {
       var js,
         fjs = d.getElementById('tweets'),
         t = window.twttr || {};
@@ -25,7 +23,7 @@ class Twitter extends React.Component {
       fjs.parentNode.insertBefore(js, fjs);
 
       t._e = [];
-      t.ready = function(f) {
+      t.ready = function (f) {
         t._e.push(f);
       };
 
@@ -33,54 +31,47 @@ class Twitter extends React.Component {
     })(document, 'script', 'twitter-wjs');
 
     // / Wait for the asynchronous resources to load
-    window.twttr.ready(function(twttr) {
-      window.twttr.events.bind('rendered', function(event) {
-        self.loaded();
+    window.twttr.ready(function () {
+      window.twttr.events.bind('rendered', function () {
+        setClassLoaded('loaded');
       });
     });
-  }
+  };
 
-  componentDidMount() {
-    this.getScript();
-  }
+  useEffect(() => {
+    getScript();
+  }, []);
 
-  loaded() {
-    this.classLoaded = 'loaded';
-    this.forceUpdate();
-  }
-
-  render() {
-    return (
-      <div className="twitter">
-        {!this.classLoaded && (
-          <div className="sk-cube-grid">
-            <div className="sk-cube sk-cube1" />
-            <div className="sk-cube sk-cube2" />
-            <div className="sk-cube sk-cube3" />
-            <div className="sk-cube sk-cube4" />
-            <div className="sk-cube sk-cube5" />
-            <div className="sk-cube sk-cube6" />
-            <div className="sk-cube sk-cube7" />
-            <div className="sk-cube sk-cube8" />
-            <div className="sk-cube sk-cube9" />
-          </div>
-        )}
-        <div className={this.classLoaded}>
-          <a
-            className="twitter-timeline"
-            data-chrome="nofooter noheader noborder noscrollbar transparent"
-            href="https://twitter.com/izzz0"
-            data-theme="dark"
-            data-link-color="#000"
-            data-widget-id="694262144762822658"
-          >
-            Tweets by @izzz0
-          </a>
-          <div id="tweets" />
+  return (
+    <div className="twitter">
+      {!classLoaded && (
+        <div className="sk-cube-grid">
+          <div className="sk-cube sk-cube1" />
+          <div className="sk-cube sk-cube2" />
+          <div className="sk-cube sk-cube3" />
+          <div className="sk-cube sk-cube4" />
+          <div className="sk-cube sk-cube5" />
+          <div className="sk-cube sk-cube6" />
+          <div className="sk-cube sk-cube7" />
+          <div className="sk-cube sk-cube8" />
+          <div className="sk-cube sk-cube9" />
         </div>
+      )}
+      <div className={classLoaded}>
+        <a
+          className="twitter-timeline"
+          data-chrome="nofooter noheader noborder noscrollbar transparent"
+          href="https://twitter.com/izzz0"
+          data-theme="dark"
+          data-link-color="#000"
+          data-widget-id="694262144762822658"
+        >
+          Tweets by @izzz0
+        </a>
+        <div id="tweets" />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Twitter;

@@ -1,7 +1,7 @@
 const http = require('http'); //importing http
 
 class StartKeepAlive {
-  run() {
+  static run() {
     setInterval(() => {
       var options = {
         host: 'rbelmeha.herokuapp.com',
@@ -9,8 +9,8 @@ class StartKeepAlive {
         path: '/',
       };
       http
-        .get(options, function(res) {
-          res.on('data', function(chunk) {
+        .get(options, function (res) {
+          res.on('data', function (chunk) {
             try {
               // optional logging... disable after it's working
               console.log('HEROKU RESPONSE: ' + chunk);
@@ -19,7 +19,7 @@ class StartKeepAlive {
             }
           });
         })
-        .on('error', function(err) {
+        .on('error', function (err) {
           console.log('Error: ' + err.message);
         });
     }, 20 * 60 * 1000); // load every 20 minutes

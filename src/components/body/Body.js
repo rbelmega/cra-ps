@@ -1,50 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Twitter from '../twitter/Twitter';
 import Bio from '../bio/Bio';
-import Contacts from '../contacts/Contacts';
-import Footer from '../footer';
+import { Contacts } from '../contacts';
+import { Footer } from '../footer';
 
-export class Body extends React.Component {
-  componentDidMount() {
-    this.fetchData();
-  }
+export const Body = () => {
+  const [data, setData] = useState({});
 
-  fetchData() {
-    const { fetchBio } = this.props;
-    console.log(this.props);
-    fetchBio();
-  }
+  useEffect(() => {
+    fetch('./bio.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
 
-  render() {
-    return (
+  return (
+    <div
+      style={{
+        margin: '0 5%',
+        backgroundColor: '#252525',
+        borderTop: '3px solid #00a3cd',
+      }}
+    >
       <div
+        className="wrapper"
         style={{
-          margin: '0 5%',
-          backgroundColor: '#252525',
-          borderTop: '3px solid #00a3cd',
+          alignItems: 'stretch',
         }}
       >
-        <div
-          className="wrapper"
-          style={{
-            alignItems: 'stretch',
-          }}
-        >
-          <Twitter />
-          <Bio bio={this.props.bio} activities={this.props.activities} />
+        <Twitter />
+        <Bio bio={data.bio} activities={data.activities} />
 
-          <div className="me" style={{ padding: 20 }}>
-            <section className="profile-image-wrapper">
-              <div className="profile-image" />
-            </section>
-            {/*<p><i className='fa fa-map-marker'></i>Ivano-Frankivsk, Ukraine</p>*/}
-            <Contacts />
-          </div>
+        <div className="me" style={{ padding: 20 }}>
+          <section className="profile-image-wrapper">
+            <div className="profile-image" />
+          </section>
+          {/*<p><i className='fa fa-map-marker'></i>Ivano-Frankivsk, Ukraine</p>*/}
+          <Contacts />
         </div>
-        <Footer />
       </div>
-    );
-  }
-}
-
-export default Body;
+      <Footer />
+    </div>
+  );
+};
