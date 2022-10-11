@@ -1,7 +1,6 @@
 import React from 'react';
 
-class Bio extends React.Component {
-  render() {
+export const Bio = ({ activities, bio }) =>  {
     return (
       <div className="bio">
         <section>
@@ -20,8 +19,7 @@ class Bio extends React.Component {
               About
             </h3>
 
-            {this.props.activities &&
-              this.props.activities.map((activity, index) => (
+            {activities?.map((activity, index) => (
                 <h3 key={index}>
                   <i className={activity.iconClass} />
                   {activity.text}
@@ -34,12 +32,9 @@ class Bio extends React.Component {
               margin: '50px 0  0',
             }}
           >
-            {this.props.bio}
+            {bio}
           </p>
         </section>
       </div>
     );
-  }
 }
-
-export default Bio;

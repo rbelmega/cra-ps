@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Twitter from '../twitter/Twitter';
-import Bio from '../bio/Bio';
+import { Twitter } from '../twitter';
+import { Bio } from '../bio';
 import { Contacts } from '../contacts';
 import { Footer } from '../footer';
 

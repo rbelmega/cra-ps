@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../header/Header';
-import Body from '../body';
+import { Header } from '../header';
+import { Body } from '../body';
 
 export const App = () => (
   <div className="main-app">
@@ -8,5 +8,3 @@ export const App = () => (
     <Body />
   </div>
 );
-
-export default App;

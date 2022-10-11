@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { BlogList } from '../blog-list/BlogList';
+import React, {  useState } from 'react';
+import { BlogList } from '../blog-list';
 
 export const Footer = () => {
   const [instagramData, setInstagramData] = useState([]);
