@@ -5,7 +5,7 @@ import { Contacts } from '../contacts';
 import { Footer } from '../footer';
 
 export const Body = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<any>({});
 
   useEffect(() => {
     fetch('./bio.json')

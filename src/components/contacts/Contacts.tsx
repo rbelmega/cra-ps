@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const Contacts = () => {
-  const [contacts, setContacts] = useState([
+  const [contacts, setContacts] = useState<any>([
     {
       name: 'Linkedin',
       link: 'https://www.linkedin.com/in/rostyslav-belmega-8b540643',
