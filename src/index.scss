@@ -391,14 +391,6 @@ a {
   filter: grayscale(30%);
 }
 
-.instagram-wrapper img {
-  filter: grayscale(30%) brightness(90%);
-  transition: 0.3s ease-in-out;
-}
-.instagram-wrapper img:hover {
-  filter: grayscale(0) brightness(120%);
-}
-
 .fa {
   color: #7d7d7d;
   padding-right: 4px;

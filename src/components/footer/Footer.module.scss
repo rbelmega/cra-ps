@@ -1,0 +1,16 @@
+.instagramWrapper {
+  white-space: nowrap;
+  overflow-y: auto;
+
+  img,
+  video {
+    width: 140px;
+    height: 140px;
+    filter: grayscale(30%) brightness(90%);
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      filter: grayscale(0) brightness(120%);
+    }
+  }
+}

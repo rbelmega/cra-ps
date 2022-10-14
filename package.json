@@ -22,7 +22,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "node src/server",
-    "prettier": "prettier --single-quote --trailing-comma es5 --write \"./{src,pages}/**/*.{jsx,js,scss}\""
+    "prettier": "prettier --single-quote --trailing-comma es5 --write \"./{src,pages}/**/*.{ts,tsx,scss}\""
   },
   "browserslist": [
     ">0.2%",
