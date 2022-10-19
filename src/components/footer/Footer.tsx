@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { BlogList } from "../blog-list";
-import styles from "./Footer.module.scss";
+import React, { useEffect, useState } from 'react';
+import { BlogList } from '../blog-list';
+import styles from './Footer.module.scss';
 
 export const Footer = () => {
   const [instagramData, setInstagramData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/instagram")
+    fetch('/api/instagram')
       .then((response) => response.json())
       .then(setInstagramData);
   }, []);
@@ -15,7 +15,7 @@ export const Footer = () => {
     <div>
       <div className={styles.instagramWrapper}>
         {instagramData.map((media) =>
-          media.media_type === "IMAGE" ? (
+          media.media_type === 'IMAGE' ? (
             <a key={media.media_url} href={media.media_url} target="_blank">
               <img src={media.media_url} />
             </a>
