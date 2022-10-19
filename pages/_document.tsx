@@ -15,7 +15,7 @@ export default function Document() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', ${process.env.PUBLIC_GOOGLE_ANALYTICS_V4});
+              gtag('config', '${process.env.PUBLIC_GOOGLE_ANALYTICS_V4}');
           `,
           }}
         />
