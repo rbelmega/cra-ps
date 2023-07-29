@@ -7,7 +7,7 @@ dotenv.config();
 const nextConfig = {
     /* config options here */
     env: {
-        PUBLIC_GOOGLE_ANALYTICS_V4: process.env.PUBLIC_GOOGLE_ANALYTICS_V4
+        NEXT_PUBLIC_GOOGLE_ANALYTICS_V4: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4
     }
 }
 
