@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
@@ -15,7 +15,7 @@ export default function Document() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${process.env.NPM_CONFIG_NEXT_PUBLIC_GOOGLE_ANALYTICS_V4}');
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4}');
           `,
           }}
         />
