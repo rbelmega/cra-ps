@@ -39,7 +39,7 @@ const Blog = () => {
             children={markdownFile}
             remarkPlugins={[remarkGfm]}
             components={{
-              code({ node, inline, className, children, ...props }) {
+              code({ node, className, children, ...props }) {
                 return (
                   <SyntaxHighlighter
                     children={String(children).replace(/\n$/, '')}
