@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 export const BlogList = async () => {
-  const response = await fetch('https://belmeha.com/posts.json');
+  const response = await fetch('https://www.belmeha.com/posts.json');
   const posts = await response.json();
 
   return (
