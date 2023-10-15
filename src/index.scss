@@ -95,10 +95,15 @@ header {
 }
 .twitter {
   overflow: auto;
-  background: #000000;
+  background: #00a3cd;
   height: 500px;
   position: relative;
 }
+
+.twitter.loaded {
+  background: #000000;
+}
+
 .bio-description {
   font-size: 18px;
   line-height: 1.5;
