@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from '../../src/styles';
+import { dark } from '../../../styles';
 
-const Blog = () => {
-  const [markdownFile, setMarkdownFile] = useState('');
-  const router = useRouter();
-  const { pid } = router.query;
+export default async function Blog({ params }) {
+  const { id } = params;
 
-  useEffect(() => {
-    pid && fetchData(pid);
-  }, [pid]);
-
-  const fetchData = (id) => {
-    fetch(`/posts/post-${id}.md`)
-      .then((data) => data.text())
-      .then((data) => {
-        setMarkdownFile(data);
-      });
-  };
+  const response = await fetch(`https://belmeha.com/posts/post-${id}.md`);
+  const markdownFile = await response.text();
 
   return (
     <section>
@@ -56,6 +46,4 @@ const Blog = () => {
       </section>
     </section>
   );
-};
-
-export default Blog;
+}

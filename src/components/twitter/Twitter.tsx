@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 
 export const Twitter = () => {
@@ -10,28 +12,30 @@ export const Twitter = () => {
       return;
     }
 
-    window.twttr = (function (d, s, id) {
-      var js,
-        fjs = d.getElementById('tweets'),
-        t = window.twttr || {};
-      if (d.getElementById(id)) {
-        return;
-      }
-      js = d.createElement(s);
-      js.id = id;
-      js.src = 'https://platform.twitter.com/widgets.js';
-      fjs.parentNode.insertBefore(js, fjs);
+    window.twttr =
+      window.twttr ||
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementById('tweets'),
+          t = window.twttr || {};
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
 
-      t._e = [];
-      t.ready = function (f) {
-        t._e.push(f);
-      };
+        t._e = [];
+        t.ready = function (f) {
+          t._e.push(f);
+        };
 
-      return t;
-    })(document, 'script', 'twitter-wjs');
+        return t;
+      })(document, 'script', 'twitter-wjs');
 
     // / Wait for the asynchronous resources to load
-    window.twttr.ready(function () {
+    window.twttr?.ready(function () {
       window.twttr.events.bind('rendered', function () {
         setClassLoaded('loaded');
       });
