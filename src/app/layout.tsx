@@ -1,15 +1,16 @@
 import Script from 'next/script';
 import '../index.scss';
-import {Metadata} from "next";
+import { Metadata } from 'next';
 
 interface IRootLayout {
   children: React.ReactNode;
 }
 
 export const metadata: Metadata = {
-    title: 'Rostyslav Belmeha',
-        description: 'Experienced Web Developer | Expertise in UI Frameworks and Business Intelligence',
-}
+  title: 'Rostyslav Belmeha',
+  description:
+    'Experienced Web Developer | Expertise in UI Frameworks and Business Intelligence',
+};
 
 export default function RootLayout({ children }: IRootLayout) {
   return (
