@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Twitter } from '../twitter';
 import { Bio } from '../bio';
 import { Contacts } from '../contacts';
 import { Footer } from '../footer';
+import './body.scss';
 
-export const Body = () => {
-  const [data, setData] = useState<any>({});
-
-  useEffect(() => {
-    fetch('./bio.json')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
+export const Body = async () => {
+  const response = await fetch('https://belmeha.com/bio.json');
+  const data = await response.json();
 
   return (
-    <div
-      style={{
-        margin: '0 5%',
-        backgroundColor: '#252525',
-        borderTop: '3px solid #00a3cd',
-      }}
-    >
-      <div
-        className="wrapper"
-        style={{
-          alignItems: 'stretch',
-        }}
-      >
+    <div className="body-container">
+      <div className="wrapper body-wrapper">
         <Twitter />
         <Bio bio={data.bio} activities={data.activities} />
-
-        <div className="me" style={{ padding: 20 }}>
+        <div className="me">
           <section className="profile-image-wrapper">
             <div className="profile-image" />
           </section>

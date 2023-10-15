@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
-export const BlogList = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    fetch('./posts.json')
-      .then((resp) => resp.json())
-      .then((data) => {
-        setPosts(data);
-      });
-  }, []);
+export const BlogList = async () => {
+  const response = await fetch('https://belmeha.com/posts.json');
+  const posts = await response.json();
 
   return (
     <div className="blog">

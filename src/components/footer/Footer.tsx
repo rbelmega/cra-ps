@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BlogList } from '../blog-list';
 import styles from './Footer.module.scss';
 
-export const Footer = () => {
-  const [instagramData, setInstagramData] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/instagram')
-      .then((response) => response.json())
-      .then(setInstagramData);
-  }, []);
+export const Footer = async () => {
+  const response = await fetch('https://belmeha.com/api/instagram');
+  const instagramData = await response.json();
 
   return (
     <div>
@@ -26,11 +21,7 @@ export const Footer = () => {
           )
         )}
       </div>
-      <div
-        style={{
-          padding: 30,
-        }}
-      >
+      <div className={styles.bloglistWrapper}>
         <BlogList />
       </div>
     </div>

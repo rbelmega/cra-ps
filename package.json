@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "next": "13.4.16",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "20.8.0",
@@ -21,7 +21,7 @@
     "analyze": "source-map-explorer build/static/js/main.*",
     "dev": "next dev",
     "build": "next build",
-    "start": "node src/server",
+    "start": "next start",
     "prettier": "prettier --single-quote --trailing-comma es5 --write \"./{src,pages}/**/*.{ts,tsx,scss}\""
   },
   "browserslist": [
