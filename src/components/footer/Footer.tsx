@@ -1,10 +1,10 @@
 import React from 'react';
 import { BlogList } from '../blog-list';
+import { getPosts } from '../../domain';
 import styles from './Footer.module.scss';
 
 export const Footer = async () => {
-  const response = await fetch('https://belmeha.com/api/instagram');
-  const instagramData = await response.json();
+  const instagramData = await getPosts();
 
   return (
     <div>
