@@ -1,6 +1,6 @@
 const accessToken = process.env.INSTAGRAM_TOKEN;
 
-export default function handler(req, res) {
+export const getPosts = () =>
   fetch(
     `https://graph.instagram.com/me/media?fields=id,caption,media_url,media_type&access_token=${accessToken}`
   )
@@ -10,10 +10,8 @@ export default function handler(req, res) {
         throw response;
       }
 
-      res.status(200).json(response.data);
+      return response.data;
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(200).json([]);
+    .catch(() => {
+      return [];
     });
-}
