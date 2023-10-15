@@ -6,7 +6,7 @@ import { Footer } from '../footer';
 import './body.scss';
 
 export const Body = async () => {
-  const response = await fetch('https://belmeha.com/bio.json');
+  const response = await fetch('https://www.belmeha.com/bio.json');
   const data = await response.json();
 
   return (

@@ -3,7 +3,7 @@ import { BlogList } from '../blog-list';
 import styles from './Footer.module.scss';
 
 export const Footer = async () => {
-  const response = await fetch('https://belmeha.com/api/instagram');
+  const response = await fetch('https://www.belmeha.com/api/instagram');
   const instagramData = await response.json();
 
   return (
