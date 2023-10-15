@@ -7,7 +7,7 @@ export const Twitter = () => {
   const [classLoaded, setClassLoaded] = useState('');
 
   return (
-    <div className="twitter">
+    <div className={classLoaded ? "twitter loaded": "twitter"}>
       {!classLoaded && (
         <div className="sk-cube-grid">
           <div className="sk-cube sk-cube1" />
