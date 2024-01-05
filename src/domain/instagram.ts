@@ -13,6 +13,7 @@ export const getPosts = () =>
 
       return response.data;
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       return [];
     });
