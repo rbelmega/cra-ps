@@ -20,7 +20,7 @@
     "typescript": "5.3.3"
   },
   "scripts": {
-    "analyze": "source-map-explorer build/static/js/main.*",
+    "analyze": "npm run build && source-map-explorer .next/static/**/*.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
