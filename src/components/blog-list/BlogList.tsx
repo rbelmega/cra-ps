@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const BlogList = async () => {
   const response = await fetch('https://www.belmeha.com/posts.json');
-  const posts = await response.json();
+  const posts = response.ok ? await response.json() : [];
 
   return (
     <div className="blog">
