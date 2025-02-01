@@ -1,15 +1,14 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dark } from '../../../styles';
+import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export default async function Blog({ params }) {
-  const { id } = params;
+type Params = Promise<{ id: string }>;
 
+export default async function Blog({ params }: { params: Params }) {
+  const { id } = await params;
   const response = await fetch(`https://www.belmeha.com/posts/post-${id}.md`);
   const markdownFile = await response.text();
 
@@ -29,15 +28,11 @@ export default async function Blog({ params }) {
             children={markdownFile}
             remarkPlugins={[remarkGfm]}
             components={{
-              code({ node, className, children, ...props }) {
+              code({ children }) {
                 return (
-                  <SyntaxHighlighter
-                    children={String(children).replace(/\n$/, '')}
-                    style={dark}
-                    language="javascript"
-                    PreTag="div"
-                    {...props}
-                  />
+                  <SyntaxHighlighter style={dracula} language="javascript">
+                    {children}
+                  </SyntaxHighlighter>
                 );
               },
             }}
