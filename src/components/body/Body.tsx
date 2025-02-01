@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+
 import { Twitter } from '../twitter';
 import { Bio } from '../bio';
 import { Contacts } from '../contacts';
@@ -16,7 +18,13 @@ export const Body = async () => {
         <Bio bio={data.bio} activities={data.activities} />
         <div className="me">
           <section className="profile-image-wrapper">
-            <div className="profile-image" />
+            <Image
+              src="/assets/img/me.webp"
+              alt="profile image"
+              width={255}
+              height={255}
+              fetchPriority="high"
+            ></Image>
           </section>
           {/*<p><i className='fa fa-map-marker'></i>Ivano-Frankivsk, Ukraine</p>*/}
           <Contacts />
