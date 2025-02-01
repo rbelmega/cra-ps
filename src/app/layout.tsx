@@ -1,6 +1,7 @@
-import Script from 'next/script';
-import '../index.scss';
 import { Metadata } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
+import '../index.scss';
 
 interface IRootLayout {
   children: React.ReactNode;
@@ -17,18 +18,7 @@ export default function RootLayout({ children }: IRootLayout) {
     <html lang="en">
       <head>
         <title>Rostyslav Belmeha</title>
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4}`}
-        />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4}');
-          `}
-        </Script>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4} />
       </head>
       <body>{children}</body>
     </html>
