@@ -24,6 +24,7 @@ export const Body = async () => {
               width={255}
               height={255}
               fetchPriority="high"
+              loading="eager"
             ></Image>
           </section>
           {/*<p><i className='fa fa-map-marker'></i>Ivano-Frankivsk, Ukraine</p>*/}
