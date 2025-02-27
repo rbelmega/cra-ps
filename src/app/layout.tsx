@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import '../index.scss';
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: IRootLayout) {
         <title>Rostyslav Belmeha</title>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4} />
       </head>
+      <SpeedInsights />
       <body>{children}</body>
     </html>
   );
