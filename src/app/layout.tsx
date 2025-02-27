@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import '../index.scss';
 
