@@ -4,7 +4,7 @@ import styles from './TweetList.module.css';
 
 export const Twitter: React.FC = () => {
   return (
-    <div className={styles.twitter}>
+    <div className={styles.twitterContainer}>
       <div className={styles.container}>
         <TweetList />
       </div>

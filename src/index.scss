@@ -312,31 +312,10 @@ h3 .fa {
   padding: 10px;
   transition: color 0.5s ease;
 }
-.contact-list {
-  list-style-type: none;
-  padding: 0;
-  float: left;
-}
 
-.contact-list li {
-  margin: 6px 0;
-}
-.contact-list li a {
-  padding: 5px 10px 5px 5px;
-  transition: all 0.5s ease;
-}
-.contact-list:after {
-  display: table;
-  content: ' ';
-  clear: both;
-}
 a {
   text-decoration: none;
   color: #b9b9b9;
-}
-.contact-list li a:hover {
-  padding-left: 15px;
-  transition: padding-left 0.3s ease-out;
 }
 
 /* header */
