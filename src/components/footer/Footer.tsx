@@ -3,9 +3,15 @@ import Image from 'next/image';
 import { BlogList } from '../blog-list';
 import styles from './Footer.module.scss';
 
-export const Footer = async () => {
+interface InstagramMedia {
+  media_type: 'IMAGE' | 'VIDEO';
+  media_url: string;
+  caption?: string;
+}
+
+export const Footer: React.FC = async () => {
   // Temporarily disabled Instagram API call
-  const instagramData = [];
+  const instagramData: InstagramMedia[] = [];
 
   return (
     <div>
@@ -22,7 +28,7 @@ export const Footer = async () => {
             </a>
           ) : (
             <a key={media.media_url} href={media.media_url} target="_blank">
-              <video autoPlay={true} muted={true} src={media.media_url}></video>
+              <video autoPlay={true} muted={true} src={media.media_url} />
             </a>
           )
         )}

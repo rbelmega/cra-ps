@@ -2,8 +2,16 @@
 
 import React, { useState } from 'react';
 
-export const Contacts = () => {
-  const [contacts, setContacts] = useState<any>([
+interface Contact {
+  name: string;
+  link: string;
+  color: string;
+  letter: string;
+  active?: boolean;
+}
+
+export const Contacts: React.FC = () => {
+  const [contacts, setContacts] = useState<Contact[]>([
     {
       name: 'Linkedin',
       link: 'https://www.linkedin.com/in/rostyslav-belmega-8b540643',

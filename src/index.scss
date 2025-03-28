@@ -93,6 +93,7 @@ header {
   border-bottom: 2px solid #464646;
   box-shadow: 0px 2px 0px #403c3c;
 }
+
 .twitter {
   overflow: auto;
   background: #00a3cd;
@@ -104,10 +105,6 @@ header {
   background: #000000;
 }
 
-.bio-description {
-  font-size: 18px;
-  line-height: 1.5;
-}
 .twitter > div:not(.sk-cube-grid) {
   opacity: 0;
   transition: all 1s;
@@ -117,22 +114,13 @@ header {
   opacity: 1;
   transition: all 1s;
 }
+
 .blog,
 .twitter {
   flex: 1;
 }
 
-.bio {
-  flex: 2;
-}
-
-.bio .header {
-  padding: 5px 12px;
-  margin: 0 -16px;
-}
-
-.blog,
-.bio {
+.blog {
   color: #ffffff;
   padding: 0 15px;
 }
@@ -165,9 +153,6 @@ h3 .fa {
 
   .me {
     order: -3;
-  }
-  .bio {
-    order: -2;
   }
 
   .blog {

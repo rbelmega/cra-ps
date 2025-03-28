@@ -3,13 +3,10 @@
   flex-direction: column;
   gap: 20px;
   flex: 1;
-  height: 500px;
-  overflow: auto;
   --tweet-body: #fff;
   --tweet-color: #fff;
   --tweet-link: #1DA1F2;
   --tweet-link-hover: #1a8cd8;
-  --tweet-bg: #000;
   --tweet-color-secondary: #8899a6;
   --tweet-border: #2f3336;
   --tweet-hover: #161819;

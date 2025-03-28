@@ -1,9 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 
-export const BlogList = async () => {
+interface Post {
+  file: string;
+  id: string;
+  name: string;
+  date: string;
+}
+
+export const BlogList: React.FC = async () => {
   const response = await fetch('https://www.belmeha.com/posts.json');
-  const posts = response.ok ? await response.json() : [];
+  const posts: Post[] = response.ok ? await response.json() : [];
 
   return (
     <div className="blog">

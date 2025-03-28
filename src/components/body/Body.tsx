@@ -7,9 +7,17 @@ import { Contacts } from '../contacts';
 import { Footer } from '../footer';
 import './body.scss';
 
-export const Body = async () => {
+interface BioData {
+  bio: string;
+  activities?: Array<{
+    iconClass: string;
+    text: string;
+  }>;
+}
+
+export const Body: React.FC = async () => {
   const response = await fetch('https://www.belmeha.com/bio.json');
-  const data = response.ok ? await response.json() : {};
+  const data: BioData = response.ok ? await response.json() : { bio: '' };
 
   return (
     <div className="body-container">
@@ -25,7 +33,7 @@ export const Body = async () => {
               height={255}
               fetchPriority="high"
               loading="eager"
-            ></Image>
+            />
           </section>
           {/*<p><i className='fa fa-map-marker'></i>Ivano-Frankivsk, Ukraine</p>*/}
           <Contacts />

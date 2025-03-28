@@ -3,8 +3,12 @@ import { Tweet } from 'react-tweet';
 import { getTweets } from '../../domain/twitter';
 import styles from './TweetList.module.css';
 
-export const TweetList = async () => {
-  const tweets = await getTweets();
+interface TweetData {
+  id: string;
+}
+
+export const TweetList: React.FC = async () => {
+  const tweets: TweetData[] = await getTweets();
   
   if (!tweets.length) {
     return (
