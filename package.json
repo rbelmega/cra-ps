@@ -3,22 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@next/third-parties": "15.2.1",
+    "@next/third-parties": "^15.2.4",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
-    "eslint-config-next": "15.2.1",
-    "next": "15.2.1",
+    "eslint-config-next": "15.2.4",
+    "next": "15.2.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-markdown": "10.1.0",
     "react-syntax-highlighter": "15.6.1",
-    "react-twitter-widgets": "1.11.0",
+    "react-tweet": "^3.2.2",
     "remark-gfm": "4.0.1"
   },
   "devDependencies": {
-    "@types/node": "22.13.10",
+    "@types/node": "22.13.14",
     "prettier": "3.5.3",
-    "sass": "1.85.1",
+    "sass": "1.86.0",
     "source-map-explorer": "2.5.3",
     "typescript": "5.8.2"
   },

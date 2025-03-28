@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { BlogList } from '../blog-list';
-import { getPosts } from '../../domain';
 import styles from './Footer.module.scss';
 
 export const Footer = async () => {
-  const instagramData = await getPosts();
+  // Temporarily disabled Instagram API call
+  const instagramData = [];
 
   return (
     <div>
