@@ -31,10 +31,10 @@ export default async function Blog({ params }: { params: Params }) {
               code({ children }) {
                 return (
                   <SyntaxHighlighter style={dracula} language="javascript">
-                    {children}
+                    {children.toString()}
                   </SyntaxHighlighter>
                 );
-              },
+              }
             }}
           />
         </article>
