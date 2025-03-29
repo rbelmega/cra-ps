@@ -9,7 +9,7 @@ interface TweetData {
 
 export const TweetList: React.FC = async () => {
   const tweets: TweetData[] = await getTweets();
-  
+
   if (!tweets.length) {
     return (
       <div className={styles.errorMessage}>
@@ -19,10 +19,10 @@ export const TweetList: React.FC = async () => {
   }
 
   return (
-    <div className={styles.twitter}>
+    <div className={styles.twitter} data-theme="dark">
       {tweets.map((tweet) => (
         <Tweet key={tweet.id} id={tweet.id} />
       ))}
     </div>
   );
-}; 
+};

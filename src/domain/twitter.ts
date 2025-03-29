@@ -42,15 +42,17 @@ export async function getTweets(): Promise<TweetData[]> {
         headers: {
           Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
         },
-        next: { 
+        next: {
           revalidate: 3600,
-          tags: ['tweets']
+          tags: ['tweets'],
         },
       }
     );
 
     if (tweetsResponse.status === 401) {
-      console.error('Twitter API: Unauthorized - Please check your Bearer Token');
+      console.error(
+        'Twitter API: Unauthorized - Please check your Bearer Token'
+      );
       return [];
     }
 
@@ -70,4 +72,4 @@ export async function getTweets(): Promise<TweetData[]> {
     console.error('Error fetching tweets:', error);
     return [];
   }
-} 
+}

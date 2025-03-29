@@ -3,27 +3,31 @@
   flex: 1;
   height: 500px;
   overflow: auto;
+  overflow-x: hidden;
 }
 
 .twitter {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  --tweet-body: #fff;
-  --tweet-color: #fff;
-  --tweet-link: #1DA1F2;
-  --tweet-link-hover: #1a8cd8;
-  --tweet-color-secondary: #8899a6;
-  --tweet-border: #2f3336;
-  --tweet-hover: #161819;
+  gap: 5px;
 }
 
 .container {
-  padding: 20px;
+  padding: 10px;
 }
 
 .errorMessage {
   padding: 20px;
   color: #fff;
   text-align: center;
-} 
+}
+
+/* React Tweet component styles */
+.twitter :global(.react-tweet-theme) {
+  --tweet-container-margin: 0 0;
+  --tweet-body-font-size: 1rem;
+}
+
+.twitter :global(.react-tweet-theme) {
+  max-width: 300px
+}

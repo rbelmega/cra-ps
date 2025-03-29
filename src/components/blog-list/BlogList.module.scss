@@ -1,0 +1,38 @@
+.blog {
+  color: #ffffff;
+  padding: 0 15px;
+}
+
+.post {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 13px;
+  font-size: 18px;
+  color: #e3e3e3;
+}
+
+.date {
+  color: #e3e3e3;
+  font-size: 13px;
+  margin: 0 5px;
+  margin-left: 26px;
+}
+
+.link {
+  margin-left: 26px;
+  display: block;
+  color: #e3e3e3;
+  text-decoration: none;
+  font-family: myriad-md;
+  font-size: 18px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: #ffffff;
+    transition: all 0.2s ease;
+  }
+}

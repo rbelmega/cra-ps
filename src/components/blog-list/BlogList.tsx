@@ -1,30 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
-
-interface Post {
-  file: string;
-  id: string;
-  name: string;
-  date: string;
-}
+import styles from './BlogList.module.scss';
+import { getPosts } from '../../domain/blog';
 
 export const BlogList: React.FC = async () => {
-  const response = await fetch('https://www.belmeha.com/posts.json');
-  const posts: Post[] = response.ok ? await response.json() : [];
+  const posts = await getPosts();
 
   return (
-    <div className="blog">
-      {posts.map((post) => {
-        return (
-          <p key={post.file}>
-            <i className="fa fa-list-alt" />
-            <span className="date">{post.date}</span>
-            <Link href={`/blog/${post.id}`}>
-              <span className="post">{post.name}</span>
-            </Link>
-          </p>
-        );
-      })}
+    <div className={styles.blog}>
+      {posts.map((post) => (
+        <p key={post.file} className={styles.post}>
+          <i className={`fa fa-list-alt ${styles.icon}`} />
+          <span className={styles.date}>{post.date}</span>
+          <Link href={`/blog/${post.id}`} className={styles.link}>
+            {post.name}
+          </Link>
+        </p>
+      ))}
     </div>
   );
 };
