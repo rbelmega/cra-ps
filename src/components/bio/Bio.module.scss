@@ -1,0 +1,32 @@
+.article {
+  margin: 10px 0;
+}
+
+.h3 {
+  font-size: 30px;
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
+.description {
+  margin: 50px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.container {
+  flex: 2;
+  color: #ffffff;
+  padding: 0 15px;
+}
+
+.header {
+  padding: 5px 12px;
+  margin: 0 -16px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    order: -2;
+  }
+}

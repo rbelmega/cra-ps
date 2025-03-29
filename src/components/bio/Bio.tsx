@@ -1,12 +1,22 @@
 import React from 'react';
-import './bio.scss';
+import styles from './Bio.module.scss';
 
-export const Bio = ({ activities, bio }) => {
+interface Activity {
+  iconClass: string;
+  text: string;
+}
+
+interface BioProps {
+  activities?: Activity[];
+  bio: string;
+}
+
+export const Bio: React.FC<BioProps> = ({ activities, bio }) => {
   return (
-    <div className="bio">
+    <div className={styles.container}>
       <section>
-        <article className="bio-article">
-          <h3 className="bio-h3">About</h3>
+        <article className={styles.article}>
+          <h3 className={styles.h3}>About</h3>
 
           {activities?.map((activity, index) => (
             <h3 key={index}>
@@ -15,7 +25,7 @@ export const Bio = ({ activities, bio }) => {
             </h3>
           ))}
         </article>
-        <p className="bio-description">{bio}</p>
+        <p className={styles.description}>{bio}</p>
       </section>
     </div>
   );

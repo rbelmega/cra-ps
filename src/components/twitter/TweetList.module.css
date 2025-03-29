@@ -1,0 +1,33 @@
+.twitterContainer {
+  display: flex;
+  flex: 1;
+  height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.twitter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.container {
+  padding: 10px;
+}
+
+.errorMessage {
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+/* React Tweet component styles */
+.twitter :global(.react-tweet-theme) {
+  --tweet-container-margin: 0 0;
+  --tweet-body-font-size: 1rem;
+}
+
+.twitter :global(.react-tweet-theme) {
+  max-width: 300px
+}
