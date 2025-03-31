@@ -213,6 +213,15 @@ p {
 
   .profile-image-wrapper {
     order: -2;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .profile-image-wrapper img {
+    margin: 0 auto;
+    display: block;
   }
 
   .profile-info {
