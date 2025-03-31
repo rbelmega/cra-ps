@@ -12,6 +12,8 @@ interface BioProps {
 }
 
 export const Bio: React.FC<BioProps> = ({ activities, bio }) => {
+  const paragraphs = bio.split('\n');
+
   return (
     <div className={styles.container}>
       <section>
@@ -25,7 +27,11 @@ export const Bio: React.FC<BioProps> = ({ activities, bio }) => {
             </h3>
           ))}
         </article>
-        <p className={styles.description}>{bio}</p>
+        <div className={styles.description}>
+          {paragraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
       </section>
     </div>
   );
