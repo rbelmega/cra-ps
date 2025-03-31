@@ -29,5 +29,7 @@
 }
 
 .twitter :global(.react-tweet-theme) {
-  max-width: 300px
+  @media screen and (min-width: 601px) {
+    max-width: 300px;
+  }
 }
