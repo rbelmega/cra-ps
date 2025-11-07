@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { Twitter } from '../twitter';
+import { BlogList } from '../blog-list';
 import { Bio } from '../bio';
 import { Contacts } from '../contacts';
 import { Footer } from '../footer';
@@ -22,7 +22,7 @@ export const Body: React.FC = async () => {
   return (
     <div className="body-container">
       <div className="wrapper body-wrapper">
-        <Twitter />
+        <BlogList />
         <Bio bio={data.bio} activities={data.activities} />
         <div className="me">
           <section className="profile-image-wrapper">

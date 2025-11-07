@@ -1,11 +1,24 @@
 import React from 'react';
-import { BlogList } from '../blog-list';
+import Link from 'next/link';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div className={styles.bloglistWrapper}>
-      <BlogList />
+    <div className={styles.footer}>
+      <div className={styles.footerContent}>
+        <div className={styles.footerSection}>
+          <p className={styles.copyright}>
+            © {currentYear} Rostyslav Belmeha. All rights reserved.
+          </p>
+        </div>
+        <div className={styles.footerSection}>
+          <Link href="/privacy-policy" className={styles.footerLink}>
+            Privacy Policy
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

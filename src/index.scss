@@ -41,12 +41,22 @@ p {
 .dev-name {
   text-align: right;
   margin: 15px 5%;
+  
+  .post {
+    color: #e3e3e3;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #028dcb;
+    }
+  }
 }
 
 .blog-wrapper {
   margin: 10px 5% 0 5%;
-  background: #ffffff;
-  box-shadow: 0px -1px 4px #ccc;
+  background: #2a2a2a;
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
 }
 
 header {
@@ -54,27 +64,180 @@ header {
   font-family: myriad;
   padding: 12px 0;
   font-size: 35px;
-  color: #b5b5b5;
+  color: #e3e3e3;
 }
 
 .blog-wrapper article {
-  padding: 15px;
+  padding: 30px;
+  color: #e0e0e0;
+  font-family: myriad;
+  font-size: 16px;
+  line-height: 1.8;
+  
+  // Headings
+  h1, h2, h3, h4, h5, h6 {
+    font-family: myriad-md;
+    color: #ffffff;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  
+  h1 { font-size: 32px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 24px; }
+  h4 { font-size: 20px; }
+  h5 { font-size: 18px; }
+  h6 { font-size: 16px; }
+  
+  // Paragraphs
+  p {
+    margin-bottom: 20px;
+    color: #e0e0e0;
+  }
+  
+  // Lists
+  ul, ol {
+    margin-bottom: 20px;
+    padding-left: 30px;
+    color: #e0e0e0;
+    
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  
+  // Links
+  a {
+    color: #028dcb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #00a3cd;
+      text-decoration: underline;
+    }
+  }
+  
+  // Code blocks
+  pre {
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 0;
+    overflow-x: auto;
+    margin: 0;
+    
+    > div:first-child {
+      padding: 0;
+      margin: 0 !important;
+      border: none;
+    }
+    
+    code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+      font-size: 14px;
+      display: block;
+    }
+  }
+  
+  // Inline code
+  code {
+    background: #1a1a1a;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #ff6b9d;
+  }
+  
+  // Blockquotes
+  blockquote {
+    border-left: 4px solid #028dcb;
+    padding-left: 20px;
+    margin: 24px 0;
+    color: #b5b5b5;
+    font-style: italic;
+    background: rgba(2, 141, 203, 0.05);
+    padding: 15px 20px;
+    border-radius: 4px;
+  }
+  
+  // Tables
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    background: #1a1a1a;
+    border-radius: 6px;
+    overflow: hidden;
+    
+    th, td {
+      border: 1px solid #333;
+      padding: 12px;
+      text-align: left;
+    }
+    
+    th {
+      background: #252525;
+      font-family: myriad-md;
+      color: #ffffff;
+    }
+    
+    td {
+      color: #e0e0e0;
+    }
+    
+    tr:nth-child(even) {
+      background: #222;
+    }
+  }
+  
+  // Horizontal rules
+  hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin: 32px 0;
+  }
+  
+  // Strong/Bold
+  strong, b {
+    color: #ffffff;
+    font-family: myriad-md;
+  }
+  
+  // Emphasis/Italic
+  em, i {
+    color: #d0d0d0;
+  }
 }
 
 .post-date {
-  color: #9e9e9e;
+  color: #b5b5b5;
   text-align: right;
   margin: 5px;
   position: relative;
   top: 10px;
   padding: 0 12px;
+  font-size: 14px;
 }
 
 .fake-post {
   height: 30px;
   margin: 10px 7% -16px 7%;
-  background: #ffffff;
-  box-shadow: 0px 0px 4px #ccc;
+  background: #2a2a2a;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #333;
+    box-shadow: 0px 0px 8px rgba(2, 141, 203, 0.3);
+    cursor: pointer;
+  }
 }
 
 /* body */
@@ -94,25 +257,10 @@ header {
   box-shadow: 0px 2px 0px #403c3c;
 }
 
-.twitter {
-  overflow: auto;
-  background: #00a3cd;
-  height: 500px;
-  position: relative;
-}
-
-.blog,
-.twitter {
-  flex: 1;
-}
-
 .blog {
+  flex: 1;
   color: #ffffff;
   padding: 0 15px;
-}
-
-.twitter-timeline {
-  display: none;
 }
 
 @media (max-width: 700px) {
@@ -296,23 +444,7 @@ body {
   content: ' ';
   clear: both;
 }
-.blog-wrapper table {
-  border-collapse: collapse;
-}
-.blog-wrapper td,
-.blog-wrapper th {
-  border: 1px solid #c3c3c3;
-  padding: 6px 25px;
-}
-.blog-wrapper th {
-  background: #d5d5d5;
-}
-.blog-wrapper ul {
-  margin-top: 0;
-}
-.blog-wrapper table tr:nth-child(even) {
-  background: #f8f8f8;
-}
+// Table styles are now handled in .blog-wrapper article above
 
 .header-wrapper {
   margin: 0 5%;

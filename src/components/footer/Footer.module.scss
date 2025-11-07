@@ -15,6 +15,60 @@
   }
 }
 
-.bloglistWrapper {
-  padding: 30px;
+.footer {
+  padding: 30px 5%;
+  background-color: #252525;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.footerSection {
+  display: flex;
+  align-items: center;
+}
+
+.copyright {
+  color: #b5b5b5;
+  font-size: 14px;
+  margin: 0;
+  font-family: myriad;
+}
+
+.footerLink {
+  color: #b5b5b5;
+  font-size: 14px;
+  text-decoration: none;
+  font-family: myriad;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    padding: 20px 5%;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .copyright,
+  .footerLink {
+    font-size: 13px;
+  }
 }
