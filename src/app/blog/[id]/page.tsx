@@ -63,10 +63,22 @@ export default async function Blog({ params }: { params: Params }) {
             children={markdownFile}
             remarkPlugins={[remarkGfm]}
             components={{
-              code({ children }) {
+              code({ node, inline, className, children, ...props }: any) {
+                const match = /language-(\w+)/.exec(className || '');
+                const language = match ? match[1] : 'javascript';
+                
+                if (inline) {
+                  return <code {...props}>{children}</code>;
+                }
+                
                 return (
-                  <SyntaxHighlighter style={dracula} language="javascript">
-                    {children.toString()}
+                  <SyntaxHighlighter 
+                    style={dracula} 
+                    language={language}
+                    PreTag="div"
+                    {...props}
+                  >
+                    {String(children).replace(/\n$/, '')}
                   </SyntaxHighlighter>
                 );
               }
