@@ -424,11 +424,21 @@ p {
 @font-face {
   font-family: myriad;
   src: url(../public/assets/fonts/myriad-set-pro_thin.ttf);
+  font-display: swap;
+  /* Font metric overrides to prevent layout shifts */
+  ascent-override: 85%;
+  descent-override: 15%;
+  line-gap-override: 0%;
 }
 
 @font-face {
   font-family: myriad-md;
   src: url(../public/assets/fonts/myriad-set-pro_medium.ttf);
+  font-display: swap;
+  /* Font metric overrides to prevent layout shifts */
+  ascent-override: 85%;
+  descent-override: 15%;
+  line-gap-override: 0%;
 }
 
 * {
