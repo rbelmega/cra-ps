@@ -5,11 +5,13 @@ Achieving a high performance score in Google PageSpeed Insights is crucial for m
 PageSpeed Insights evaluates your site based on several Core Web Vitals and performance metrics:
 
 - **Largest Contentful Paint (LCP)**: Measures loading performance (target: < 2.5s)
-- **First Input Delay (FID)**: Measures interactivity (target: < 100ms)
+- **Interaction to Next Paint (INP)**: Measures interactivity and responsiveness (target: < 200ms)
 - **Cumulative Layout Shift (CLS)**: Measures visual stability (target: < 0.1)
 - **First Contentful Paint (FCP)**: Measures initial rendering (target: < 1.8s)
 - **Speed Index**: Measures how quickly content is visually displayed
 - **Time to Interactive (TTI)**: Measures when page becomes fully interactive
+
+> **Note**: INP replaced First Input Delay (FID) as a Core Web Vital in March 2024. INP provides a more comprehensive measure of interactivity by considering all user interactions, not just the first one.
 
 ## Image Optimization
 
@@ -295,10 +297,10 @@ module.exports = {
 
 ```javascript
 // Track Core Web Vitals
-import {onCLS, onFID, onLCP} from 'web-vitals';
+import {onCLS, onINP, onLCP} from 'web-vitals';
 
 onCLS(console.log);
-onFID(console.log);
+onINP(console.log);
 onLCP(console.log);
 ```
 
@@ -338,5 +340,5 @@ Achieving a high PageSpeed Insights score requires a holistic approach. Focus on
 
 Remember, performance is not a one-time task but an ongoing process. Regular audits and optimizations will help maintain high scores as your site evolves.
 
-Start with the biggest wins first—usually image optimization and JavaScript bundling—then work your way through the other optimizations. Your users (and Google) will thank you!
+Start with the biggest wins first - usually image optimization and JavaScript bundling - then work your way through the other optimizations. Your users (and Google) will thank you!
 
