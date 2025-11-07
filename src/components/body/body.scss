@@ -9,5 +9,7 @@
 }
 
 .me {
+  flex: 0 0 auto;
   padding: 20px;
+  min-width: 255px; // Match profile image width
 }
