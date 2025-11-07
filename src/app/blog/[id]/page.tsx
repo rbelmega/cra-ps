@@ -15,7 +15,9 @@ export default async function Blog({ params }: { params: Params }) {
   
   // Get post metadata
   const posts = await getPosts();
-  const post = posts.find(p => p.id === id);
+  const currentIndex = posts.findIndex(p => p.id === id);
+  const post = posts[currentIndex];
+  const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
   
   // Fetch markdown content
   let markdownFile = '';
@@ -55,7 +57,11 @@ export default async function Blog({ params }: { params: Params }) {
         </h2>
       </Link>
       <header>{post?.name || 'Blog Post'}</header>
-      <section className="fake-post" />
+      {nextPost ? (
+        <Link href={`/blog/${nextPost.id}`} className="fake-post" />
+      ) : (
+        <section className="fake-post" />
+      )}
       <section className="blog-wrapper">
         {post?.date && <p className="post-date">{formatDate(post.date)}</p>}
         <article>

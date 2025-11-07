@@ -229,6 +229,15 @@ header {
   background: #2a2a2a;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   border-radius: 4px;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #333;
+    box-shadow: 0px 0px 8px rgba(2, 141, 203, 0.3);
+    cursor: pointer;
+  }
 }
 
 /* body */
