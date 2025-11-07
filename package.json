@@ -30,7 +30,10 @@
     "prettier": "prettier --single-quote --trailing-comma es5 --write \"./{src,pages}/**/*.{ts,tsx,scss}\""
   },
   "browserslist": [
-    ">0.2%",
+    "chrome >= 92",
+    "firefox >= 90",
+    "safari >= 14.1",
+    "edge >= 92",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
