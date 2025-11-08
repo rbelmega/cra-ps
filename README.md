@@ -110,9 +110,14 @@ npm start
 
 ### Code Formatting
 
-Format code using Prettier:
+Format code using Biome:
 ```bash
-npm run prettier
+npm run format
+```
+
+Check formatting without writing changes:
+```bash
+npm run format:check
 ```
 
 ### Bundle Analysis
@@ -127,7 +132,8 @@ npm run analyze
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
-- `npm run prettier` - Format code with Prettier
+- `npm run format` - Format code with Biome
+- `npm run format:check` - Verify formatting without writing
 - `npm run analyze` - Analyze bundle size with source-map-explorer
 
 ## 🔧 Configuration
@@ -166,7 +172,7 @@ TypeScript is configured with:
 ### Development
 - `typescript` - TypeScript compiler
 - `sass` - SCSS preprocessor
-- `prettier` - Code formatter
+- `@biomejs/biome` - Linting and formatting
 - `source-map-explorer` - Bundle analyzer
 
 ## 🎨 Styling
