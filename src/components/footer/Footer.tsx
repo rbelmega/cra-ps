@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -12,11 +11,6 @@ export const Footer = () => {
           <p className={styles.copyright}>
             © {currentYear} Rostyslav Belmeha. All rights reserved.
           </p>
-        </div>
-        <div className={styles.footerSection}>
-          <Link href="/privacy-policy" className={styles.footerLink}>
-            Privacy Policy
-          </Link>
         </div>
       </div>
     </div>
