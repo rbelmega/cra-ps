@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	productionBrowserSourceMaps: false,
-	swcMinify: true,
-	eslint: {
-		ignoreDuringBuilds: true,
-	},
 	compiler: {
 		// Remove console logs in production
 		removeConsole:
