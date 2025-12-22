@@ -90,7 +90,7 @@ Any changes will be reflected on this page with an updated revision date.
 
 If you have any questions or concerns about this Privacy Policy, please contact us at:
 
-📧 **support@homa.app**
+📧 **belmega31@gmail.com**
 
 ---
 
