@@ -1,6 +1,6 @@
 # Privacy Policy
 
-_Last updated: Вусуьиук 22, 2025_
+_Last updated: December 22, 2025_
 
 This Privacy Policy describes how **Homa** (“we”, “our”, or “the app”) collects, uses, and protects your information.
 
