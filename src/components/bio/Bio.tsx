@@ -56,7 +56,9 @@ export const Bio: React.FC<BioProps> = ({ activities, bio }) => {
                 {technologies.map((tech) => (
                   <div
                     key={tech}
-                    className={styles.techBadge}
+                    className={`${styles.techBadge} ${
+                      ['React', 'Next.js'].includes(tech) ? styles.primaryTech : ''
+                    }`}
                   >
                     <span className={styles.techBadgeText}>{tech}</span>
                     <span className={styles.techBadgeGlow}></span>
@@ -68,7 +70,14 @@ export const Bio: React.FC<BioProps> = ({ activities, bio }) => {
         </article>
         <div className={styles.description}>
           {paragraphs.map((paragraph, index) => (
-            <p key={index} className={styles.paragraph}>
+            <p
+              key={index}
+              className={[
+                styles.paragraph,
+                index === 0 ? styles.lead : '',
+                index === paragraphs.length - 1 ? styles.secondary : '',
+              ].filter(Boolean).join(' ')}
+            >
               {paragraph}
             </p>
           ))}

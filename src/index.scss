@@ -324,10 +324,14 @@ a {
   font-size: 50px;
   font-family: myriad;
   font-weight: lighter;
+  margin: 0 0 10px 0;
+  color: var(--text, #f6f6f6);
 }
 
 .profile-info p {
   font-size: 18px;
+  margin: 0;
+  color: var(--text-2, rgba(255, 255, 255, 0.72));
 }
 .profile-image-wrapper {
   flex: 2;

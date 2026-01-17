@@ -19,12 +19,6 @@ export const getContacts = (): Contact[] => [
     letter: 't',
   },
   {
-    name: 'Facebook',
-    link: 'https://www.facebook.com/r.belmega',
-    color: '#3F5D9A',
-    letter: 'f',
-  },
-  {
     name: 'GitHub',
     link: 'https://github.com/rbelmega',
     color: '#fff',

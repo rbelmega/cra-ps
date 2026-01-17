@@ -1,14 +1,15 @@
 .blog {
   flex: 1;
-  color: #ffffff;
-  padding: 15px 12px;
+  color: var(--text, #ffffff);
+  padding: 12px 10px;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 8px;
   overflow-y: auto;
   overflow-x: hidden;
-  min-width: 0; // Allows flex item to shrink below content size
+  min-width: 0;
   max-width: 100%;
 }
 
@@ -17,110 +18,68 @@
   font-size: 22px;
   font-weight: lighter;
   margin: 0 0 20px 0;
-  color: #ffffff;
+  color: var(--text, #ffffff);
   letter-spacing: 0.5px;
 }
 
 .postsGrid {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
 }
 
 .postCard {
   display: block;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  background: var(--surface-1, rgba(255, 255, 255, 0.04));
+  border: var(--b, 1px solid rgba(255, 255, 255, 0.08));
+  border-radius: var(--r-md, 12px);
   padding: 16px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
   width: 100%;
   box-sizing: border-box;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #028dcb, #00a3cd);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+  color: var(--text, #ffffff);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background: var(--surface-2, rgba(255, 255, 255, 0.06));
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+  }
 
-    &::before {
-      transform: scaleX(1);
-    }
-
-    .postTitle {
-      color: #ffffff;
-    }
-
-    .iconWrapper {
-      background: rgba(2, 141, 203, 0.2);
-      transform: scale(1.05);
-    }
-
-    .postArrow {
-      transform: translateX(3px);
-      opacity: 1;
-    }
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring, 0 0 0 3px rgba(80, 170, 255, 0.18));
+    border-color: rgba(80, 170, 255, 0.35);
+    background: var(--surface-2, rgba(255, 255, 255, 0.06));
   }
 
   &:active {
-    transform: translateY(-1px);
+    transform: translateY(0);
   }
 }
 
 .postContent {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .postHeader {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
-  margin-bottom: 2px;
-}
-
-.iconWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  flex-shrink: 0;
-}
-
-.icon {
-  font-size: 14px;
-  color: #028dcb;
-  transition: color 0.3s ease;
+  margin-bottom: 4px;
 }
 
 .date {
-  color: #b5b5b5;
+  color: var(--text-3, #b5b5b5);
   font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.3px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -128,38 +87,64 @@
 .postTitle {
   font-family: myriad-md;
   font-size: 16px;
-  line-height: 1.3;
-  color: #e3e3e3;
+  line-height: 1.35;
+  color: var(--text, #e3e3e3);
   margin: 0;
-  transition: color 0.3s ease;
-  font-weight: 500;
-  letter-spacing: 0.1px;
+  transition: color var(--transition);
+  font-weight: 600;
+  letter-spacing: 0.01em;
   word-wrap: break-word;
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--text-3, rgba(255, 255, 255, 0.52));
+  letter-spacing: 0.04em;
+  margin-top: -2px;
 }
 
 .postArrow {
   display: flex;
   align-items: center;
-  color: #028dcb;
+  color: var(--text-2, #b5b5b5);
   font-size: 12px;
-  opacity: 0;
-  transform: translateX(-3px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+  transform: translateX(0);
+  transition: opacity var(--transition), transform var(--transition), color var(--transition);
   margin-top: 2px;
 }
 
+.postCard:hover .postArrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--text, #ffffff);
+}
+
+.postCard:hover .postTitle {
+  color: var(--text, #ffffff);
+}
+
+.postCard:focus-visible .postArrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--text, #ffffff);
+}
+
+.postCard:focus-visible .postTitle {
+  color: var(--text, #ffffff);
+}
+
 .empty {
-  color: #b5b5b5;
+  color: var(--text-2, #b5b5b5);
   font-size: 16px;
   text-align: center;
   padding: 40px 20px;
   font-style: italic;
 }
 
-// Responsive design
 @media screen and (max-width: 768px) {
   .blog {
-    padding: 12px 10px;
+    padding: 12px 8px;
   }
 
   .postCard {
@@ -178,7 +163,7 @@
 
 @media screen and (max-width: 480px) {
   .blog {
-    padding: 10px 8px;
+    padding: 10px 6px;
   }
 
   .postCard {
@@ -190,16 +175,16 @@
     margin-bottom: 14px;
   }
 
-  .iconWrapper {
-    width: 24px;
-    height: 24px;
-  }
-
-  .icon {
-    font-size: 12px;
-  }
-
   .postTitle {
     font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .postCard,
+  .postArrow,
+  .postTitle {
+    transition: none;
+    transform: none;
   }
 }

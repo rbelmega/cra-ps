@@ -1,178 +1,81 @@
-// Keyframe animations
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.container {
+  flex: 3;
+  color: var(--text, #f2f2f2);
+  padding: 4px 6px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes glowPulse {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes underlineExpand {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes techBadgeFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
+.container section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .article {
-  margin: 10px 0;
-}
-
-.h3 {
-  font-size: 30px;
-  font-weight: lighter;
-  margin-bottom: 20px;
-  position: relative;
-  display: inline-block;
-  width: 100%;
-}
-
-.titleText {
-  display: inline-block;
-  position: relative;
-  z-index: 2;
-  animation: slideInLeft 0.6s ease-out;
-}
-
-.titleUnderline {
-  display: block;
-  height: 3px;
-  background: linear-gradient(90deg, #00a3cd, #028dcb);
-  margin-top: 8px;
-  animation: underlineExpand 0.8s ease-out 0.3s both;
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0, 163, 205, 0.5);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .activity {
   position: relative;
-  margin: 15px 0;
-  padding: 12px 15px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  cursor: default;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid transparent;
+  background: var(--surface-1);
+  border: var(--b);
 
   &:hover {
-    background: rgba(0, 163, 205, 0.1);
-    border-color: rgba(0, 163, 205, 0.3);
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(0, 163, 205, 0.2);
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
   }
 }
 
 .activityIcon {
-  margin-right: 10px;
-  color: #00a3cd;
-  transition: all 0.3s ease;
-  font-size: 20px;
+  margin-right: 8px;
+  color: var(--text-2);
+  transition: color var(--transition);
+  font-size: 18px;
   display: inline-block;
-
-  .activity:hover & {
-    color: #028dcb;
-    transform: scale(1.2) rotate(5deg);
-  }
 }
 
 .activityText {
   position: relative;
   z-index: 2;
-  transition: color 0.3s ease;
-
-  .activity:hover & {
-    color: #ffffff;
-  }
+  transition: color var(--transition);
+  color: var(--text);
 }
 
 .activityGlow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(0, 163, 205, 0.2), transparent);
-  animation: glowPulse 2s ease-in-out infinite;
-  z-index: 1;
-  pointer-events: none;
+  display: none;
 }
 
 .techDiagram {
-  margin: 30px 0;
-  padding: 20px;
-  background: rgba(0, 163, 205, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(0, 163, 205, 0.2);
+  margin: 0;
+  padding: 18px 18px 16px;
+  background: var(--surface-1);
+  border-radius: var(--r-md);
+  border: var(--b);
   position: relative;
   overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .techLabel {
-  font-size: 18px;
-  font-weight: lighter;
-  color: #00a3cd;
-  margin-bottom: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  margin-bottom: 12px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.2em;
   position: relative;
   z-index: 2;
 }
@@ -180,88 +83,86 @@
 .techGrid {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   position: relative;
   z-index: 2;
 }
 
 .techBadge {
   position: relative;
-  padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(0, 163, 205, 0.3);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  cursor: default;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), color var(--transition);
   overflow: hidden;
 
   &:hover {
-    background: rgba(0, 163, 205, 0.2);
-    border-color: #00a3cd;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 163, 205, 0.4);
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-1px);
   }
 
   &:active {
-    transform: translateY(-1px) scale(1.02);
+    transform: translateY(0);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.primaryTech {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.22);
   }
 }
 
 .techBadgeText {
   position: relative;
   z-index: 2;
-  color: #ffffff;
+  color: var(--text);
   font-size: 14px;
-  font-weight: 500;
-  transition: color 0.3s ease;
-
-  .techBadge:hover & {
-    color: #00a3cd;
-  }
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .techBadgeGlow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: radial-gradient(circle, rgba(0, 163, 205, 0.4), transparent);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.5s ease;
-  pointer-events: none;
-
-  .techBadge:hover & {
-    width: 200px;
-    height: 200px;
-  }
+  display: none;
 }
 
 .description {
-  margin: 0 0 40px 0;
+  margin: 0;
   font-size: 18px;
-  line-height: 1.5;
+  line-height: 1.7;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--text);
+  max-width: 64ch;
 }
 
 .paragraph {
-  margin: 0 0 20px 0;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  letter-spacing: 0.01em;
 }
 
-.container {
-  flex: 3;
-  color: #ffffff;
-  padding: 0 15px;
-  min-width: 0; // Allows flex item to shrink below content size
+.lead {
+  font-size: 18px;
+  color: var(--text);
+  max-width: 60ch;
+  font-weight: 600;
 }
 
-.header {
-  padding: 5px 12px;
-  margin: 0 -16px;
+.secondary {
+  color: var(--text-2);
+  font-size: 15px;
 }
 
 @media screen and (max-width: 600px) {
@@ -281,8 +182,12 @@
   .activity {
     padding: 10px 12px;
   }
+}
 
-  .h3 {
-    font-size: 26px;
+@media (prefers-reduced-motion: reduce) {
+  .activity,
+  .techBadge {
+    transition: none;
+    transform: none;
   }
 }

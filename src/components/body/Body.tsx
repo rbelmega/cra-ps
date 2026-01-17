@@ -48,7 +48,7 @@ export const Body: React.FC = async () => {
         <div className="me">
           <section className="profile-image-wrapper">
             <Image
-              src="/assets/img/me.webp"
+              src="/assets/img/me2.png"
               alt="profile image"
               width={255}
               height={255}
