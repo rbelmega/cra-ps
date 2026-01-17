@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Contacts.module.scss';
 import { getContacts } from '../../domain/contacts';
 
-const icons: Record<string, JSX.Element> = {
+const icons: Record<string, React.ReactNode> = {
   linkedin: (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path
