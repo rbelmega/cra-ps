@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { loadPublicText } from '../../domain/public-content';
 
 export default async function Page() {
-  const response = await fetch('https://www.belmeha.com/privacy_policy_homa.md');
-  const data = await response.text();
+  const data = await loadPublicText('privacy_policy_homa.md');
 
   return (
     <section className="privacy-policy">

@@ -5,35 +5,20 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { getPosts } from '../../../domain/blog';
-import { readFile } from 'fs/promises';
-import { join } from 'path';
+import { loadPublicText } from '../../../domain/public-content';
 
 type Params = Promise<{ id: string }>;
 
 export default async function Blog({ params }: { params: Params }) {
   const { id } = await params;
-  
+
   // Get post metadata
   const posts = await getPosts();
   const currentIndex = posts.findIndex(p => p.id === id);
   const post = posts[currentIndex];
   const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
-  
-  // Fetch markdown content
-  let markdownFile = '';
-  try {
-    // Try local file first
-    if (process.env.NODE_ENV !== 'production' || process.env.USE_LOCAL_POSTS === 'true') {
-      const filePath = join(process.cwd(), 'public', 'posts', `post-${id}.md`);
-      markdownFile = await readFile(filePath, 'utf8');
-    } else {
-      // Fallback to remote
-      const response = await fetch(`https://www.belmeha.com/posts/post-${id}.md`);
-      markdownFile = await response.text();
-    }
-  } catch (error) {
-    console.error('Error loading blog post:', error);
-  }
+
+  const markdownFile = await loadPublicText(`posts/post-${id}.md`);
 
   // Format date for display
   const formatDate = (dateStr: string) => {
@@ -72,14 +57,14 @@ export default async function Blog({ params }: { params: Params }) {
               code({ node, inline, className, children, ...props }: any) {
                 const match = /language-(\w+)/.exec(className || '');
                 const language = match ? match[1] : 'javascript';
-                
+
                 if (inline) {
                   return <code {...props}>{children}</code>;
                 }
-                
+
                 return (
-                  <SyntaxHighlighter 
-                    style={dracula} 
+                  <SyntaxHighlighter
+                    style={dracula}
                     language={language}
                     PreTag="div"
                     {...props}

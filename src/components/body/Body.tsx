@@ -1,12 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import { readFile } from 'fs/promises';
-import { join } from 'path';
 
 import { BlogList } from '../blog-list';
 import { Bio } from '../bio';
 import { Contacts } from '../contacts';
 import { Footer } from '../footer';
+import { loadPublicJson } from '../../domain/public-content';
 import './body.scss';
 
 interface BioData {
@@ -18,27 +17,7 @@ interface BioData {
 }
 
 export const Body: React.FC = async () => {
-  let data: BioData = { bio: '' };
-
-  // Try to read from local file first
-  try {
-    const filePath = join(process.cwd(), 'public', 'bio.json');
-    const fileContents = await readFile(filePath, 'utf8');
-    data = JSON.parse(fileContents);
-  } catch (localError) {
-    // Fallback to remote if local file doesn't exist
-    try {
-      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.belmeha.com';
-      const response = await fetch(`${baseUrl}/bio.json`, {
-        cache: 'no-store'
-      });
-      if (response.ok) {
-        data = await response.json();
-      }
-    } catch (fetchError) {
-      console.error('Error loading bio.json:', fetchError);
-    }
-  }
+  const data = await loadPublicJson<BioData>('bio.json', { bio: '' });
 
   return (
     <div className="body-container">
