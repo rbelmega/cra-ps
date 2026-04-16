@@ -27,13 +27,22 @@
 
 .intro {
   display: grid;
+  grid-template-areas:
+    'eyebrow sidebar'
+    'copy sidebar';
   grid-template-columns: minmax(0, 1.65fr) minmax(280px, 360px);
   gap: 48px;
   align-items: start;
   padding: 28px 0 56px;
 }
 
+.eyebrow {
+  grid-area: eyebrow;
+  min-width: 0;
+}
+
 .copy {
+  grid-area: copy;
   min-width: 0;
   display: grid;
   gap: 16px;
@@ -49,6 +58,7 @@
 }
 
 .sidebar {
+  grid-area: sidebar;
   display: grid;
   gap: 18px;
 }
@@ -86,10 +96,53 @@
   line-height: 1.1;
 }
 
-@media (max-width: 1080px) {
+@media (min-width: 1680px) {
+  .intro,
+  .writingSection {
+    max-width: 1440px;
+  }
+
   .intro {
+    grid-template-areas:
+      'eyebrow sidebar'
+      'copy sidebar';
+    grid-template-columns: minmax(0, 1.85fr) minmax(340px, 400px);
+    gap: 56px;
+    padding: 34px 0 64px;
+  }
+
+  .imageFrame {
+    width: min(100%, 400px);
+  }
+
+  .writingSection {
+    padding-top: 36px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 18px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .intro {
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 320px);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 960px) {
+  .intro {
+    grid-template-areas:
+      'eyebrow'
+      'sidebar'
+      'copy';
     grid-template-columns: minmax(0, 1fr);
-    gap: 30px;
+    gap: 24px;
     padding-bottom: 44px;
   }
 
@@ -108,8 +161,12 @@
   }
 
   .intro {
-    gap: 24px;
+    gap: 20px;
     padding: 18px 0 38px;
+  }
+
+  .sidebar {
+    gap: 14px;
   }
 
   .sectionTitle {

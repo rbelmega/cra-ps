@@ -40,6 +40,17 @@
   white-space: nowrap;
 }
 
+@media screen and (min-width: 1680px) {
+  .inner {
+    max-width: 1440px;
+  }
+
+  .header {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+}
+
 @media screen and (max-width: 720px) {
   .header {
     padding: 22px 18px 14px;

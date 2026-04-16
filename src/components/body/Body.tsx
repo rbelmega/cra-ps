@@ -22,8 +22,11 @@ export const Body: React.FC = async () => {
   return (
     <div className={styles.page}>
       <section className={styles.intro}>
-        <div className={styles.copy}>
+        <div className={styles.eyebrow}>
           <p className={styles.kicker}>Web Developer</p>
+        </div>
+
+        <div className={styles.copy}>
           <Bio bio={data.bio} activities={data.activities} />
         </div>
 

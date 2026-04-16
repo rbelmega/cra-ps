@@ -1,3 +1,5 @@
+import { getPostById, getPostHref } from './blog';
+
 const BLOG_POST_PATTERN = /^posts\/post-(\d+)\.md$/i;
 const INTERNAL_HOSTNAMES = new Set(['localhost', '127.0.0.1', 'www.belmeha.com', 'belmeha.com']);
 
@@ -15,7 +17,8 @@ function getInternalMarkdownRoute(pathname: string): string | null {
 
   const blogMatch = BLOG_POST_PATTERN.exec(normalizedPath);
   if (blogMatch) {
-    return `/blog/${blogMatch[1]}`;
+    const post = getPostById(blogMatch[1]);
+    return post ? getPostHref(post) : `/blog/${blogMatch[1]}`;
   }
 
   if (!normalizedPath.endsWith('.md')) {

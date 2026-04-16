@@ -4,7 +4,7 @@
 
 .postsGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 12px;
 }
 
@@ -105,6 +105,25 @@
   color: rgba(255, 255, 255, 0.56);
   font-size: 16px;
   line-height: 1.6;
+}
+
+@media screen and (min-width: 1680px) {
+  .postsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .postCard {
+    padding: 18px 18px 17px;
+  }
+
+  .postContent {
+    gap: 14px;
+  }
+
+  .postTitle {
+    font-size: 22px;
+  }
 }
 
 @media screen and (max-width: 900px) {

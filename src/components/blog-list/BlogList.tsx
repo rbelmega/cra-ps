@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './BlogList.module.scss';
-import { getPosts } from '../../domain/blog';
+import { getPostHref, getPosts } from '../../domain/blog';
 
 export const BlogList: React.FC = async () => {
   const posts = await getPosts();
   const metaById: Record<string, string> = {
+    '3': 'Dashboards',
     '2': 'Performance',
     '1': 'Performance',
   };
@@ -24,7 +25,7 @@ export const BlogList: React.FC = async () => {
         {posts.map((post) => (
           <Link
             key={post.file}
-            href={`/blog/${post.id}`}
+            href={getPostHref(post)}
             className={styles.postCard}
             aria-label={`Read ${post.name}`}
           >
