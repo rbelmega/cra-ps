@@ -1,86 +1,84 @@
 .contactList {
-  list-style-type: none;
-  padding: 0;
+  list-style: none;
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  display: grid;
   gap: 10px;
-  flex: 1;
-  min-width: 0;
 }
 
 .contactItem {
-  width: 100%;
+  min-width: 0;
 }
 
 .contactLink {
-  padding: 10px 12px;
-  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, opacity 140ms ease;
-  text-decoration: none;
-  color: var(--text, #f2f2f2);
+  min-height: 52px;
   display: flex;
   align-items: center;
   gap: 12px;
-  border-radius: var(--r-sm, 10px);
-  border: 1px solid transparent;
-  background: transparent;
+  padding: 0 14px;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease,
+    color 140ms ease;
 
   &:hover {
-    background: var(--surface-1, rgba(255, 255, 255, 0.04));
-    border: var(--b, 1px solid rgba(255, 255, 255, 0.08));
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
   }
 
   &:focus-visible {
     outline: none;
-    border: var(--b, 1px solid rgba(255, 255, 255, 0.08));
-    box-shadow: var(--focus-ring, 0 0 0 3px rgba(80, 170, 255, 0.18));
-    background: var(--surface-1, rgba(255, 255, 255, 0.04));
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
   }
 }
 
 .contactIcon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--surface-1, rgba(255, 255, 255, 0.04));
-  border: var(--b, 1px solid rgba(255, 255, 255, 0.08));
-  color: var(--text-2, #b9b9b9);
-  opacity: 0.82;
-  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease, opacity 140ms ease;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.56);
+  background: rgba(255, 255, 255, 0.035);
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 }
 
 .contactLetter {
+  color: inherit;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-2, #b9b9b9);
 }
 
 .contactLabel {
   flex: 1;
+  min-width: 0;
+  color: inherit;
+  font-family: myriad-md;
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--text, #f2f2f2);
+  line-height: 1.2;
 }
 
 .contactArrow {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-2, #b5b5b5);
-  opacity: 0;
-  transform: translateX(-2px);
-  transition: opacity 140ms ease, transform 140ms ease, color 140ms ease;
+  color: rgba(255, 255, 255, 0.32);
+  transition: transform 140ms ease, color 140ms ease;
 
   svg {
     width: 14px;
@@ -88,35 +86,14 @@
   }
 }
 
-.contactLink:hover .contactIcon {
-  color: var(--text, #ffffff);
-  border-color: rgba(255, 255, 255, 0.12);
-  background: var(--surface-2, rgba(255, 255, 255, 0.06));
-  opacity: 1;
-}
-
-.contactLink:hover .contactArrow {
-  opacity: 1;
-  transform: translateX(0);
-  color: var(--text, #ffffff);
-}
-
-.contactLink:focus-visible .contactIcon {
-  color: var(--text, #ffffff);
-  border-color: rgba(255, 255, 255, 0.12);
-  background: var(--surface-2, rgba(255, 255, 255, 0.06));
-  opacity: 1;
-}
-
+.contactLink:hover .contactArrow,
 .contactLink:focus-visible .contactArrow {
-  opacity: 1;
-  transform: translateX(0);
-  color: var(--text, #ffffff);
+  color: rgba(255, 255, 255, 0.78);
+  transform: translateX(2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .contactLink,
-  .contactIcon,
   .contactArrow {
     transition: none;
     transform: none;

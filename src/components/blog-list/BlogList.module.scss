@@ -1,189 +1,139 @@
 .blog {
-  flex: 1;
-  color: var(--text, #ffffff);
-  padding: 12px 10px;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  overflow-y: auto;
-  overflow-x: hidden;
   min-width: 0;
-  max-width: 100%;
-}
-
-.title {
-  font-family: myriad-md;
-  font-size: 22px;
-  font-weight: lighter;
-  margin: 0 0 20px 0;
-  color: var(--text, #ffffff);
-  letter-spacing: 0.5px;
 }
 
 .postsGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .postCard {
   display: block;
+  padding: 16px 16px 15px;
+  color: rgba(255, 255, 255, 0.92);
   text-decoration: none;
-  background: var(--surface-1, rgba(255, 255, 255, 0.04));
-  border: var(--b, 1px solid rgba(255, 255, 255, 0.08));
-  border-radius: var(--r-md, 12px);
-  padding: 16px;
-  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  box-sizing: border-box;
-  color: var(--text, #ffffff);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease,
+    box-shadow 150ms ease;
 
   &:hover {
-    background: var(--surface-2, rgba(255, 255, 255, 0.06));
-    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.14);
     transform: translateY(-1px);
   }
 
   &:focus-visible {
     outline: none;
-    box-shadow: var(--focus-ring, 0 0 0 3px rgba(80, 170, 255, 0.18));
-    border-color: rgba(80, 170, 255, 0.35);
-    background: var(--surface-2, rgba(255, 255, 255, 0.06));
-  }
-
-  &:active {
-    transform: translateY(0);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
   }
 }
 
 .postContent {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  gap: 12px;
 }
 
 .postHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 4px;
+  gap: 12px;
+}
+
+.postMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
 }
 
 .date {
-  color: var(--text-3, #b5b5b5);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.postTitle {
+  color: rgba(255, 255, 255, 0.42);
   font-family: myriad-md;
-  font-size: 16px;
-  line-height: 1.35;
-  color: var(--text, #e3e3e3);
-  margin: 0;
-  transition: color var(--transition);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  word-wrap: break-word;
+  font-size: 11px;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
-.meta {
-  font-size: 12px;
-  color: var(--text-3, rgba(255, 255, 255, 0.52));
-  letter-spacing: 0.04em;
-  margin-top: -2px;
+.metaDivider {
+  color: rgba(255, 255, 255, 0.24);
 }
 
 .postArrow {
-  display: flex;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
   align-items: center;
-  color: var(--text-2, #b5b5b5);
-  font-size: 12px;
-  opacity: 0.6;
-  transform: translateX(0);
-  transition: opacity var(--transition), transform var(--transition), color var(--transition);
-  margin-top: 2px;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.34);
+  transition: transform 150ms ease, color 150ms ease;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
-.postCard:hover .postArrow {
-  opacity: 1;
-  transform: translateX(4px);
-  color: var(--text, #ffffff);
+.postTitle {
+  margin: 0;
+  color: #ffffff;
+  font-family: myriad-md;
+  font-size: 20px;
+  line-height: 1.15;
 }
 
-.postCard:hover .postTitle {
-  color: var(--text, #ffffff);
+.meta {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 11px;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
+.postCard:hover .postArrow,
 .postCard:focus-visible .postArrow {
-  opacity: 1;
-  transform: translateX(4px);
-  color: var(--text, #ffffff);
-}
-
-.postCard:focus-visible .postTitle {
-  color: var(--text, #ffffff);
+  color: rgba(255, 255, 255, 0.86);
+  transform: translateX(2px);
 }
 
 .empty {
-  color: var(--text-2, #b5b5b5);
+  margin: 0;
+  color: rgba(255, 255, 255, 0.56);
   font-size: 16px;
-  text-align: center;
-  padding: 40px 20px;
-  font-style: italic;
+  line-height: 1.6;
 }
 
-@media screen and (max-width: 768px) {
-  .blog {
-    padding: 12px 8px;
+@media screen and (max-width: 900px) {
+  .postsGrid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
+  .postCard {
+    padding: 15px;
+  }
+
+  .postTitle {
+    font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 720px) {
   .postCard {
     padding: 14px;
   }
 
-  .title {
-    font-size: 20px;
-    margin-bottom: 16px;
-  }
-
   .postTitle {
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .blog {
-    padding: 10px 6px;
-  }
-
-  .postCard {
-    padding: 12px;
-  }
-
-  .title {
     font-size: 18px;
-    margin-bottom: 14px;
-  }
-
-  .postTitle {
-    font-size: 14px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .postCard,
-  .postArrow,
-  .postTitle {
+  .postArrow {
     transition: none;
     transform: none;
   }

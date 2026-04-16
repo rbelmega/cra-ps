@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -17,6 +18,10 @@ export default async function Blog({ params }: { params: Params }) {
   const currentIndex = posts.findIndex(p => p.id === id);
   const post = posts[currentIndex];
   const nextPost = currentIndex < posts.length - 1 ? posts[currentIndex + 1] : null;
+
+  if (!post) {
+    notFound();
+  }
 
   const markdownFile = await loadPublicText(`posts/post-${id}.md`);
 

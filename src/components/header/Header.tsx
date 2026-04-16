@@ -1,12 +1,14 @@
 import React from 'react';
+import styles from './Header.module.scss';
 
 export const Header: React.FC = () => (
-  <header>
-    <div className="header-wrapper">
-      <div className="profile-info">
-        <h3>Rostyslav Belmeha</h3>
-        <p>Front-end Developer at SoftServe · 11+ years · React / Next.js</p>
+  <header className={styles.header}>
+    <div className={styles.inner}>
+      <div className={styles.identity}>
+        <h1 className={styles.name}>Rostyslav Belmeha</h1>
+        <p className={styles.role}>Front-end Developer at SoftServe</p>
       </div>
+      <p className={styles.meta}>11+ years · React / Next.js · Product-minded UI engineering</p>
     </div>
   </header>
 );

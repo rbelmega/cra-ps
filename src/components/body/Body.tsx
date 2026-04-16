@@ -6,7 +6,7 @@ import { Bio } from '../bio';
 import { Contacts } from '../contacts';
 import { Footer } from '../footer';
 import { loadPublicJson } from '../../domain/public-content';
-import './body.scss';
+import styles from './Body.module.scss';
 
 interface BioData {
   bio: string;
@@ -20,25 +20,35 @@ export const Body: React.FC = async () => {
   const data = await loadPublicJson<BioData>('bio.json', { bio: '' });
 
   return (
-    <div className="body-container">
-      <div className="wrapper body-wrapper">
-        <BlogList />
-        <Bio bio={data.bio} activities={data.activities} />
-        <div className="me">
-          <section className="profile-image-wrapper">
+    <div className={styles.page}>
+      <section className={styles.intro}>
+        <div className={styles.copy}>
+          <p className={styles.kicker}>Web Developer</p>
+          <Bio bio={data.bio} activities={data.activities} />
+        </div>
+
+        <aside className={styles.sidebar}>
+          <section className={styles.imageFrame}>
             <Image
               src="/assets/img/me2.png"
-              alt="profile image"
+              alt="Rostyslav Belmeha"
               width={255}
               height={255}
               fetchPriority="high"
               loading="eager"
             />
           </section>
-          {/*<p><i className='fa fa-map-marker'></i>Ivano-Frankivsk, Ukraine</p>*/}
           <Contacts />
+        </aside>
+      </section>
+
+      <section className={styles.writingSection}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>Writing</h2>
         </div>
-      </div>
+        <BlogList />
+      </section>
+
       <Footer />
     </div>
   );
