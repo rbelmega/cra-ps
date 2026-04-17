@@ -1,5 +1,5 @@
-import { App } from '../components';
+import { App } from "../components";
 
-export default async function Index() {
-  return <App />;
+export default function Index() {
+	return <App />;
 }

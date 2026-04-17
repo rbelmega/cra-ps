@@ -1,67 +1,59 @@
-import { readFile } from 'fs/promises';
-import { join } from 'path';
+import "server-only";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-const REMOTE_BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.belmeha.com';
+const REMOTE_BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.belmeha.com";
+const REMOTE_REVALIDATE_SECONDS = 3600;
 
-const getPublicFilePath = (relativePath: string) =>
-  join(process.cwd(), 'public', relativePath);
+const getPublicFilePath = (relativePath: string) => join(process.cwd(), "public", relativePath);
 
 const getRemoteUrl = (relativePath: string) =>
-  new URL(relativePath.replace(/^\//, ''), `${REMOTE_BASE_URL.replace(/\/$/, '')}/`).toString();
+	new URL(relativePath.replace(/^\//, ""), `${REMOTE_BASE_URL.replace(/\/$/, "")}/`).toString();
 
-export async function loadPublicText(
-  relativePath: string,
-  fallbackValue = ''
-): Promise<string> {
-  try {
-    return await readFile(getPublicFilePath(relativePath), 'utf8');
-  } catch (localError) {
-    try {
-      const response = await fetch(getRemoteUrl(relativePath), {
-        next: { revalidate: 3600 }
-      });
+async function loadPublicResource<T>(
+	relativePath: string,
+	fallbackValue: T,
+	parseLocal: (content: string) => T,
+	parseRemote: (response: Response) => Promise<T>,
+): Promise<T> {
+	try {
+		const fileContents = await readFile(getPublicFilePath(relativePath), "utf8");
+		return parseLocal(fileContents);
+	} catch (localError) {
+		try {
+			const response = await fetch(getRemoteUrl(relativePath), {
+				next: { revalidate: REMOTE_REVALIDATE_SECONDS },
+			});
 
-      if (response.ok) {
-        return await response.text();
-      }
-    } catch (remoteError) {
-      console.error(`Error loading ${relativePath}:`, remoteError);
-    }
+			if (response.ok) {
+				return await parseRemote(response);
+			}
+		} catch (remoteError) {
+			console.error(`Error loading ${relativePath}:`, remoteError);
+		}
 
-    if (!(localError instanceof Error)) {
-      return fallbackValue;
-    }
+		if (localError instanceof Error) {
+			console.error(`Error reading local ${relativePath}:`, localError);
+		}
 
-    console.error(`Error reading local ${relativePath}:`, localError);
-    return fallbackValue;
-  }
+		return fallbackValue;
+	}
 }
 
-export async function loadPublicJson<T>(
-  relativePath: string,
-  fallbackValue: T
-): Promise<T> {
-  try {
-    const fileContents = await readFile(getPublicFilePath(relativePath), 'utf8');
-    return JSON.parse(fileContents) as T;
-  } catch (localError) {
-    try {
-      const response = await fetch(getRemoteUrl(relativePath), {
-        next: { revalidate: 3600 }
-      });
+export async function loadPublicText(relativePath: string, fallbackValue = ""): Promise<string> {
+	return loadPublicResource(
+		relativePath,
+		fallbackValue,
+		(content) => content,
+		(response) => response.text(),
+	);
+}
 
-      if (response.ok) {
-        return (await response.json()) as T;
-      }
-    } catch (remoteError) {
-      console.error(`Error loading ${relativePath}:`, remoteError);
-    }
-
-    if (!(localError instanceof Error)) {
-      return fallbackValue;
-    }
-
-    console.error(`Error reading local ${relativePath}:`, localError);
-    return fallbackValue;
-  }
+export async function loadPublicJson<T>(relativePath: string, fallbackValue: T): Promise<T> {
+	return loadPublicResource(
+		relativePath,
+		fallbackValue,
+		(content) => JSON.parse(content) as T,
+		async (response) => (await response.json()) as T,
+	);
 }

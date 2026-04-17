@@ -1,6 +1,6 @@
 {
-  "headline": "Clear, fast interfaces for products that need to scale.",
-  "summary": "11+ years building dashboards, enterprise platforms, and design systems.",
-  "stack": ["React", "Next.js", "Angular", "Node.js"],
-  "bio": "Focused on complex web products where information density, performance, and interaction quality shape the experience.\nFrom MVPs to enterprise platforms, the work centers on interfaces that stay understandable, maintainable, and ready for scale."
+	"headline": "Clear, fast interfaces for products that need to scale.",
+	"summary": "11+ years building dashboards, enterprise platforms, and design systems.",
+	"stack": ["React", "Next.js", "Angular", "Node.js"],
+	"bio": "Focused on complex web products where information density, performance, and interaction quality shape the experience.\nFrom MVPs to enterprise platforms, the work centers on interfaces that stay understandable, maintainable, and ready for scale."
 }
