@@ -25,6 +25,24 @@ const extractTechnologies = (bio: string): string[] => {
 	return found;
 };
 
+const renderHeadline = (headline: string) => {
+	const trimmed = headline.trim();
+	const lastSpace = trimmed.lastIndexOf(" ");
+
+	if (lastSpace === -1) {
+		return trimmed;
+	}
+
+	const leading = trimmed.slice(0, lastSpace);
+	const accent = trimmed.slice(lastSpace + 1);
+
+	return (
+		<>
+			{leading} <span className={styles.headlineAccent}>{accent}</span>
+		</>
+	);
+};
+
 export function Bio({ headline, summary, highlights, stack, bio }: BioProps) {
 	const paragraphs = bio.split("\n").filter(Boolean);
 	const technologies = stack && stack.length > 0 ? stack : extractTechnologies(bio);
@@ -33,8 +51,17 @@ export function Bio({ headline, summary, highlights, stack, bio }: BioProps) {
 		<div className={styles.container}>
 			{(headline || summary) && (
 				<div className={styles.hero}>
-					{headline ? <h1 className={styles.headline}>{headline}</h1> : null}
+					{headline ? <h1 className={styles.headline}>{renderHeadline(headline)}</h1> : null}
 					{summary ? <p className={styles.summary}>{summary}</p> : null}
+					{technologies.length > 0 ? (
+						<div className={styles.techGrid}>
+							{technologies.map((tech) => (
+								<span key={tech} className={styles.techBadge}>
+									{tech}
+								</span>
+							))}
+						</div>
+					) : null}
 				</div>
 			)}
 
@@ -49,26 +76,13 @@ export function Bio({ headline, summary, highlights, stack, bio }: BioProps) {
 				</dl>
 			) : null}
 
-			{technologies.length > 0 ? (
-				<div className={styles.stack}>
-					<div className={styles.stackLabel}>Stack</div>
-					<div className={styles.techGrid}>
-						{technologies.map((tech) => (
-							<span key={tech} className={styles.techBadge}>
-								{tech}
-							</span>
-						))}
-					</div>
-				</div>
-			) : null}
-
 			<div className={styles.description}>
 				{paragraphs.map((paragraph, index) => (
 					<p
 						key={paragraph}
 						className={[
 							styles.paragraph,
-							index === 0 && !summary ? styles.lead : "",
+							index === 0 ? styles.lead : "",
 							index === paragraphs.length - 1 ? styles.secondary : "",
 						]
 							.filter(Boolean)

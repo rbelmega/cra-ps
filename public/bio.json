@@ -1,6 +1,20 @@
 {
-	"headline": "Clear, fast interfaces for products that need to scale.",
-	"summary": "11+ years building dashboards, enterprise platforms, and design systems.",
+	"headline": "Interfaces that stay clear as products grow more complex.",
+	"summary": "I build dashboards, enterprise software, and design systems that make complex products feel calm, fast, and easy to trust.",
+	"highlights": [
+		{
+			"label": "years building product UI",
+			"value": "11+"
+		},
+		{
+			"label": "dashboards and internal tools",
+			"value": "Enterprise"
+		},
+		{
+			"label": "consistency, interaction, performance",
+			"value": "Design systems"
+		}
+	],
 	"stack": ["React", "Next.js", "Angular", "Node.js"],
-	"bio": "Focused on complex web products where information density, performance, and interaction quality shape the experience.\nFrom MVPs to enterprise platforms, the work centers on interfaces that stay understandable, maintainable, and ready for scale."
+	"bio": "I design and build product UI where information density, interaction detail, and performance shape the experience.\nThe goal is simple: keep complex software calm, coherent, and fast as teams and product scope grow."
 }

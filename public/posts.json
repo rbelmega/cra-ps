@@ -3,6 +3,8 @@
 		"name": "Designing Dashboards That Stay Fast at Scale",
 		"date": "16 Apr 2026",
 		"id": "3",
+		"topic": "Dashboards",
+		"excerpt": "How interaction budgets, filter state, and disciplined payloads keep data-heavy screens fast and readable.",
 		"slug": "designing-dashboards-that-stay-fast-at-scale",
 		"file": "post-3.md"
 	},
@@ -10,6 +12,8 @@
 		"name": "Cracking the PageSpeed Code",
 		"date": "7 Nov 2025",
 		"id": "2",
+		"topic": "Performance",
+		"excerpt": "Practical ways to improve Core Web Vitals without padding the stack with cargo-cult optimizations.",
 		"slug": "cracking-the-pagespeed-code",
 		"file": "post-2.md"
 	},
@@ -17,6 +21,8 @@
 		"name": "Should You Be an Engineer?",
 		"date": "1 Mar 2016",
 		"id": "1",
+		"topic": "Engineering",
+		"excerpt": "A look at algorithmic thinking behind everyday frontend decisions, from sorting to handling large data sets.",
 		"slug": "should-you-be-an-engineer",
 		"file": "post-1.md"
 	}

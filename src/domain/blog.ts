@@ -5,6 +5,8 @@ export interface Post {
 	id: string;
 	name: string;
 	date: string;
+	topic?: string;
+	excerpt?: string;
 	slug: string;
 }
 

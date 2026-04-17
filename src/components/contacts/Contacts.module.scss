@@ -3,56 +3,56 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 10px;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .contactItem {
   min-width: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .contactLink {
-  min-height: 52px;
+  min-height: 0;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 0 14px;
+  padding: 15px 12px;
+  margin: 0 -12px;
   color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease,
-    color 140ms ease;
+  background: transparent;
+  transition: color 140ms ease, transform 140ms ease, background-color 140ms ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.14);
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.03);
+    color: #ffffff;
+    transform: translateX(2px);
   }
 
   &:focus-visible {
     outline: none;
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.03);
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
   }
 }
 
 .contactIcon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.56);
+  color: rgba(197, 218, 140, 0.82);
   background: rgba(255, 255, 255, 0.035);
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
   }
 }
 
@@ -89,7 +89,7 @@
 .contactLink:hover .contactArrow,
 .contactLink:focus-visible .contactArrow {
   color: rgba(255, 255, 255, 0.78);
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 @media (prefers-reduced-motion: reduce) {

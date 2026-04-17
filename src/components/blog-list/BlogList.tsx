@@ -4,11 +4,6 @@ import { getPostHref, getPosts } from "../../domain/blog";
 
 export async function BlogList() {
 	const posts = await getPosts();
-	const metaById: Record<string, string> = {
-		"3": "Dashboards",
-		"2": "Performance",
-		"1": "Performance",
-	};
 
 	if (posts.length === 0) {
 		return (
@@ -21,21 +16,24 @@ export async function BlogList() {
 	return (
 		<div className={styles.blog}>
 			<div className={styles.postsGrid}>
-				{posts.map((post) => (
+				{posts.map((post, index) => (
 					<Link
 						key={post.file}
 						href={getPostHref(post)}
-						className={styles.postCard}
+						className={[
+							styles.postCard,
+							index === 0 ? styles.featuredCard : styles.secondaryCard,
+						].join(" ")}
 						aria-label={`Read ${post.name}`}
 					>
 						<div className={styles.postContent}>
 							<div className={styles.postHeader}>
 								<span className={styles.postMeta}>
-									<span className={styles.date}>{post.date}</span>
+									<span className={styles.topic}>{post.topic ?? "Insight"}</span>
 									<span className={styles.metaDivider} aria-hidden="true">
 										·
 									</span>
-									<span className={styles.meta}>{metaById[post.id] ?? "Insight"}</span>
+									<span className={styles.date}>{post.date}</span>
 								</span>
 								<span className={styles.postArrow} aria-hidden="true">
 									<svg viewBox="0 0 24 24" role="presentation">
@@ -50,7 +48,10 @@ export async function BlogList() {
 									</svg>
 								</span>
 							</div>
-							<h3 className={styles.postTitle}>{post.name}</h3>
+							<div className={styles.postBody}>
+								<h3 className={styles.postTitle}>{post.name}</h3>
+								{post.excerpt ? <p className={styles.postExcerpt}>{post.excerpt}</p> : null}
+							</div>
 						</div>
 					</Link>
 				))}

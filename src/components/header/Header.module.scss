@@ -1,21 +1,19 @@
 .header {
-  padding: 28px 5% 12px;
+  padding: 22px 5% 10px;
 }
 
 .inner {
   max-width: 1280px;
   margin: 0 auto;
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
   gap: 20px;
 }
 
 .identity {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  display: grid;
+  gap: 6px;
 }
 
 .name {
@@ -28,19 +26,19 @@
 
 .role {
   margin: 0;
-  color: rgba(255, 255, 255, 0.54);
+  max-width: 34ch;
+  color: rgba(255, 255, 255, 0.56);
   font-size: 14px;
   line-height: 1.35;
 }
 
 .meta {
   margin: 0;
-  color: rgba(255, 255, 255, 0.36);
-  font-size: 13px;
-  line-height: 1.5;
+  max-width: 26ch;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  line-height: 1.4;
   text-align: right;
-  white-space: normal;
-  max-width: 30ch;
 }
 
 @media screen and (min-width: 1680px) {
@@ -56,12 +54,12 @@
 
 @media screen and (max-width: 720px) {
   .header {
-    padding: 22px 18px 14px;
+    padding: 22px 18px 12px;
   }
 
   .inner {
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
-    flex-direction: column;
     gap: 10px;
   }
 
@@ -75,6 +73,6 @@
 
   .meta {
     text-align: left;
-    white-space: normal;
+    max-width: 34ch;
   }
 }

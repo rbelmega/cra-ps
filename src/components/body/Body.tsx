@@ -24,10 +24,6 @@ export async function Body() {
 	return (
 		<div className={styles.page}>
 			<section className={styles.intro}>
-				<div className={styles.eyebrow}>
-					<p className={styles.kicker}>Product UI</p>
-				</div>
-
 				<div className={styles.copy}>
 					<Bio
 						headline={data.headline}
@@ -39,19 +35,20 @@ export async function Body() {
 				</div>
 
 				<aside className={styles.sidebar}>
-					<section className={styles.imageFrame}>
-						<Image
-							src="/assets/img/me2.jpg"
-							alt="Rostyslav Belmeha"
-							width={1024}
-							height={1024}
-							sizes="(max-width: 960px) 100vw, 360px"
-							fetchPriority="high"
-							loading="eager"
-						/>
-					</section>
+					<div className={styles.portrait}>
+						<section className={styles.imageFrame}>
+							<Image
+								src="/assets/img/me2.jpg"
+								alt="Rostyslav Belmeha"
+								width={1024}
+								height={1024}
+								sizes="(max-width: 960px) 100vw, 372px"
+								fetchPriority="high"
+								loading="eager"
+							/>
+						</section>
+					</div>
 					<section className={styles.connectSection}>
-						<p className={styles.connectLabel}>Connect</p>
 						<Contacts />
 					</section>
 				</aside>
@@ -59,7 +56,9 @@ export async function Body() {
 
 			<section className={styles.writingSection}>
 				<div className={styles.sectionHeader}>
-					<h2 className={styles.sectionTitle}>Writing</h2>
+					<h2 className={styles.sectionTitle}>
+						Writing on dashboards, performance, and frontend systems.
+					</h2>
 				</div>
 				<BlogList />
 			</section>
