@@ -16,18 +16,19 @@
 }
 
 .footer {
-  padding: 28px 5% 24px;
+  padding: 28px 0 24px;
   background-color: transparent;
   margin-top: auto;
 }
 
 .footerContent {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
-  max-width: 1500px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -65,17 +66,22 @@
 
 @media screen and (max-width: 600px) {
   .footer {
-    padding: 26px 5% 20px;
+    padding: 26px 0 20px;
   }
 
   .footerContent {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
+    text-align: left;
+    gap: 12px;
   }
 
   .copyright,
   .footerLink {
     font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1680px) {
+  .footerContent {
+    max-width: 1440px;
   }
 }

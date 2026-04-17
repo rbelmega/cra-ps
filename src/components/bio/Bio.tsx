@@ -1,13 +1,16 @@
 import React from 'react';
 import styles from './Bio.module.scss';
 
-interface Activity {
-  iconClass: string;
-  text: string;
+interface Highlight {
+  label: string;
+  value: string;
 }
 
 interface BioProps {
-  activities?: Activity[];
+  headline?: string;
+  summary?: string;
+  highlights?: Highlight[];
+  stack?: string[];
   bio: string;
 }
 
@@ -23,21 +26,28 @@ const extractTechnologies = (bio: string): string[] => {
   return found;
 };
 
-export const Bio: React.FC<BioProps> = ({ activities, bio }) => {
+export const Bio: React.FC<BioProps> = ({ headline, summary, highlights, stack, bio }) => {
   const paragraphs = bio.split('\n').filter(Boolean);
-  const technologies = extractTechnologies(bio);
+  const technologies = stack && stack.length > 0 ? stack : extractTechnologies(bio);
 
   return (
     <div className={styles.container}>
-      {activities && activities.length > 0 ? (
-        <ul className={styles.activityList}>
-          {activities.map((activity) => (
-            <li key={activity.text} className={styles.activity}>
-              <i className={`${activity.iconClass} ${styles.activityIcon}`} />
-              <span className={styles.activityText}>{activity.text}</span>
-            </li>
+      {(headline || summary) && (
+        <div className={styles.hero}>
+          {headline ? <h1 className={styles.headline}>{headline}</h1> : null}
+          {summary ? <p className={styles.summary}>{summary}</p> : null}
+        </div>
+      )}
+
+      {highlights && highlights.length > 0 ? (
+        <dl className={styles.highlights}>
+          {highlights.map((highlight) => (
+            <div key={`${highlight.label}-${highlight.value}`} className={styles.highlight}>
+              <dt className={styles.highlightLabel}>{highlight.label}</dt>
+              <dd className={styles.highlightValue}>{highlight.value}</dd>
+            </div>
           ))}
-        </ul>
+        </dl>
       ) : null}
 
       {technologies.length > 0 ? (
@@ -59,7 +69,7 @@ export const Bio: React.FC<BioProps> = ({ activities, bio }) => {
             key={index}
             className={[
               styles.paragraph,
-              index === 0 ? styles.lead : '',
+              index === 0 && !summary ? styles.lead : '',
               index === paragraphs.length - 1 ? styles.secondary : '',
             ].filter(Boolean).join(' ')}
           >

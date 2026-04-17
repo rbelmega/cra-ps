@@ -9,11 +9,14 @@ import { loadPublicJson } from '../../domain/public-content';
 import styles from './Body.module.scss';
 
 interface BioData {
+  headline?: string;
+  summary?: string;
   bio: string;
-  activities?: Array<{
-    iconClass: string;
-    text: string;
+  highlights?: Array<{
+    label: string;
+    value: string;
   }>;
+  stack?: string[];
 }
 
 export const Body: React.FC = async () => {
@@ -23,11 +26,17 @@ export const Body: React.FC = async () => {
     <div className={styles.page}>
       <section className={styles.intro}>
         <div className={styles.eyebrow}>
-          <p className={styles.kicker}>Web Developer</p>
+          <p className={styles.kicker}>Product UI</p>
         </div>
 
         <div className={styles.copy}>
-          <Bio bio={data.bio} activities={data.activities} />
+          <Bio
+            headline={data.headline}
+            summary={data.summary}
+            highlights={data.highlights}
+            stack={data.stack}
+            bio={data.bio}
+          />
         </div>
 
         <aside className={styles.sidebar}>
@@ -41,7 +50,10 @@ export const Body: React.FC = async () => {
               loading="eager"
             />
           </section>
-          <Contacts />
+          <section className={styles.connectSection}>
+            <p className={styles.connectLabel}>Connect</p>
+            <Contacts />
+          </section>
         </aside>
       </section>
 

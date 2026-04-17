@@ -448,10 +448,16 @@ p {
 * {
   box-sizing: border-box;
 }
+
+html {
+  background: #111111;
+}
+
 body {
   margin: 0;
-  background: #353535;
+  background: #111111;
   font-family: myriad;
+  min-height: 100vh;
 }
 .wrapper:after {
   display: table;

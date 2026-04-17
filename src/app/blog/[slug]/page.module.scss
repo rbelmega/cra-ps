@@ -145,6 +145,14 @@
     color: rgba(255, 255, 255, 0.74);
     background: rgba(255, 255, 255, 0.03);
     border-radius: 8px;
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 
   table {

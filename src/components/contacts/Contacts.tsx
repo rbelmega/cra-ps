@@ -42,7 +42,7 @@ const icons: Record<string, React.ReactNode> = {
 };
 
 export const Contacts: React.FC = () => {
-  const order = ['Linkedin', 'GitHub', 'Twitter', 'Facebook'];
+  const order = ['LinkedIn', 'GitHub', 'Twitter', 'Facebook'];
   const contacts = getContacts()
     .filter((contact) => order.includes(contact.name))
     .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name));

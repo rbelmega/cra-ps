@@ -1,3 +1,6 @@
 {
-  "bio": "I'm a seasoned Web Developer with over 11 years of experience building scalable web applications and digital solutions. Throughout my career, I've delivered projects ranging from startup MVPs to enterprise-level applications, collaborating with distributed teams across multiple time zones to create exceptional user experiences.\nMy expertise centers on modern web technologies including Angular, React, Next.js, and Node.js, with a strong focus on creating polished, performant, and user-centric interfaces. I've also specialized in Business Intelligence platforms, developing robust data-driven dashboards by extending native components and building highly customizable user experiences that enable data-driven decision making.\nI'm committed to leveraging cutting-edge technologies, implementing industry best practices, and delivering high-quality solutions that drive business value - from initial concept to full-scale enterprise implementations. Let's discuss how I can help bring your vision to life."
+  "headline": "Clear, fast interfaces for products that need to scale.",
+  "summary": "11+ years building dashboards, enterprise platforms, and design systems.",
+  "stack": ["React", "Next.js", "Angular", "Node.js"],
+  "bio": "Focused on complex web products where information density, performance, and interaction quality shape the experience.\nFrom MVPs to enterprise platforms, the work centers on interfaces that stay understandable, maintainable, and ready for scale."
 }
