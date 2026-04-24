@@ -230,7 +230,7 @@ Private project - All rights reserved.
 ## 👤 Author
 
 **Rostyslav Belmeha**
-- LinkedIn: [rostyslav-belmega-8b540643](https://www.linkedin.com/in/rostyslav-belmega-8b540643)
+- LinkedIn: [rostyslav-belmega](https://www.linkedin.com/in/rostyslav-belmega/)
 - Twitter: [@izzz0](https://twitter.com/izzz0)
 - GitHub: [rbelmega](https://github.com/rbelmega)
 - Website: [belmeha.com](https://www.belmeha.com)

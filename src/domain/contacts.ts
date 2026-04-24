@@ -7,7 +7,7 @@ export interface Contact {
 export const getContacts = (): Contact[] => [
 	{
 		name: "LinkedIn",
-		link: "https://www.linkedin.com/in/rostyslav-belmega-8b540643",
+		link: "https://www.linkedin.com/in/rostyslav-belmega/",
 		letter: "l",
 	},
 	{
