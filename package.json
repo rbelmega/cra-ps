@@ -29,12 +29,14 @@
 		"start": "next start"
 	},
 	"browserslist": [
-		"chrome >= 92",
-		"firefox >= 90",
-		"safari >= 14.1",
-		"edge >= 92",
+		"chrome >= 120",
+		"edge >= 120",
+		"firefox >= 115",
+		"and_chr >= 120",
+		"and_ff >= 115",
+		"safari >= 17",
+		"ios_saf >= 17",
 		"not dead",
-		"not ie <= 11",
 		"not op_mini all"
 	]
 }
