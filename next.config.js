@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	productionBrowserSourceMaps: false,
+	experimental: {
+		inlineCss: true,
+	},
 	compiler: {
 		// Remove console logs in production
 		removeConsole:
