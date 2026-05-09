@@ -35,7 +35,7 @@ const markdownComponents: Components = {
 
 export function MarkdownPage({ content }: MarkdownPageProps) {
 	return (
-		<section className="markdown-page">
+		<main className="markdown-page">
 			<div className="markdown-shell">
 				<article className="markdown-content">
 					<ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
@@ -43,6 +43,6 @@ export function MarkdownPage({ content }: MarkdownPageProps) {
 					</ReactMarkdown>
 				</article>
 			</div>
-		</section>
+		</main>
 	);
 }

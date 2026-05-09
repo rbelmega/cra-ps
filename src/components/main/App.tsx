@@ -5,7 +5,9 @@ export function App() {
 	return (
 		<div className="main-app">
 			<Header />
-			<Body />
+			<main>
+				<Body />
+			</main>
 		</div>
 	);
 }

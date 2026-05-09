@@ -2,9 +2,8 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { ComponentPropsWithoutRef } from "react";
 import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getPostById, getPostBySlug, getPostHref, getPosts } from "../../../domain/blog";
 import { rewriteMarkdownHref } from "../../../domain/markdown-href";
 import { loadPublicText } from "../../../domain/public-content";
@@ -12,10 +11,6 @@ import styles from "./page.module.scss";
 
 type Params = Promise<{ slug: string }>;
 type MarkdownLinkProps = ComponentPropsWithoutRef<"a"> & { node?: unknown };
-type MarkdownCodeProps = ComponentPropsWithoutRef<"code"> & {
-	node?: unknown;
-	inline?: boolean;
-};
 type MarkdownTableProps = ComponentPropsWithoutRef<"table"> & { node?: unknown };
 
 export async function generateStaticParams() {
@@ -69,7 +64,7 @@ export default async function Blog({ params }: { params: Params }) {
 	};
 
 	return (
-		<section className={styles.page}>
+		<main className={styles.page}>
 			<div className={styles.inner}>
 				<Link href="/" className={styles.homeLink}>
 					Rostyslav Belmeha
@@ -84,6 +79,16 @@ export default async function Blog({ params }: { params: Params }) {
 					<div className={styles.article}>
 						<ReactMarkdown
 							remarkPlugins={[remarkGfm]}
+							rehypePlugins={[
+								[
+									rehypeHighlight,
+									{
+										aliases: {
+											html: "xml",
+										},
+									},
+								],
+							]}
 							components={{
 								a({ node: _node, href = "", children, ...props }: MarkdownLinkProps) {
 									const rewrittenHref = rewriteMarkdownHref(href);
@@ -106,32 +111,6 @@ export default async function Blog({ params }: { params: Params }) {
 										<Link href={rewrittenHref} {...props}>
 											{children}
 										</Link>
-									);
-								},
-								code({ node: _node, inline, className, children, ...props }: MarkdownCodeProps) {
-									const match = /language-(\w+)/.exec(className || "");
-									const language = match ? match[1] : "javascript";
-
-									if (inline) {
-										return <code {...props}>{children}</code>;
-									}
-
-									return (
-										<SyntaxHighlighter
-											style={dracula}
-											language={language}
-											PreTag="div"
-											customStyle={{
-												margin: 0,
-												padding: "18px 20px",
-												borderRadius: "8px",
-												background: "#171b29",
-											}}
-											wrapLongLines
-											{...props}
-										>
-											{String(children).replace(/\n$/, "")}
-										</SyntaxHighlighter>
 									);
 								},
 								table({ node: _node, children, ...props }: MarkdownTableProps) {
@@ -169,6 +148,6 @@ export default async function Blog({ params }: { params: Params }) {
 					) : null}
 				</article>
 			</div>
-		</section>
+		</main>
 	);
 }

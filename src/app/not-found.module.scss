@@ -26,7 +26,7 @@
   align-items: center;
   min-height: 32px;
   color: rgba(255, 255, 255, 0.84);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 15px;
   line-height: 1.2;
   transition: color 150ms ease;
@@ -59,7 +59,7 @@
 .kicker {
   margin: 0 0 14px;
   color: #9edcff;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 13px;
   line-height: 1.2;
   letter-spacing: 0;
@@ -69,7 +69,7 @@
 .title {
   margin: 0;
   color: #ffffff;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 74px;
   line-height: 0.95;
 }
@@ -97,7 +97,7 @@
   border-radius: 8px;
   background: #f5f5f5;
   color: #141414;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 15px;
   line-height: 1;
   transition: background-color 150ms ease, transform 150ms ease;
@@ -123,7 +123,7 @@
 .mark {
   justify-self: end;
   color: rgba(255, 255, 255, 0.08);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 220px;
   line-height: 0.84;
   letter-spacing: 0;

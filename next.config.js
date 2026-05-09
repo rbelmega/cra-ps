@@ -11,6 +11,7 @@ const nextConfig = {
 				: false,
 	},
 	images: {
+		deviceSizes: [320, 480, 640, 750, 828, 1080, 1200, 1920],
 		remotePatterns: [
 			{
 				protocol: "https",
@@ -21,6 +22,19 @@ const nextConfig = {
 				hostname: "abs.twimg.com",
 			},
 		],
+	},
+	async headers() {
+		return [
+			{
+				source: "/assets/:path*",
+				headers: [
+					{
+						key: "Cache-Control",
+						value: "public, max-age=31536000, immutable",
+					},
+				],
+			},
+		];
 	},
 };
 

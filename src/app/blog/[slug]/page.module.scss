@@ -13,7 +13,7 @@
   min-height: 32px;
   margin-bottom: 42px;
   color: rgba(255, 255, 255, 0.84);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 15px;
   line-height: 1.2;
   text-decoration: none;
@@ -35,7 +35,7 @@
 .meta {
   margin: 0 0 14px;
   color: rgba(255, 255, 255, 0.5);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 12px;
   line-height: 1.2;
   text-transform: uppercase;
@@ -44,7 +44,7 @@
 .title {
   margin: 0;
   color: #ffffff;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: clamp(40px, 5.2vw, 52px);
   line-height: 0.98;
   text-wrap: balance;
@@ -52,7 +52,7 @@
 
 .article {
   color: rgba(255, 255, 255, 0.84);
-  font-family: myriad;
+  font-family: var(--font-myriad), Arial, sans-serif;
   font-size: 19px;
   line-height: 1.84;
 
@@ -85,7 +85,7 @@
   h6 {
     margin: 56px 0 16px;
     color: #ffffff;
-    font-family: myriad-md;
+    font-family: var(--font-myriad-md), Arial, sans-serif;
     line-height: 1.2;
   }
 
@@ -115,7 +115,7 @@
   strong,
   b {
     color: #ffffff;
-    font-family: myriad-md;
+    font-family: var(--font-myriad-md), Arial, sans-serif;
   }
 
   code {
@@ -129,13 +129,110 @@
   pre {
     margin: 30px 0;
     overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
+    background: #171b29;
+    -webkit-overflow-scrolling: touch;
   }
 
   pre code {
-    padding: 0;
+    display: block;
+    padding: 18px 20px;
     background: transparent;
-    color: inherit;
+    color: #c9d1d9;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  :global(.hljs) {
+    color: #c9d1d9;
+  }
+
+  :global(.hljs-doctag),
+  :global(.hljs-keyword),
+  :global(.hljs-meta .hljs-keyword),
+  :global(.hljs-template-tag),
+  :global(.hljs-template-variable),
+  :global(.hljs-type),
+  :global(.hljs-variable.language_) {
+    color: #ff7b72;
+  }
+
+  :global(.hljs-title),
+  :global(.hljs-title.class_),
+  :global(.hljs-title.class_.inherited__),
+  :global(.hljs-title.function_) {
+    color: #d2a8ff;
+  }
+
+  :global(.hljs-attr),
+  :global(.hljs-attribute),
+  :global(.hljs-literal),
+  :global(.hljs-meta),
+  :global(.hljs-number),
+  :global(.hljs-operator),
+  :global(.hljs-variable),
+  :global(.hljs-selector-attr),
+  :global(.hljs-selector-class),
+  :global(.hljs-selector-id) {
+    color: #79c0ff;
+  }
+
+  :global(.hljs-regexp),
+  :global(.hljs-string),
+  :global(.hljs-meta .hljs-string) {
+    color: #a5d6ff;
+  }
+
+  :global(.hljs-built_in),
+  :global(.hljs-symbol) {
+    color: #ffa657;
+  }
+
+  :global(.hljs-comment),
+  :global(.hljs-code),
+  :global(.hljs-formula) {
+    color: #8b949e;
+  }
+
+  :global(.hljs-name),
+  :global(.hljs-quote),
+  :global(.hljs-selector-tag),
+  :global(.hljs-selector-pseudo) {
+    color: #7ee787;
+  }
+
+  :global(.hljs-subst) {
+    color: #c9d1d9;
+  }
+
+  :global(.hljs-section) {
+    color: #1f6feb;
+    font-weight: 700;
+  }
+
+  :global(.hljs-bullet) {
+    color: #f2cc60;
+  }
+
+  :global(.hljs-emphasis) {
+    color: #c9d1d9;
+    font-style: italic;
+  }
+
+  :global(.hljs-strong) {
+    color: #c9d1d9;
+    font-weight: 700;
+  }
+
+  :global(.hljs-addition) {
+    color: #aff5b4;
+    background-color: #033a16;
+  }
+
+  :global(.hljs-deletion) {
+    color: #ffdcd7;
+    background-color: #67060c;
   }
 
   blockquote {
@@ -176,7 +273,7 @@
 
   th {
     color: #ffffff;
-    font-family: myriad-md;
+    font-family: var(--font-myriad-md), Arial, sans-serif;
     font-size: 13px;
     line-height: 1.25;
     white-space: nowrap;
@@ -233,7 +330,7 @@
 
 .articleNavLabel {
   color: rgba(255, 255, 255, 0.46);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 11px;
   line-height: 1.2;
   text-transform: uppercase;
@@ -241,7 +338,7 @@
 
 .articleNavTitle {
   color: #ffffff;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 18px;
   line-height: 1.3;
 }

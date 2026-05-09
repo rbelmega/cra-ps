@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
+import localFont from "next/font/local";
+import { SiteAnalytics } from "../components/site-analytics/SiteAnalytics";
 
 import "../index.scss";
 
@@ -16,32 +15,53 @@ export const metadata: Metadata = {
 };
 
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4;
+const isProduction = process.env.NODE_ENV === "production";
+const hasValidGoogleAnalyticsId = /^G-[A-Z0-9]+$/i.test(googleAnalyticsId ?? "");
+const enableVercelAnalytics = process.env.NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS === "true";
+const enableVercelSpeedInsights = process.env.NEXT_PUBLIC_ENABLE_VERCEL_SPEED_INSIGHTS === "true";
+const shouldLoadAnalytics =
+	isProduction && (hasValidGoogleAnalyticsId || enableVercelAnalytics || enableVercelSpeedInsights);
+
+const myriad = localFont({
+	src: "../../public/assets/fonts/myriad-set-pro_thin.ttf",
+	variable: "--font-myriad",
+	display: "swap",
+	fallback: ["Arial", "sans-serif"],
+	adjustFontFallback: "Arial",
+	preload: true,
+	declarations: [
+		{ prop: "ascent-override", value: "85%" },
+		{ prop: "descent-override", value: "15%" },
+		{ prop: "line-gap-override", value: "0%" },
+	],
+});
+
+const myriadMedium = localFont({
+	src: "../../public/assets/fonts/myriad-set-pro_medium.ttf",
+	variable: "--font-myriad-md",
+	display: "swap",
+	fallback: ["Arial", "sans-serif"],
+	adjustFontFallback: "Arial",
+	preload: true,
+	declarations: [
+		{ prop: "ascent-override", value: "85%" },
+		{ prop: "descent-override", value: "15%" },
+		{ prop: "line-gap-override", value: "0%" },
+	],
+});
 
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
-		<html lang="en">
-			<head>
-				{/* Preload critical fonts for better performance */}
-				<link
-					rel="preload"
-					href="/assets/fonts/myriad-set-pro_thin.ttf"
-					as="font"
-					type="font/ttf"
-					crossOrigin="anonymous"
-				/>
-				<link
-					rel="preload"
-					href="/assets/fonts/myriad-set-pro_medium.ttf"
-					as="font"
-					type="font/ttf"
-					crossOrigin="anonymous"
-				/>
-			</head>
+		<html lang="en" className={`${myriad.variable} ${myriadMedium.variable}`}>
 			<body>
 				{children}
-				{googleAnalyticsId ? <GoogleAnalytics gaId={googleAnalyticsId} /> : null}
-				<SpeedInsights />
-				<Analytics />
+				{shouldLoadAnalytics ? (
+					<SiteAnalytics
+						googleAnalyticsId={hasValidGoogleAnalyticsId ? googleAnalyticsId : undefined}
+						enableVercelAnalytics={enableVercelAnalytics}
+						enableVercelSpeedInsights={enableVercelSpeedInsights}
+					/>
+				) : null}
 			</body>
 		</html>
 	);
