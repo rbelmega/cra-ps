@@ -41,14 +41,14 @@
   color: rgba(255, 255, 255, 0.4);
   font-size: 13px;
   margin: 0;
-  font-family: myriad;
+  font-family: var(--font-myriad), Arial, sans-serif;
 }
 
 .footerLink {
   color: rgba(255, 255, 255, 0.4);
   font-size: 13px;
   text-decoration: none;
-  font-family: myriad;
+  font-family: var(--font-myriad), Arial, sans-serif;
   transition: color var(--transition, 150ms ease);
 
   &:hover {

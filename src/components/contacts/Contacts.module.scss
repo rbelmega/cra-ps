@@ -66,7 +66,7 @@
   flex: 1;
   min-width: 0;
   color: inherit;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 15px;
   line-height: 1.2;
 }

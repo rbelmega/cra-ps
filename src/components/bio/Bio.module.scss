@@ -14,7 +14,7 @@
   margin: 0;
   max-width: 12ch;
   color: #ffffff;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 68px;
   line-height: 0.95;
   text-wrap: balance;
@@ -65,7 +65,7 @@
   grid-area: value;
   margin: 0;
   color: rgba(255, 255, 255, 0.92);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 24px;
   line-height: 1.2;
 }

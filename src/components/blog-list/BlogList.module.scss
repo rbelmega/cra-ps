@@ -87,7 +87,7 @@
 
 .topic {
   color: rgba(197, 218, 140, 0.84);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 11px;
   line-height: 1.2;
   text-transform: uppercase;
@@ -99,7 +99,7 @@
 
 .date {
   color: rgba(255, 255, 255, 0.42);
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 11px;
   line-height: 1.2;
   text-transform: uppercase;
@@ -129,7 +129,7 @@
 .postTitle {
   margin: 0;
   color: #ffffff;
-  font-family: myriad-md;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 22px;
   line-height: 1.08;
 }
