@@ -39,6 +39,18 @@ const nextConfig = {
 			},
 		];
 	},
+	webpack(config, { isServer }) {
+		if (!isServer) {
+			config.resolve.alias = {
+				...config.resolve.alias,
+				"../build/polyfills/polyfill-module": require.resolve(
+					"./src/polyfills/modern-browser-only.js",
+				),
+			};
+		}
+
+		return config;
+	},
 };
 
 module.exports = nextConfig;
