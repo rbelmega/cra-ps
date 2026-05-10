@@ -12,21 +12,18 @@ A modern personal portfolio website built with Next.js 16, React 19, and TypeScr
   - Responsive design for all screen sizes
 - **Contact Links**: Social media and professional links (LinkedIn, Twitter, Facebook, GitHub)
 - **Privacy Policy**: Dedicated privacy policy page
-- **Analytics**: Integrated with Google Analytics, Vercel Analytics, and Speed Insights
+- **Analytics**: Google Analytics via `next/script`
 - **Performance**: Optimized images, code splitting, and production source maps
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 16.0.1
-- **React**: 19.2.0
-- **TypeScript**: 5.9.3
+- **Framework**: Next.js 16.2.6
+- **React**: 19.2.6
+- **TypeScript**: 6.0.3
 - **Styling**: SCSS (Sass) with CSS Modules
 - **Markdown**: react-markdown with remark-gfm
-- **Syntax Highlighting**: react-syntax-highlighter (Dracula theme)
-- **Analytics**: 
-  - Google Analytics (via @next/third-parties)
-  - Vercel Analytics
-  - Vercel Speed Insights
+- **Syntax Highlighting**: rehype-highlight
+- **Analytics**: Google Analytics via next/script
 
 ## 📁 Project Structure
 
@@ -140,7 +137,7 @@ npm run analyze
 
 ### Next.js Configuration
 
-The project uses `next.config.js` with:
+The project uses `next.config.ts` with:
 - Production browser source maps enabled
 - Image optimization for external CDN domains
 
@@ -163,11 +160,7 @@ TypeScript is configured with:
 - `next` - Next.js framework
 - `react` & `react-dom` - React library
 - `react-markdown` - Markdown rendering
-- `react-syntax-highlighter` - Code syntax highlighting
 - `remark-gfm` - GitHub Flavored Markdown support
-- `@next/third-parties` - Third-party integrations
-- `@vercel/analytics` - Vercel Analytics
-- `@vercel/speed-insights` - Performance monitoring
 
 ### Development
 - `typescript` - TypeScript compiler
@@ -209,7 +202,7 @@ The project is configured for deployment on Vercel (recommended) or any Node.js 
 3. Add environment variables in Vercel dashboard (if needed)
 4. Deploy
 
-The project includes Vercel Analytics and Speed Insights for production monitoring.
+The project can load Google Analytics in production when `NEXT_PUBLIC_GOOGLE_ANALYTICS_V4` is configured.
 
 ## 📝 Blog Posts
 

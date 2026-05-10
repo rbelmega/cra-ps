@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { SiteAnalytics } from "../components/site-analytics/SiteAnalytics";
+import Script from "next/script";
 
 import "../index.scss";
 
@@ -17,10 +17,13 @@ export const metadata: Metadata = {
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4;
 const isProduction = process.env.NODE_ENV === "production";
 const hasValidGoogleAnalyticsId = /^G-[A-Z0-9]+$/i.test(googleAnalyticsId ?? "");
-const enableVercelAnalytics = process.env.NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS === "true";
-const enableVercelSpeedInsights = process.env.NEXT_PUBLIC_ENABLE_VERCEL_SPEED_INSIGHTS === "true";
-const shouldLoadAnalytics =
-	isProduction && (hasValidGoogleAnalyticsId || enableVercelAnalytics || enableVercelSpeedInsights);
+const shouldLoadGoogleAnalytics = isProduction && hasValidGoogleAnalyticsId;
+const googleAnalyticsScript = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", "${googleAnalyticsId}");
+`;
 
 const myriad = localFont({
 	src: "../../public/assets/fonts/myriad-set-pro_thin.ttf",
@@ -53,16 +56,19 @@ const myriadMedium = localFont({
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
 		<html lang="en" className={`${myriad.variable} ${myriadMedium.variable}`}>
-			<body>
-				{children}
-				{shouldLoadAnalytics ? (
-					<SiteAnalytics
-						googleAnalyticsId={hasValidGoogleAnalyticsId ? googleAnalyticsId : undefined}
-						enableVercelAnalytics={enableVercelAnalytics}
-						enableVercelSpeedInsights={enableVercelSpeedInsights}
+			<body>{children}</body>
+			{shouldLoadGoogleAnalytics ? (
+				<>
+					<Script
+						id="google-analytics"
+						src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+						strategy="afterInteractive"
 					/>
-				) : null}
-			</body>
+					<Script id="google-analytics-init" strategy="afterInteractive">
+						{googleAnalyticsScript}
+					</Script>
+				</>
+			) : null}
 		</html>
 	);
 }
