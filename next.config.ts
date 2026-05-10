@@ -1,8 +1,19 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+import { fileURLToPath } from "node:url";
+
+const modernBrowserPolyfill = fileURLToPath(
+	new URL("./src/polyfills/modern-browser-only.js", import.meta.url),
+);
+
+const nextConfig: NextConfig = {
 	productionBrowserSourceMaps: false,
 	experimental: {
 		inlineCss: true,
+	},
+	turbopack: {
+		resolveAlias: {
+			"../build/polyfills/polyfill-module": modernBrowserPolyfill,
+		},
 	},
 	compiler: {
 		// Remove console logs in production
@@ -43,9 +54,7 @@ const nextConfig = {
 		if (!isServer) {
 			config.resolve.alias = {
 				...config.resolve.alias,
-				"../build/polyfills/polyfill-module": require.resolve(
-					"./src/polyfills/modern-browser-only.js",
-				),
+				"../build/polyfills/polyfill-module": modernBrowserPolyfill,
 			};
 		}
 
@@ -53,4 +62,4 @@ const nextConfig = {
 	},
 };
 
-module.exports = nextConfig;
+export default nextConfig;
