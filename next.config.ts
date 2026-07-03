@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const modernBrowserPolyfill = fileURLToPath(
-	new URL("./src/polyfills/modern-browser-only.js", import.meta.url),
+const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+const modernBrowserPolyfill = "./src/polyfills/modern-browser-only.js";
+const modernBrowserPolyfillAbsolute = path.join(
+	projectRoot,
+	"src/polyfills/modern-browser-only.js",
 );
 
 const nextConfig: NextConfig = {
@@ -54,7 +58,7 @@ const nextConfig: NextConfig = {
 		if (!isServer) {
 			config.resolve.alias = {
 				...config.resolve.alias,
-				"../build/polyfills/polyfill-module": modernBrowserPolyfill,
+				"../build/polyfills/polyfill-module": modernBrowserPolyfillAbsolute,
 			};
 		}
 
