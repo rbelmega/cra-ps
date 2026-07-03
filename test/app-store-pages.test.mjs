@@ -46,9 +46,30 @@ const appRoutes = [
 			"iOS or Android version",
 		],
 	},
+	{
+		app: "Traffic Rules",
+		slug: "traffic-rules",
+		privacyTopics: [
+			"Traffic Rules Privacy Policy",
+			"Ukrainian traffic rules",
+			"road signs",
+			"road markings",
+			"traffic controller signals",
+			"No personal data collection",
+		],
+		supportTopics: [
+			"Traffic Rules Support",
+			"Ukrainian traffic rules",
+			"road signs",
+			"road markings",
+			"traffic controller signals",
+			"device model",
+			"iOS or Android version",
+		],
+	},
 ];
 
-test("Homa and IdioMate app pages are React routes instead of markdown loaders", async () => {
+test("app pages are React routes instead of markdown loaders", async () => {
 	for (const { slug } of appRoutes) {
 		for (const route of ["", "/privacy-policy", "/support"]) {
 			const filePath = `src/app/${slug}${route}/page.tsx`;
@@ -72,7 +93,7 @@ test("Homa and IdioMate app-specific markdown sources are removed", async () => 
 	}
 });
 
-test("Homa and IdioMate privacy pages include metadata and required topics", async () => {
+test("app privacy pages include metadata and required topics", async () => {
 	for (const { app, slug, privacyTopics } of appRoutes) {
 		const page = await readFile(`src/app/${slug}/privacy-policy/page.tsx`, "utf8");
 		const normalizedPage = page.replace(/\s+/g, " ");
@@ -92,7 +113,7 @@ test("Homa and IdioMate privacy pages include metadata and required topics", asy
 	}
 });
 
-test("Homa and IdioMate support pages include metadata and App Store support topics", async () => {
+test("app support pages include metadata and App Store support topics", async () => {
 	for (const { app, slug, supportTopics } of appRoutes) {
 		const page = await readFile(`src/app/${slug}/support/page.tsx`, "utf8");
 		const normalizedPage = page.replace(/\s+/g, " ");
@@ -141,6 +162,42 @@ test("Homa pages match the current offline-first maintenance app", async () => {
 			lowerCombinedPages.includes(inaccurateText.toLowerCase()),
 			false,
 			`Homa pages should not contain inaccurate text: ${inaccurateText}`,
+		);
+	}
+});
+
+test("Traffic Rules pages match the current local reference app", async () => {
+	const privacyPage = await readFile("src/app/traffic-rules/privacy-policy/page.tsx", "utf8");
+	const supportPage = await readFile("src/app/traffic-rules/support/page.tsx", "utf8");
+	const combinedPages = `${privacyPage} ${supportPage}`.replace(/\s+/g, " ");
+	const lowerCombinedPages = combinedPages.toLowerCase();
+
+	for (const requiredText of [
+		"iOS and Android",
+		"ПДР 2026",
+		"bundled reference content",
+		"Ukrainian traffic rules",
+		"road signs",
+		"road markings",
+		"traffic controller signals",
+		"local search",
+		"No accounts",
+		"No analytics",
+		"No personal data collection",
+	]) {
+		assert.ok(combinedPages.includes(requiredText), `Traffic Rules pages missing ${requiredText}`);
+	}
+
+	for (const inaccurateText of [
+		"cloud sync",
+		"location-based",
+		"personalized recommendations",
+		"ad personalization",
+	]) {
+		assert.equal(
+			lowerCombinedPages.includes(inaccurateText.toLowerCase()),
+			false,
+			`Traffic Rules pages should not describe ${inaccurateText} as available`,
 		);
 	}
 });
