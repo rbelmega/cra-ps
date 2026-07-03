@@ -1,8 +1,5 @@
-import { MarkdownPage } from "../../components/markdown-page/MarkdownPage";
-import { loadPublicText } from "../../domain/public-content";
+import { redirect } from "next/navigation";
 
-export default async function Page() {
-	const data = await loadPublicText("privacy_policy_idiomate.md");
-
-	return <MarkdownPage content={data} />;
+export default function Page() {
+	redirect("/idiomate/privacy-policy");
 }
