@@ -76,3 +76,38 @@ test("UVLY privacy policy describes provider routing without exposing switch sta
 	assert.equal(page.includes("feature flag"), false);
 	assert.equal(page.includes("3 states"), false);
 });
+
+test("UVLY support page is available as a Next.js route", async () => {
+	assert.equal(await pathExists("src/app/uvly/support/page.tsx"), true);
+});
+
+test("UVLY support page includes route metadata", async () => {
+	const page = await readFile("src/app/uvly/support/page.tsx", "utf8");
+
+	assert.ok(page.includes("export const metadata"));
+	assert.ok(page.includes("UVly Support"));
+	assert.ok(page.includes("https://www.belmeha.com/uvly/support/"));
+	assert.ok(page.includes("export const viewport"));
+});
+
+test("UVLY support page includes App Store support topics", async () => {
+	const page = await readFile("src/app/uvly/support/page.tsx", "utf8");
+	const normalizedPage = page.replace(/\s+/g, " ");
+
+	for (const requiredText of [
+		"Contact support",
+		"mailto:belmega31@gmail.com",
+		"Privacy Policy",
+		"/uvly/privacy-policy/",
+		"Location Services",
+		"widgets",
+		"device model",
+		"iOS version",
+		"forecast",
+	]) {
+		assert.ok(
+			normalizedPage.includes(requiredText),
+			`Missing required support topic: ${requiredText}`,
+		);
+	}
+});
