@@ -21,8 +21,15 @@ const appRoutes = [
 	{
 		app: "IdioMate",
 		slug: "idiomate",
-		privacyTopics: ["IdioMate Privacy Policy", "learning", "progress", "No accounts"],
-		supportTopics: ["IdioMate Support", "learning", "practice", "device model", "iOS version"],
+		privacyTopics: ["IdioMate Privacy Policy", "English idioms", "Ukrainian proverbs", "Favorites"],
+		supportTopics: [
+			"IdioMate Support",
+			"English idioms",
+			"Ukrainian translations",
+			"Favorites",
+			"device model",
+			"iOS or Android version",
+		],
 	},
 ];
 
@@ -83,5 +90,46 @@ test("Homa and IdioMate support pages include metadata and App Store support top
 		for (const topic of [...supportTopics, "Contact support", "mailto:belmega31@gmail.com"]) {
 			assert.ok(normalizedPage.includes(topic), `${app} support page missing ${topic}`);
 		}
+	}
+});
+
+test("IdioMate pages match idiom learning product positioning", async () => {
+	const privacyPage = await readFile("src/app/idiomate/privacy-policy/page.tsx", "utf8");
+	const supportPage = await readFile("src/app/idiomate/support/page.tsx", "utf8");
+	const combinedPages = `${privacyPage} ${supportPage}`.replace(/\s+/g, " ");
+
+	for (const requiredText of [
+		"iOS and Android",
+		"Ukrainian-speaking users",
+		"English idioms",
+		"sayings",
+		"common expressions",
+		"Ukrainian translations",
+		"usage examples",
+		"Favorites",
+		"Ukrainian proverbs",
+	]) {
+		assert.ok(combinedPages.includes(requiredText), `IdioMate pages missing ${requiredText}`);
+	}
+
+	for (const unavailableFeature of [
+		"lessons",
+		"quizzes",
+		"flashcards",
+		"curated collections",
+		"recently viewed",
+		"practice",
+		"progress",
+		"search",
+		"daily idioms",
+		"categories",
+		"settings",
+		"preferences",
+	]) {
+		assert.equal(
+			combinedPages.toLowerCase().includes(unavailableFeature),
+			false,
+			`IdioMate pages should not describe ${unavailableFeature} as available`,
+		);
 	}
 });

@@ -8,14 +8,15 @@ const contactMailto = "mailto:belmega31@gmail.com";
 
 export const metadata: Metadata = {
 	title: "IdioMate Privacy Policy",
-	description: "Privacy Policy for IdioMate, an iOS language learning app.",
+	description:
+		"Privacy Policy for IdioMate, an iOS and Android app for English idioms and Ukrainian proverbs.",
 	alternates: {
 		canonical: canonicalUrl,
 	},
 	openGraph: {
 		type: "website",
 		title: "IdioMate Privacy Policy",
-		description: "How IdioMate handles local learning data, progress, settings, and support.",
+		description: "How IdioMate handles Favorites, local app data, and support requests.",
 		url: canonicalUrl,
 	},
 };
@@ -34,7 +35,7 @@ const summaryItems = [
 	},
 	{
 		title: "Data stored on your device",
-		body: "Learning progress, practice activity, and preferences are stored locally.",
+		body: "Favorites are stored locally on your device.",
 	},
 	{
 		title: "No sale of data",
@@ -65,9 +66,8 @@ export default function IdiomatePrivacyPolicyPage() {
 				<p className={styles.appName}>IdioMate</p>
 				<h1>Privacy Policy</h1>
 				<p className={styles.lede}>
-					IdioMate is an iOS language learning and practice app. It is designed to keep learning
-					progress and app preferences on your device unless a future version clearly says
-					otherwise.
+					IdioMate is an iOS and Android app that helps Ukrainian-speaking users discover,
+					understand, and learn English idioms, sayings, common expressions, and Ukrainian proverbs.
 				</p>
 				<dl className={styles.policyMeta}>
 					<div>
@@ -102,8 +102,10 @@ export default function IdiomatePrivacyPolicyPage() {
 				<section id="what-idiomate-processes">
 					<h2>What IdioMate processes</h2>
 					<p>
-						IdioMate may store app data you create or generate while using the app, such as learning
-						progress, practice activity, completed items, favorites, settings, and preferences.
+						IdioMate lets you browse English idioms, sayings, common expressions, and Ukrainian
+						proverbs, view Ukrainian translations for English idioms, read usage examples, and save
+						or remove items in Favorites. Favorites are stored on your device so they remain
+						available across app launches.
 					</p>
 					<p>
 						IdioMate does not require you to provide your name, email address, phone number,
@@ -115,8 +117,9 @@ export default function IdiomatePrivacyPolicyPage() {
 				<section id="how-data-is-used">
 					<h2>How data is used</h2>
 					<p>
-						IdioMate uses local learning data to show progress, keep practice state, remember
-						preferences, and make the language learning experience work across app launches.
+						IdioMate uses local app data to remember your Favorites and show favorite status on
+						idiom and proverb cards. This helps you save useful expressions and return to them later
+						without creating an account.
 					</p>
 					<p>
 						Data stored on your device is not sent to a developer-operated IdioMate account service,
@@ -128,9 +131,9 @@ export default function IdiomatePrivacyPolicyPage() {
 					<h2>Third-party services</h2>
 					<p>
 						The current policy page does not identify active advertising or analytics SDKs for
-						IdioMate. If a future version adds diagnostics, analytics, cloud sync, or another
-						third-party provider, this Privacy Policy will be updated to describe that provider and
-						the data involved.
+						IdioMate. If a future version adds diagnostics, analytics, or another third-party
+						provider, this Privacy Policy will be updated to describe that provider and the data
+						involved.
 					</p>
 				</section>
 

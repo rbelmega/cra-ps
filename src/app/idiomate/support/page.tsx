@@ -8,14 +8,16 @@ const supportMailto = "mailto:belmega31@gmail.com?subject=IdioMate%20Support";
 
 export const metadata: Metadata = {
 	title: "IdioMate Support",
-	description: "Support page for IdioMate, an iOS language learning app.",
+	description:
+		"Support page for IdioMate, an iOS and Android app for English idioms and Ukrainian proverbs.",
 	alternates: {
 		canonical: canonicalUrl,
 	},
 	openGraph: {
 		type: "website",
 		title: "IdioMate Support",
-		description: "Get help with IdioMate learning, practice, progress, and privacy.",
+		description:
+			"Get help with IdioMate idiom and proverb browsing, translations, usage examples, Favorites, and privacy.",
 		url: canonicalUrl,
 	},
 };
@@ -34,11 +36,11 @@ const summaryItems = [
 	},
 	{
 		title: "Learning help",
-		body: "Get help with lessons, practice state, progress, favorites, and preferences.",
+		body: "Get help with idiom and proverb browsing, Ukrainian translations, usage examples, and Favorites.",
 	},
 	{
 		title: "Local app data",
-		body: "IdioMate support can help diagnose issues with local learning progress.",
+		body: "IdioMate support can help diagnose issues with Favorites saved on your device.",
 	},
 	{
 		title: "Privacy details",
@@ -64,7 +66,8 @@ export default function IdiomateSupportPage() {
 				<p className={styles.appName}>IdioMate</p>
 				<h1>Support</h1>
 				<p className={styles.lede}>
-					Help for IdioMate, an iOS language learning app for practice, progress, and preferences.
+					Help for IdioMate, an iOS and Android app for Ukrainian-speaking users learning English
+					idioms, sayings, common expressions, and Ukrainian proverbs.
 				</p>
 				<dl className={styles.policyMeta}>
 					<div>
@@ -109,24 +112,24 @@ export default function IdiomateSupportPage() {
 				<section id="before-contacting">
 					<h2>Before contacting</h2>
 					<p>
-						Include your device model, iOS version, IdioMate app version, the approximate time the
-						issue happened, and whether the issue affects learning content, practice, progress,
-						favorites, settings, or local data.
+						Include your device model, iOS or Android version, IdioMate app version, the approximate
+						time the issue happened, and whether the issue affects English idioms, Ukrainian
+						translations, Ukrainian proverbs, usage examples, Favorites, or local app data.
 					</p>
 				</section>
 
 				<section id="troubleshooting">
 					<h2>Troubleshooting</h2>
 					<ul>
-						<li>Restart IdioMate if practice progress does not appear immediately.</li>
+						<li>Restart IdioMate if Favorites do not appear.</li>
 						<li>Check that your device has enough free storage for local app data.</li>
 						<li>
-							If learning or practice state looks incorrect, include the affected screen and steps
-							to reproduce the issue in your email.
+							If an idiom, proverb, translation, or usage example looks incorrect, include the
+							affected screen and steps to reproduce the issue in your email.
 						</li>
 						<li>
-							If reinstalling the app, remember that locally stored progress may be removed when the
-							app is deleted.
+							If reinstalling the app, remember that locally stored Favorites may be removed when
+							the app is deleted.
 						</li>
 					</ul>
 				</section>
@@ -135,7 +138,7 @@ export default function IdiomateSupportPage() {
 					<h2>Privacy</h2>
 					<p>
 						IdioMate support emails are used only to understand and respond to your request. For
-						details about local learning data, review the{" "}
+						details about local idiom learning data, review the{" "}
 						<a href="/idiomate/privacy-policy/">Privacy Policy</a>.
 					</p>
 				</section>
