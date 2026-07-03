@@ -64,8 +64,8 @@ export default function UvlySupportPage() {
 				<p className={styles.appName}>UVly</p>
 				<h1>Support</h1>
 				<p className={styles.lede}>
-					Help for UVly, an iOS app for current UV index, hourly UV forecast, daily
-					maximum UV, and home screen widgets.
+					Help for UVly, an iOS app for current UV index, hourly UV forecast, daily maximum UV, and
+					home screen widgets.
 				</p>
 				<dl className={styles.policyMeta}>
 					<div>
@@ -102,18 +102,17 @@ export default function UvlySupportPage() {
 				<section id="contact-support">
 					<h2>Contact support</h2>
 					<p>
-						For UVly support, email{" "}
-						<a href={supportMailto}>{supportEmail}</a>. Use this address for app questions,
-						issue reports, App Store support requests, and privacy questions.
+						For UVly support, email <a href={supportMailto}>{supportEmail}</a>. Use this address for
+						app questions, issue reports, App Store support requests, and privacy questions.
 					</p>
 				</section>
 
 				<section id="before-contacting">
 					<h2>Before contacting</h2>
 					<p>
-						To help reproduce a problem, include your device model, iOS version, UVly app
-						version, the approximate time the issue happened, and whether the issue affects
-						forecast data, widgets, or location permission.
+						To help reproduce a problem, include your device model, iOS version, UVly app version,
+						the approximate time the issue happened, and whether the issue affects forecast data,
+						widgets, or location permission.
 					</p>
 				</section>
 
@@ -121,13 +120,13 @@ export default function UvlySupportPage() {
 					<h2>Troubleshooting</h2>
 					<ul>
 						<li>
-							Check iOS Settings &gt; Privacy &amp; Security &gt; Location Services &gt; UVly
-							if the forecast is not local to your area.
+							Check iOS Settings &gt; Privacy &amp; Security &gt; Location Services &gt; UVly if the
+							forecast is not local to your area.
 						</li>
 						<li>Open UVly on a stable network and refresh the forecast.</li>
 						<li>
-							If widgets look stale, open the app once, then remove and add the widget again if
-							iOS does not refresh it.
+							If widgets look stale, open the app once, then remove and add the widget again if iOS
+							does not refresh it.
 						</li>
 						<li>
 							If forecast data looks unavailable, try again later because weather providers may
@@ -139,10 +138,9 @@ export default function UvlySupportPage() {
 				<section id="privacy">
 					<h2>Privacy</h2>
 					<p>
-						UVly support emails are used only to understand and respond to your request. For
-						details about location, forecast requests, WeatherAPI, Open-Meteo, Cloudflare, and
-						local widget cache data, review the{" "}
-						<a href="/uvly/privacy-policy/">Privacy Policy</a>.
+						UVly support emails are used only to understand and respond to your request. For details
+						about location, forecast requests, WeatherAPI, Open-Meteo, Cloudflare, and local widget
+						cache data, review the <a href="/uvly/privacy-policy/">Privacy Policy</a>.
 					</p>
 				</section>
 			</main>

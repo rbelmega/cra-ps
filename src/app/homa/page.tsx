@@ -1,8 +1,5 @@
-import { MarkdownPage } from "../../components/markdown-page/MarkdownPage";
-import { loadPublicText } from "../../domain/public-content";
+import { redirect } from "next/navigation";
 
-export default async function Page() {
-	const data = await loadPublicText("privacy_policy_homa.md");
-
-	return <MarkdownPage content={data} />;
+export default function Page() {
+	redirect("/homa/privacy-policy");
 }
