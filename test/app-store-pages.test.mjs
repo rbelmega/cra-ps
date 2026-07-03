@@ -15,8 +15,23 @@ const appRoutes = [
 	{
 		app: "Homa",
 		slug: "homa",
-		privacyTopics: ["Homa Privacy Policy", "tasks", "reminders", "zones", "No analytics"],
-		supportTopics: ["Homa Support", "tasks", "reminders", "device model", "iOS version"],
+		privacyTopics: [
+			"Homa Privacy Policy",
+			"tasks",
+			"reminders",
+			"zones",
+			"SQLite",
+			"photo attachments",
+			"No analytics",
+		],
+		supportTopics: [
+			"Homa Support",
+			"tasks",
+			"reminders",
+			"photo attachments",
+			"device model",
+			"iOS or Android version",
+		],
 	},
 	{
 		app: "IdioMate",
@@ -90,6 +105,43 @@ test("Homa and IdioMate support pages include metadata and App Store support top
 		for (const topic of [...supportTopics, "Contact support", "mailto:belmega31@gmail.com"]) {
 			assert.ok(normalizedPage.includes(topic), `${app} support page missing ${topic}`);
 		}
+	}
+});
+
+test("Homa pages match the current offline-first maintenance app", async () => {
+	const privacyPage = await readFile("src/app/homa/privacy-policy/page.tsx", "utf8");
+	const supportPage = await readFile("src/app/homa/support/page.tsx", "utf8");
+	const combinedPages = `${privacyPage} ${supportPage}`.replace(/\s+/g, " ");
+	const lowerCombinedPages = combinedPages.toLowerCase();
+
+	for (const requiredText of [
+		"iOS and Android",
+		"offline-first",
+		"SQLite",
+		"tasks",
+		"reminders",
+		"zones",
+		"devices",
+		"task history",
+		"photo attachments",
+		"photo library",
+		"camera",
+		"language",
+	]) {
+		assert.ok(combinedPages.includes(requiredText), `Homa pages missing ${requiredText}`);
+	}
+
+	for (const inaccurateText of [
+		"iOS home task and reminder app",
+		"iOS app for home tasks",
+		"iOS version",
+		"does not collect names, usernames, email addresses, phone numbers, location data, contacts, photos, media files",
+	]) {
+		assert.equal(
+			lowerCombinedPages.includes(inaccurateText.toLowerCase()),
+			false,
+			`Homa pages should not contain inaccurate text: ${inaccurateText}`,
+		);
 	}
 });
 

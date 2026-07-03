@@ -8,14 +8,15 @@ const supportMailto = "mailto:belmega31@gmail.com?subject=Homa%20Support";
 
 export const metadata: Metadata = {
 	title: "Homa Support",
-	description: "Support page for Homa, an iOS home task and reminder app.",
+	description: "Support page for Homa, an iOS and Android offline-first maintenance app.",
 	alternates: {
 		canonical: canonicalUrl,
 	},
 	openGraph: {
 		type: "website",
 		title: "Homa Support",
-		description: "Get help with Homa tasks, reminders, zones, equipment, and local app data.",
+		description:
+			"Get help with Homa tasks, reminders, zones, devices, photo attachments, and local app data.",
 		url: canonicalUrl,
 	},
 };
@@ -37,8 +38,12 @@ const summaryItems = [
 		body: "Get help with scheduling, notifications, recurring work, and task history.",
 	},
 	{
-		title: "Zones and equipment",
-		body: "Report issues with rooms, home areas, equipment details, or notes.",
+		title: "Zones and devices",
+		body: "Report issues with rooms, home areas, device details, or notes.",
+	},
+	{
+		title: "Photo attachments",
+		body: "Get help with photo library or camera access for maintenance log photos.",
 	},
 	{
 		title: "Privacy details",
@@ -64,8 +69,8 @@ export default function HomaSupportPage() {
 				<p className={styles.appName}>Homa</p>
 				<h1>Support</h1>
 				<p className={styles.lede}>
-					Help for Homa, an iOS app for home tasks, reminders, zones, equipment, notes, and local
-					task history.
+					Help for Homa, an iOS and Android offline-first app for apartment maintenance tasks,
+					reminders, zones, devices, notes, photo attachments, and local task history.
 				</p>
 				<dl className={styles.policyMeta}>
 					<div>
@@ -110,24 +115,30 @@ export default function HomaSupportPage() {
 				<section id="before-contacting">
 					<h2>Before contacting</h2>
 					<p>
-						Include your device model, iOS version, Homa app version, the approximate time the issue
-						happened, and whether the issue affects tasks, reminders, zones, equipment,
-						notifications, or local data.
+						Include your device model, iOS or Android version, Homa app version, the approximate
+						time the issue happened, and whether the issue affects tasks, reminders, zones, devices,
+						notifications, photo attachments, language, SQLite data, or local app data.
 					</p>
 				</section>
 
 				<section id="troubleshooting">
 					<h2>Troubleshooting</h2>
 					<ul>
-						<li>Check iOS Settings &gt; Notifications &gt; Homa if reminders do not appear.</li>
+						<li>
+							Check notification permissions in iOS or Android Settings if reminders do not appear.
+						</li>
 						<li>Open Homa and confirm the task date, time, and recurrence settings.</li>
+						<li>
+							Check photo library or camera permissions if photo attachments cannot be added to a
+							maintenance log.
+						</li>
 						<li>
 							If local data looks out of date, close and reopen the app before editing the same task
 							or zone again.
 						</li>
 						<li>
-							If reinstalling the app, remember that Homa data is stored locally and may be removed
-							when the app is deleted.
+							If reinstalling the app, remember that Homa data, local SQLite records, and photo
+							attachments may be removed when the app is deleted.
 						</li>
 					</ul>
 				</section>
