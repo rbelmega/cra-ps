@@ -202,6 +202,98 @@ test("Traffic Rules pages match the current local reference app", async () => {
 	}
 });
 
+test("Traffic Rules root route is a Ukrainian marketing page with App Store destinations", async () => {
+	const page = await readFile("src/app/traffic-rules/page.tsx", "utf8");
+	const stylesheet = await readFile("src/app/traffic-rules/page.module.scss", "utf8");
+	const normalizedPage = page.replace(/\s+/g, " ");
+
+	assert.equal(page.includes("redirect("), false, "Traffic Rules root should not redirect");
+	assert.equal(
+		page.includes("roadGlow"),
+		false,
+		"Traffic Rules hero should not render a road decoration",
+	);
+	assert.ok(page.includes("https://www.belmeha.com/traffic-rules/"));
+	assert.ok(page.includes("https://apps.apple.com/ua/app/id6758890398"));
+	assert.ok(page.includes('href="#privacy"'));
+	assert.ok(page.includes('href="#support"'));
+	assert.ok(page.includes('id="privacy"'));
+	assert.ok(page.includes('id="support"'));
+	assert.equal(
+		page.match(/src="\/traffic-rules\/app-store-badge-uk\.svg"/g)?.length,
+		2,
+		"Traffic Rules marketing page should use the official Ukrainian App Store badge for both download links",
+	);
+	assert.equal(
+		page.includes("styles.appleMark"),
+		false,
+		"Traffic Rules marketing page should not render the custom App Store mark",
+	);
+	const appStoreLinks =
+		page.match(/<a(?=[^>]*className={styles\.appStoreLink})[^>]*>[\s\S]*?<\/a>/g) ?? [];
+	assert.equal(
+		appStoreLinks.length,
+		2,
+		"Traffic Rules marketing page should render two badge links",
+	);
+	for (const appStoreLink of appStoreLinks) {
+		assert.equal(
+			appStoreLink.includes("data-reveal"),
+			false,
+			"Official App Store badge links should not be animated",
+		);
+	}
+	assert.equal(
+		stylesheet.includes("\t.heroActions,\n\t.trustList"),
+		false,
+		"The hero animation should not animate the official App Store badge",
+	);
+	assert.ok(
+		normalizedPage.includes(
+			"Apple, логотип Apple та iPhone є торговельними марками Apple Inc. App Store є знаком обслуговування Apple Inc.",
+		),
+		"Traffic Rules marketing page should include Apple's international credit line",
+	);
+
+	for (const requiredText of [
+		"ПДР України",
+		"Правила завжди під рукою",
+		"Дорожні знаки",
+		"Дорожня розмітка",
+		"Сигнали регулювальника",
+		"Локальний пошук",
+		"Дані не збираються",
+		"Без реклами й аналітики",
+		"Видалення даних",
+		"Написати в підтримку",
+		"belmega31@gmail.com",
+	]) {
+		assert.ok(
+			normalizedPage.includes(requiredText),
+			`Traffic Rules marketing page missing ${requiredText}`,
+		);
+	}
+
+	for (const assetPath of [
+		"public/traffic-rules/app-icon.webp",
+		"public/traffic-rules/home.webp",
+		"public/traffic-rules/signs.webp",
+		"public/traffic-rules/search.webp",
+		"public/traffic-rules/signals.webp",
+		"public/traffic-rules/social-preview.webp",
+		"public/traffic-rules/app-store-badge-uk.svg",
+	]) {
+		assert.equal(await pathExists(assetPath), true, `${assetPath} should exist`);
+	}
+
+	for (const legacyRoute of [
+		"src/app/traffic-rules/privacy-policy/page.tsx",
+		"src/app/traffic-rules/support/page.tsx",
+	]) {
+		assert.equal(await pathExists(legacyRoute), true, `${legacyRoute} should remain available`);
+	}
+});
+
 test("IdioMate pages match idiom learning product positioning", async () => {
 	const privacyPage = await readFile("src/app/idiomate/privacy-policy/page.tsx", "utf8");
 	const supportPage = await readFile("src/app/idiomate/support/page.tsx", "utf8");

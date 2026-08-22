@@ -1,7 +1,12 @@
 {
 	"$schema": "https://biomejs.dev/schemas/2.5.2/schema.json",
 	"files": {
-		"includes": ["**", "!**/node_modules", "!**/.next"]
+		"includes": [
+			"**",
+			"!**/node_modules",
+			"!**/.next",
+			"!public/traffic-rules/app-store-badge-uk.svg"
+		]
 	},
 	"formatter": {
 		"enabled": true,
