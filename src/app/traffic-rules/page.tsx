@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 
+import appIcon from "../../../public/traffic-rules/app-icon.webp";
+
 import { MotionEffects } from "./MotionEffects";
 import styles from "./page.module.scss";
 
 const canonicalUrl = "https://www.belmeha.com/traffic-rules/";
 const appStoreUrl = "https://apps.apple.com/ua/app/id6758890398";
+const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.belmeha.pdr";
 const socialPreviewUrl = `${canonicalUrl}social-preview.webp`;
 const supportEmail = "belmega31@gmail.com";
 const supportMailto = "mailto:belmega31@gmail.com?subject=ПДР%20України%20—%20Support";
@@ -67,7 +70,7 @@ const showcaseItems = [
 export const metadata: Metadata = {
 	title: "ПДР України — правила, знаки й розмітка",
 	description:
-		"ПДР України, дорожні знаки, розмітка, сигнали регулювальника та локальний пошук в одному застосунку.",
+		"ПДР України, дорожні знаки, розмітка, сигнали регулювальника та локальний пошук в одному застосунку для iOS та Android.",
 	alternates: {
 		canonical: canonicalUrl,
 	},
@@ -75,7 +78,8 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "uk_UA",
 		title: "ПДР України — правила завжди під рукою",
-		description: "Зручний довідник із ПДР, дорожніх знаків, розмітки та сигналів регулювальника.",
+		description:
+			"Зручний довідник із ПДР, дорожніх знаків, розмітки та сигналів регулювальника для iOS та Android.",
 		url: canonicalUrl,
 		images: [
 			{
@@ -89,7 +93,8 @@ export const metadata: Metadata = {
 	twitter: {
 		card: "summary_large_image",
 		title: "ПДР України — правила завжди під рукою",
-		description: "ПДР, знаки, розмітка, сигнали регулювальника та пошук в одному застосунку.",
+		description:
+			"ПДР, знаки, розмітка, сигнали регулювальника та пошук в одному застосунку для iOS та Android.",
 		images: [socialPreviewUrl],
 	},
 };
@@ -113,7 +118,7 @@ export default function TrafficRulesMarketingPage() {
 				<a className={styles.brand} href="/traffic-rules/" aria-label="ПДР України — головна">
 					<Image
 						className={styles.brandIcon}
-						src="/traffic-rules/app-icon.webp"
+						src={appIcon}
 						alt=""
 						width={48}
 						height={48}
@@ -141,7 +146,7 @@ export default function TrafficRulesMarketingPage() {
 						</h1>
 						<p className={styles.heroText}>
 							ПДР, дорожні знаки, розмітка й сигнали регулювальника в одному зручному застосунку для
-							iPhone.
+							iOS та Android.
 						</p>
 
 						<div className={styles.heroActions}>
@@ -157,6 +162,21 @@ export default function TrafficRulesMarketingPage() {
 									alt="Завантажити в App Store"
 									width={121}
 									height={41}
+									unoptimized
+								/>
+							</a>
+							<a
+								className={styles.googlePlayLink}
+								href={googlePlayUrl}
+								target="_blank"
+								rel="noreferrer"
+							>
+								<Image
+									className={styles.googlePlayBadge}
+									src="/traffic-rules/google-play-badge-uk.svg"
+									alt="Завантажити в Google Play"
+									width={239}
+									height={71}
 									unoptimized
 								/>
 							</a>
@@ -372,28 +392,38 @@ export default function TrafficRulesMarketingPage() {
 				</section>
 
 				<section className={styles.closingSection}>
-					<Image
-						src="/traffic-rules/app-icon.webp"
-						alt=""
-						width={96}
-						height={96}
-						data-reveal
-						data-reveal-order="1"
-					/>
+					<Image src={appIcon} alt="" width={96} height={96} data-reveal data-reveal-order="1" />
 					<div data-reveal data-reveal-order="2">
 						<p className={styles.eyebrow}>ПДР України</p>
 						<h2>Правила, знаки й розмітка — коли вони потрібні.</h2>
 					</div>
-					<a className={styles.appStoreLink} href={appStoreUrl} target="_blank" rel="noreferrer">
-						<Image
-							className={styles.appStoreBadge}
-							src="/traffic-rules/app-store-badge-uk.svg"
-							alt="Завантажити в App Store"
-							width={121}
-							height={41}
-							unoptimized
-						/>
-					</a>
+					<div className={styles.storeActions}>
+						<a className={styles.appStoreLink} href={appStoreUrl} target="_blank" rel="noreferrer">
+							<Image
+								className={styles.appStoreBadge}
+								src="/traffic-rules/app-store-badge-uk.svg"
+								alt="Завантажити в App Store"
+								width={121}
+								height={41}
+								unoptimized
+							/>
+						</a>
+						<a
+							className={styles.googlePlayLink}
+							href={googlePlayUrl}
+							target="_blank"
+							rel="noreferrer"
+						>
+							<Image
+								className={styles.googlePlayBadge}
+								src="/traffic-rules/google-play-badge-uk.svg"
+								alt="Завантажити в Google Play"
+								width={239}
+								height={71}
+								unoptimized
+							/>
+						</a>
+					</div>
 				</section>
 			</main>
 
@@ -404,10 +434,16 @@ export default function TrafficRulesMarketingPage() {
 						Apple, логотип Apple та iPhone є торговельними марками Apple Inc. App Store є знаком
 						обслуговування Apple Inc.
 					</p>
+					<p className={styles.appleCredit}>
+						Google Play та логотип Google Play є торговельними марками Google LLC.
+					</p>
 				</div>
 				<div className={styles.footerLinks}>
 					<a href={appStoreUrl} target="_blank" rel="noreferrer">
 						App Store
+					</a>
+					<a href={googlePlayUrl} target="_blank" rel="noreferrer">
+						Google Play
 					</a>
 					<a href="#privacy">Privacy Policy</a>
 					<a href="#support">Support</a>
