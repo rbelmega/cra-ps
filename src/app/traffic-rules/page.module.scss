@@ -159,11 +159,20 @@
 
 .heroActions {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: 18px;
 }
 
-.appStoreLink {
+.storeActions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 18px;
+}
+
+.appStoreLink,
+.googlePlayLink {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -175,6 +184,12 @@
 	display: block;
 	width: 190px;
 	height: auto;
+}
+
+.googlePlayBadge {
+	display: block;
+	width: auto;
+	height: 65px;
 }
 
 .secondaryButton {
@@ -328,18 +343,7 @@
 .showcaseSection {
 	position: relative;
 
-	&::before {
-		position: absolute;
-		top: 90px;
-		right: -25vw;
-		z-index: 0;
-		width: 58vw;
-		height: 58vw;
-		border-radius: 50%;
-		background: radial-gradient(circle, rgb(58 181 217 / 0.2), transparent 66%);
-		content: "";
-		pointer-events: none;
-	}
+
 
 	> * {
 		position: relative;
@@ -890,7 +894,7 @@
 		grid-template-columns: auto 1fr;
 		padding: 90px 0;
 
-		.appStoreLink {
+		.storeActions {
 			grid-column: 1 / -1;
 			justify-self: start;
 		}
@@ -977,11 +981,11 @@
 		text-align: center;
 
 		> img,
-		.appStoreLink {
+		.storeActions {
 			justify-self: center;
 		}
 
-		.appStoreLink {
+		.storeActions {
 			grid-column: auto;
 		}
 	}
