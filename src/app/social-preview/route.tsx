@@ -22,7 +22,7 @@ export async function GET() {
 			<div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
 				<div style={{ color: "#cfd79a", fontSize: 88 }}>Front-end Engineer</div>
 				<div style={{ color: "#c4c4c4", fontSize: 30 }}>
-					Dashboards, enterprise software &amp; design systems.
+					Frontend engineering, web applications &amp; design systems.
 				</div>
 			</div>
 			<div
