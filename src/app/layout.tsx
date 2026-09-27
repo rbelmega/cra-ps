@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
 
+import { SITE_URL } from "../domain/seo";
+
 import "../index.scss";
 
 interface RootLayoutProps {
@@ -10,6 +12,7 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
+	metadataBase: new URL(SITE_URL),
 	title: "Rostyslav Belmeha",
 	description: "Experienced Web Developer | Expertise in UI Frameworks and Business Intelligence",
 };

@@ -24,7 +24,7 @@ test("UVLY privacy policy includes route metadata", async () => {
 
 	assert.ok(page.includes("export const metadata"));
 	assert.ok(page.includes("UVly Privacy Policy"));
-	assert.ok(page.includes("https://www.belmeha.com/uvly/privacy-policy/"));
+	assert.ok(page.includes("https://www.belmeha.com/uvly/privacy-policy"));
 	assert.ok(page.includes("export const viewport"));
 });
 
@@ -86,7 +86,7 @@ test("UVLY support page includes route metadata", async () => {
 
 	assert.ok(page.includes("export const metadata"));
 	assert.ok(page.includes("UVly Support"));
-	assert.ok(page.includes("https://www.belmeha.com/uvly/support/"));
+	assert.ok(page.includes("https://www.belmeha.com/uvly/support"));
 	assert.ok(page.includes("export const viewport"));
 });
 
@@ -98,7 +98,7 @@ test("UVLY support page includes App Store support topics", async () => {
 		"Contact support",
 		"mailto:belmega31@gmail.com",
 		"Privacy Policy",
-		"/uvly/privacy-policy/",
+		"/uvly/privacy-policy",
 		"Location Services",
 		"widgets",
 		"device model",

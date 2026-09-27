@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import styles from "./Contacts.module.scss";
 import { getContacts } from "../../domain/contacts";
 
-const CONTACT_ORDER = ["LinkedIn", "GitHub", "Twitter"] as const;
+const CONTACT_ORDER = ["LinkedIn", "GitHub"] as const;
 
 const icons: Record<string, ReactNode> = {
 	linkedin: (
@@ -14,14 +14,6 @@ const icons: Record<string, ReactNode> = {
 			<path
 				fill="currentColor"
 				d="M10 9h2.7v1.6h.1c.4-.9 1.6-1.9 3.2-1.9 3.4 0 4 2.2 4 5.1v5.1h-2.8v-4.6c0-1.1 0-2.6-1.6-2.6-1.6 0-1.8 1.2-1.8 2.5v4.7H10z"
-			/>
-		</svg>
-	),
-	twitter: (
-		<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-			<path
-				fill="currentColor"
-				d="M21 5.5a6.6 6.6 0 01-1.9.5 3.3 3.3 0 001.5-1.8 6.6 6.6 0 01-2.1.8 3.3 3.3 0 00-5.7 3 9.3 9.3 0 01-6.8-3.4 3.3 3.3 0 001 4.4 3.3 3.3 0 01-1.5-.4v.1a3.3 3.3 0 002.6 3.2 3.3 3.3 0 01-1.5.1 3.3 3.3 0 003.1 2.3A6.7 6.7 0 013 17a9.4 9.4 0 005 1.5c6 0 9.3-5 9.3-9.3v-.4A6.6 6.6 0 0021 5.5z"
 			/>
 		</svg>
 	),
@@ -50,7 +42,9 @@ export function Contacts() {
 			{contacts.map((contact) => (
 				<li key={contact.name} className={styles.contactItem}>
 					<a
-						className={styles.contactLink}
+						className={[styles.contactLink, contact.name === "LinkedIn" ? styles.primary : ""].join(
+							" ",
+						)}
 						href={contact.link}
 						target="_blank"
 						rel="noreferrer noopener"

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import styles from "../privacy-policy/page.module.scss";
 
-const canonicalUrl = "https://www.belmeha.com/uvly/support/";
+const canonicalUrl = "https://www.belmeha.com/uvly/support";
 const supportEmail = "belmega31@gmail.com";
 const supportMailto = "mailto:belmega31@gmail.com?subject=UVly%20Support";
 

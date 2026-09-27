@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import styles from "../../app-store-page.module.scss";
 
-const canonicalUrl = "https://www.belmeha.com/traffic-rules/privacy-policy/";
+const canonicalUrl = "https://www.belmeha.com/traffic-rules/privacy-policy";
 const contactEmail = "belmega31@gmail.com";
 const contactMailto = "mailto:belmega31@gmail.com";
 

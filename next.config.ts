@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import posts from "./public/posts.json";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -40,6 +41,13 @@ const nextConfig: NextConfig = {
 				hostname: "abs.twimg.com",
 			},
 		],
+	},
+	async redirects() {
+		return posts.map((post) => ({
+			source: `/blog/${post.id}`,
+			destination: `/blog/${post.slug}`,
+			permanent: true,
+		}));
 	},
 	async headers() {
 		return [

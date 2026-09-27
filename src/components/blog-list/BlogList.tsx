@@ -16,14 +16,11 @@ export async function BlogList() {
 	return (
 		<div className={styles.blog}>
 			<div className={styles.postsGrid}>
-				{posts.map((post, index) => (
+				{posts.map((post) => (
 					<Link
 						key={post.file}
 						href={getPostHref(post)}
-						className={[
-							styles.postCard,
-							index === 0 ? styles.featuredCard : styles.secondaryCard,
-						].join(" ")}
+						className={styles.postCard}
 						aria-label={`Read ${post.name}`}
 					>
 						<div className={styles.postContent}>

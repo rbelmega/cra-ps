@@ -1,180 +1,79 @@
-.container {
-  display: grid;
-  gap: 24px;
-  min-width: 0;
+.container { display: grid; gap: 24px; min-width: 0; }
+.hero { display: grid; gap: 22px; min-width: 0; }
+.eyebrow {
+  margin: 0;
+  color: #c4c4c4;
+  font-size: 16px;
+  line-height: 1.4;
 }
-
-.hero {
-  display: grid;
-  gap: 16px;
-  min-width: 0;
-}
-
 .headline {
   margin: 0;
-  max-width: 12ch;
-  color: #ffffff;
+  max-width: 15ch;
+  color: #fff;
   font-family: var(--font-myriad-md), Arial, sans-serif;
-  font-size: 68px;
-  line-height: 0.95;
+  font-size: clamp(44px, 4.8vw, 64px);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
-
-.headlineAccent {
-  color: var(--accent, #cfd79a);
-  text-shadow: 0 0 18px rgba(207, 215, 154, 0.12);
-}
-
+.headlineAccent { color: var(--accent, #cfd79a); }
 .summary {
   margin: 0;
-  max-width: 30ch;
-  color: rgba(255, 255, 255, 0.78);
+  max-width: 40ch;
+  color: #c4c4c4;
   font-size: 21px;
   line-height: 1.5;
 }
-
-.highlights {
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.highlight {
-  display: grid;
-  grid-template-areas:
-    "value"
-    "label";
-  gap: 6px;
-  padding-top: 18px;
-  min-width: 0;
-}
-
-.highlightLabel {
-  grid-area: label;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.46);
-  font-size: 13px;
-  line-height: 1.35;
-  max-width: 18ch;
-}
-
+.techGrid { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.techBadge { color: #a8a8a8; font-size: 14px; line-height: 1.5; }
+.highlights { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
+.highlight { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
 .highlightValue {
-  grid-area: value;
+  order: -1;
   margin: 0;
-  color: rgba(255, 255, 255, 0.92);
+  color: #ededed;
   font-family: var(--font-myriad-md), Arial, sans-serif;
-  font-size: 24px;
-  line-height: 1.2;
+  font-size: 18px;
+}
+.highlightLabel { margin: 0; color: #a8a8a8; font-size: 15px; line-height: 1.5; }
+.description { display: grid; gap: 12px; max-width: 52ch; }
+.paragraph { margin: 0; color: #b0b0b0; font-size: 17px; line-height: 1.6; }
+.lead { color: #c4c4c4; }
+.secondary { color: #b0b0b0; }
+
+@media (max-width: 720px) {
+  .container { gap: 18px; }
+  .hero { gap: 18px; }
+  .headline { font-size: clamp(36px, 10vw, 48px); }
+  .summary { font-size: 18px; }
 }
 
-.techGrid {
+
+.certification {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  padding-top: 2px;
-}
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 470px;
+  padding: 16px 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ededed;
+  text-decoration: none;
 
-.techBadge {
-  display: inline-flex;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.56);
-  font-size: 14px;
-  line-height: 1.2;
-
-  &::after {
-    content: "·";
-    margin: 0 10px;
-    color: rgba(255, 255, 255, 0.22);
-  }
-
-  &:last-child::after {
-    display: none;
+  &:hover .certificationName { color: var(--accent, #cfd79a); }
+  &:focus-visible {
+    outline: 2px solid var(--accent, #cfd79a);
+    outline-offset: 6px;
+    border-radius: 2px;
   }
 }
-
-.description {
-  display: grid;
-  gap: 14px;
-  max-width: 52ch;
-}
-
-.paragraph {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.64);
+.certificationCopy { display: grid; gap: 6px; min-width: 0; }
+.certificationLabel { color: var(--accent, #cfd79a); font-size: 12px; line-height: 1.4; }
+.certificationName {
+  font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 17px;
-  line-height: 1.7;
+  line-height: 1.35;
 }
-
-.lead {
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 19px;
-  line-height: 1.66;
-}
-
-.secondary {
-  color: rgba(255, 255, 255, 0.54);
-}
-
-@media screen and (max-width: 1180px) {
-  .headline {
-    font-size: 60px;
-  }
-
-  .summary {
-    font-size: 19px;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  .headline {
-    max-width: 13ch;
-    font-size: 50px;
-  }
-
-  .highlights {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .highlight {
-    gap: 6px;
-    padding-top: 0;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .container {
-    gap: 18px;
-  }
-
-  .hero {
-    gap: 12px;
-  }
-
-  .headline {
-    font-size: 36px;
-    line-height: 1.02;
-    text-wrap: pretty;
-  }
-
-  .summary {
-    font-size: 18px;
-    line-height: 1.48;
-  }
-
-  .paragraph {
-    font-size: 16px;
-    line-height: 1.68;
-  }
-
-  .lead {
-    font-size: 17px;
-  }
-
-  .highlightValue {
-    font-size: 22px;
-  }
-}
+.certificationMeta { color: #a8a8a8; font-size: 13px; line-height: 1.5; }
+.certificationArrow { flex: 0 0 auto; color: #cfd79a; font-size: 22px; }

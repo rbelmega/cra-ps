@@ -6,10 +6,10 @@ import appIcon from "../../../public/traffic-rules/app-icon.webp";
 import { MotionEffects } from "./MotionEffects";
 import styles from "./page.module.scss";
 
-const canonicalUrl = "https://www.belmeha.com/traffic-rules/";
+const canonicalUrl = "https://www.belmeha.com/traffic-rules";
 const appStoreUrl = "https://apps.apple.com/ua/app/id6758890398";
 const googlePlayUrl = "https://play.google.com/store/apps/details?id=com.belmeha.pdr";
-const socialPreviewUrl = `${canonicalUrl}social-preview.webp`;
+const socialPreviewUrl = `${canonicalUrl}/social-preview.webp`;
 const supportEmail = "belmega31@gmail.com";
 const supportMailto = "mailto:belmega31@gmail.com?subject=ПДР%20України%20—%20Support";
 

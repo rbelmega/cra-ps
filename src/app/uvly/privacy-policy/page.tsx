@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 import styles from "./page.module.scss";
 
-const canonicalUrl = "https://www.belmeha.com/uvly/privacy-policy/";
+const canonicalUrl = "https://www.belmeha.com/uvly/privacy-policy";
 
 export const metadata: Metadata = {
 	title: "UVly Privacy Policy",

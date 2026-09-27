@@ -6,9 +6,10 @@ export function Header() {
 			<div className={styles.inner}>
 				<div className={styles.identity}>
 					<p className={styles.name}>Rostyslav Belmeha</p>
-					<p className={styles.role}>Front-end Engineer at SoftServe</p>
 				</div>
-				<p className={styles.meta}>Dashboard UI, enterprise systems, design systems</p>
+				<a className={styles.writingLink} href="#writing">
+					Writing <span aria-hidden="true">↗</span>
+				</a>
 			</div>
 		</header>
 	);

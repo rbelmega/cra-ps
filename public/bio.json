@@ -1,20 +1,12 @@
 {
-	"headline": "Interfaces that stay clear as products grow more complex.",
-	"summary": "I build dashboards, enterprise software, and design systems that make complex products feel calm, fast, and easy to trust.",
+	"headline": "Front-end Engineer",
+	"summary": "Frontend development for complex web applications and design systems, supported by AI-assisted workflows.",
 	"highlights": [
 		{
-			"label": "years building product UI",
-			"value": "11+"
-		},
-		{
-			"label": "dashboards and internal tools",
-			"value": "Enterprise"
-		},
-		{
-			"label": "consistency, interaction, performance",
-			"value": "Design systems"
+			"label": "building product interfaces",
+			"value": "11+ years"
 		}
 	],
-	"stack": ["React", "Next.js", "Angular", "Node.js"],
-	"bio": "I design and build product UI where information density, interaction detail, and performance shape the experience.\nThe goal is simple: keep complex software calm, coherent, and fast as teams and product scope grow."
+	"stack": ["React", "Next.js", "Angular", "Node.js", "NestJS"],
+	"bio": ""
 }

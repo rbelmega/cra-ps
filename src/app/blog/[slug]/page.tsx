@@ -1,17 +1,46 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, permanentRedirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import type { ComponentPropsWithoutRef } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
-import { getPostById, getPostBySlug, getPostHref, getPosts } from "../../../domain/blog";
+import { getPostBySlug, getPostHref, getPosts } from "../../../domain/blog";
 import { rewriteMarkdownHref } from "../../../domain/markdown-href";
 import { loadPublicText } from "../../../domain/public-content";
+import { absoluteUrl, AUTHOR_NAME, socialImage } from "../../../domain/seo";
 import styles from "./page.module.scss";
 
 type Params = Promise<{ slug: string }>;
 type MarkdownLinkProps = ComponentPropsWithoutRef<"a"> & { node?: unknown };
 type MarkdownTableProps = ComponentPropsWithoutRef<"table"> & { node?: unknown };
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+	const { slug } = await params;
+	const post = getPostBySlug(slug);
+	// Invalid slugs are handled by the page; legacy URLs redirect in next.config.ts.
+	if (!post) return {};
+	const title = `${post.name} | ${AUTHOR_NAME}`;
+	const description = post.excerpt ?? `${post.name} — an article by ${AUTHOR_NAME}.`;
+	const url = absoluteUrl(getPostHref(post));
+	return {
+		title,
+		description,
+		alternates: { canonical: url },
+		authors: [{ name: AUTHOR_NAME, url: absoluteUrl("/") }],
+		openGraph: {
+			type: "article",
+			title: post.name,
+			description,
+			url,
+			siteName: AUTHOR_NAME,
+			locale: "en_US",
+			authors: [absoluteUrl("/")],
+			images: [socialImage],
+		},
+		twitter: { card: "summary_large_image", title, description, images: [socialImage] },
+	};
+}
 
 export async function generateStaticParams() {
 	const posts = await getPosts();
@@ -23,15 +52,7 @@ export default async function Blog({ params }: { params: Params }) {
 	const posts = await getPosts();
 	const currentPost = getPostBySlug(slug);
 
-	if (!currentPost) {
-		const legacyPost = getPostById(slug);
-
-		if (legacyPost) {
-			permanentRedirect(getPostHref(legacyPost));
-		}
-
-		notFound();
-	}
+	if (!currentPost) notFound();
 
 	const currentIndex = posts.findIndex((p) => p.id === currentPost.id);
 	const post = posts[currentIndex];

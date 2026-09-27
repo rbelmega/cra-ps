@@ -2,12 +2,12 @@ import Image from "next/image";
 
 import { BlogList } from "../blog-list";
 import { Bio } from "../bio";
-import { Contacts } from "../contacts";
 import { Footer } from "../footer";
 import { loadPublicJson } from "../../domain/public-content";
 import styles from "./Body.module.scss";
 
 interface BioData {
+	eyebrow?: string;
 	headline?: string;
 	summary?: string;
 	bio: string;
@@ -26,6 +26,7 @@ export async function Body() {
 			<section className={styles.intro}>
 				<div className={styles.copy}>
 					<Bio
+						eyebrow={data.eyebrow}
 						headline={data.headline}
 						summary={data.summary}
 						highlights={data.highlights}
@@ -42,23 +43,23 @@ export async function Body() {
 								alt="Rostyslav Belmeha"
 								width={1024}
 								height={1024}
-								sizes="(max-width: 560px) calc(100vw - 36px), (max-width: 960px) 520px, 372px"
+								sizes="(max-width: 720px) min(320px, calc(100vw - 40px)), 320px"
 								fetchPriority="high"
 								loading="eager"
 							/>
 						</section>
 					</div>
-					<section className={styles.connectSection}>
-						<Contacts />
-					</section>
 				</aside>
 			</section>
 
-			<section className={styles.writingSection}>
+			<section id="writing" aria-labelledby="writing-title" className={styles.writingSection}>
 				<div className={styles.sectionHeader}>
-					<h2 className={styles.sectionTitle}>
-						Writing on dashboards, performance, and frontend systems.
+					<h2 id="writing-title" className={styles.sectionTitle}>
+						Writing
 					</h2>
+					<p className={styles.sectionDescription}>
+						Notes on frontend, performance, and the details that matter.
+					</p>
 				</div>
 				<BlogList />
 			</section>

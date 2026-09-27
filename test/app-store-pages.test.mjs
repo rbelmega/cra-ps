@@ -100,7 +100,7 @@ test("app privacy pages include metadata and required topics", async () => {
 
 		assert.ok(page.includes("export const metadata"));
 		assert.ok(page.includes("export const viewport"));
-		assert.ok(page.includes(`https://www.belmeha.com/${slug}/privacy-policy/`));
+		assert.ok(page.includes(`https://www.belmeha.com/${slug}/privacy-policy`));
 
 		for (const topic of [
 			...privacyTopics,
@@ -120,8 +120,8 @@ test("app support pages include metadata and App Store support topics", async ()
 
 		assert.ok(page.includes("export const metadata"));
 		assert.ok(page.includes("export const viewport"));
-		assert.ok(page.includes(`https://www.belmeha.com/${slug}/support/`));
-		assert.ok(page.includes(`/${slug}/privacy-policy/`));
+		assert.ok(page.includes(`https://www.belmeha.com/${slug}/support`));
+		assert.ok(page.includes(`/${slug}/privacy-policy`));
 
 		for (const topic of [...supportTopics, "Contact support", "mailto:belmega31@gmail.com"]) {
 			assert.ok(normalizedPage.includes(topic), `${app} support page missing ${topic}`);
@@ -213,7 +213,7 @@ test("Traffic Rules root route is a Ukrainian marketing page with App Store dest
 		false,
 		"Traffic Rules hero should not render a road decoration",
 	);
-	assert.ok(page.includes("https://www.belmeha.com/traffic-rules/"));
+	assert.ok(page.includes("https://www.belmeha.com/traffic-rules"));
 	assert.ok(page.includes("https://apps.apple.com/ua/app/id6758890398"));
 	assert.ok(page.includes('href="#privacy"'));
 	assert.ok(page.includes('href="#support"'));

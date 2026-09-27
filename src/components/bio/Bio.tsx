@@ -1,3 +1,5 @@
+import { certifications } from "../../domain/certifications";
+import { Contacts } from "../contacts";
 import styles from "./Bio.module.scss";
 
 interface Highlight {
@@ -6,6 +8,7 @@ interface Highlight {
 }
 
 interface BioProps {
+	eyebrow?: string;
 	headline?: string;
 	summary?: string;
 	highlights?: Highlight[];
@@ -15,7 +18,7 @@ interface BioProps {
 
 // Extract technologies from bio text
 const extractTechnologies = (bio: string): string[] => {
-	const techKeywords = ["Angular", "React", "Next.js", "Node.js"];
+	const techKeywords = ["Angular", "React", "Next.js", "Node.js", "NestJS"];
 	const found: string[] = [];
 	techKeywords.forEach((tech) => {
 		if (bio.includes(tech)) {
@@ -43,7 +46,7 @@ const renderHeadline = (headline: string) => {
 	);
 };
 
-export function Bio({ headline, summary, highlights, stack, bio }: BioProps) {
+export function Bio({ eyebrow, headline, summary, highlights, stack, bio }: BioProps) {
 	const paragraphs = bio.split("\n").filter(Boolean);
 	const technologies = stack && stack.length > 0 ? stack : extractTechnologies(bio);
 
@@ -51,8 +54,20 @@ export function Bio({ headline, summary, highlights, stack, bio }: BioProps) {
 		<div className={styles.container}>
 			{(headline || summary) && (
 				<div className={styles.hero}>
+					{eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 					{headline ? <h1 className={styles.headline}>{renderHeadline(headline)}</h1> : null}
 					{summary ? <p className={styles.summary}>{summary}</p> : null}
+					{highlights && highlights.length > 0 ? (
+						<dl className={styles.highlights}>
+							{highlights.map((highlight) => (
+								<div key={`${highlight.label}-${highlight.value}`} className={styles.highlight}>
+									<dt className={styles.highlightLabel}>{highlight.label}</dt>
+									<dd className={styles.highlightValue}>{highlight.value}</dd>
+								</div>
+							))}
+						</dl>
+					) : null}
+					<Contacts />
 					{technologies.length > 0 ? (
 						<div className={styles.techGrid}>
 							{technologies.map((tech) => (
@@ -62,36 +77,49 @@ export function Bio({ headline, summary, highlights, stack, bio }: BioProps) {
 							))}
 						</div>
 					) : null}
+					{certifications.map((certification) => (
+						<a
+							key={certification.url}
+							className={styles.certification}
+							href={certification.url}
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label={`View ${certification.name} on Credly`}
+						>
+							<span className={styles.certificationCopy}>
+								<span className={styles.certificationLabel}>Certification</span>
+								<span className={styles.certificationName}>{certification.name}</span>
+								<span className={styles.certificationMeta}>
+									{certification.issuer} · Expires{" "}
+									<time dateTime={certification.expires}>{certification.expiresLabel}</time>
+								</span>
+							</span>
+							<span className={styles.certificationArrow} aria-hidden="true">
+								↗
+							</span>
+						</a>
+					))}
 				</div>
 			)}
 
-			{highlights && highlights.length > 0 ? (
-				<dl className={styles.highlights}>
-					{highlights.map((highlight) => (
-						<div key={`${highlight.label}-${highlight.value}`} className={styles.highlight}>
-							<dt className={styles.highlightLabel}>{highlight.label}</dt>
-							<dd className={styles.highlightValue}>{highlight.value}</dd>
-						</div>
+			{paragraphs.length > 0 ? (
+				<div className={styles.description}>
+					{paragraphs.map((paragraph, index) => (
+						<p
+							key={paragraph}
+							className={[
+								styles.paragraph,
+								index === 0 ? styles.lead : "",
+								index === paragraphs.length - 1 ? styles.secondary : "",
+							]
+								.filter(Boolean)
+								.join(" ")}
+						>
+							{paragraph}
+						</p>
 					))}
-				</dl>
+				</div>
 			) : null}
-
-			<div className={styles.description}>
-				{paragraphs.map((paragraph, index) => (
-					<p
-						key={paragraph}
-						className={[
-							styles.paragraph,
-							index === 0 ? styles.lead : "",
-							index === paragraphs.length - 1 ? styles.secondary : "",
-						]
-							.filter(Boolean)
-							.join(" ")}
-					>
-						{paragraph}
-					</p>
-				))}
-			</div>
 		</div>
 	);
 }

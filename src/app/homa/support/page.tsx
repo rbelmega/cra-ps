@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 
 import styles from "../../app-store-page.module.scss";
 
-const canonicalUrl = "https://www.belmeha.com/homa/support/";
+const canonicalUrl = "https://www.belmeha.com/homa/support";
 const supportEmail = "belmega31@gmail.com";
 const supportMailto = "mailto:belmega31@gmail.com?subject=Homa%20Support";
 
