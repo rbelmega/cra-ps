@@ -12,6 +12,13 @@ export const defaultMetadata: Metadata = {
 	metadataBase: new URL(SITE_URL),
 	title: HOME_TITLE,
 	description: HOME_DESCRIPTION,
+	icons: {
+		icon: {
+			url: "/favicon.ico?v=olive-b",
+			type: "image/x-icon",
+			sizes: "16x16 24x24 32x32 48x48 64x64",
+		},
+	},
 };
 
 export const absoluteUrl = (path: string) => new URL(path, `${SITE_URL}/`).toString();
