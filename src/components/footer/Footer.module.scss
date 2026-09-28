@@ -1,78 +1,68 @@
 .footer {
-  padding: 28px 0 24px;
-  background-color: transparent;
-  margin-top: auto;
+  margin-top: 28px;
+  padding-bottom: 24px;
+}
+
+.contactSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 36px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  scroll-margin-top: 28px;
+}
+
+.contactCopy { min-width: 0; }
+.contactTitle {
+  margin: 0;
+  color: #f6f6f6;
+  font-family: var(--font-myriad-md), Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.contactDescription {
+  margin: 10px 0 0;
+  color: #bcbcbc;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .footerContent {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  max-width: 1280px;
-  margin: 0 auto;
+  padding-top: 20px;
 }
-
-.footerSection {
-  display: flex;
-  align-items: center;
-}
-
+.footerSection { min-width: 0; }
 .copyright {
-  color: #a8a8a8;
-  font-size: 13px;
   margin: 0;
-  font-family: var(--font-myriad), Arial, sans-serif;
+  color: #bcbcbc;
+  font-size: 14px;
+  line-height: 1.5;
 }
-
 .footerLink {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   min-height: 44px;
-  color: #a8a8a8;
-  font-size: 13px;
+  color: #bcbcbc;
+  font-size: 14px;
   text-decoration: none;
-  font-family: var(--font-myriad), Arial, sans-serif;
-  transition: color var(--transition, 150ms ease);
 
-  &:hover {
-    color: var(--text, #ffffff);
-  }
-
+  &:hover { color: #cfd79a; }
   &:focus-visible {
     outline: 2px solid #cfd79a;
     outline-offset: 4px;
-    color: var(--text, #ffffff);
-    box-shadow: var(--focus-ring, 0 0 0 3px rgba(80, 170, 255, 0.18));
-    border-radius: 6px;
+    border-radius: 4px;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .footer {
-    padding: 26px 0 20px;
-  }
-
-  .footerContent {
-    text-align: left;
-    gap: 12px;
-  }
-
-  .copyright,
-  .footerLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-    font-size: 13px;
-  }
-}
-
-@media screen and (min-width: 1680px) {
-  .footerContent {
-    max-width: 1440px;
-  }
+@media (max-width: 720px) {
+  .contactSection { align-items: flex-start; flex-direction: column; padding: 28px 0; gap: 20px; }
+  .footer { margin-top: 20px; padding-bottom: 0; }
 }

@@ -26,7 +26,7 @@
   line-height: 1.5;
 }
 .techGrid { display: flex; flex-wrap: wrap; gap: 8px 18px; }
-.techBadge { color: #a8a8a8; font-size: 14px; line-height: 1.5; }
+.techBadge { color: #bcbcbc; font-size: 15px; line-height: 1.5; }
 .highlights { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px; }
 .highlight { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
 .highlightValue {
@@ -36,7 +36,7 @@
   font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 18px;
 }
-.highlightLabel { margin: 0; color: #a8a8a8; font-size: 15px; line-height: 1.5; }
+.highlightLabel { margin: 0; color: #bcbcbc; font-size: 16px; line-height: 1.5; }
 .description { display: grid; gap: 12px; max-width: 52ch; }
 .paragraph { margin: 0; color: #b0b0b0; font-size: 17px; line-height: 1.6; }
 .lead { color: #c4c4c4; }
@@ -56,7 +56,7 @@
   justify-content: space-between;
   gap: 16px;
   max-width: 470px;
-  padding: 16px 0 0;
+  padding: 16px 0 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   color: #ededed;
   text-decoration: none;
@@ -69,11 +69,11 @@
   }
 }
 .certificationCopy { display: grid; gap: 6px; min-width: 0; }
-.certificationLabel { color: var(--accent, #cfd79a); font-size: 12px; line-height: 1.4; }
+.certificationLabel { color: var(--accent, #cfd79a); font-size: 14px; line-height: 1.4; }
 .certificationName {
   font-family: var(--font-myriad-md), Arial, sans-serif;
   font-size: 17px;
   line-height: 1.35;
 }
-.certificationMeta { color: #a8a8a8; font-size: 13px; line-height: 1.5; }
+.certificationMeta { color: #bcbcbc; font-size: 14px; line-height: 1.5; }
 .certificationArrow { flex: 0 0 auto; color: #cfd79a; font-size: 22px; }

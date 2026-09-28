@@ -9,9 +9,9 @@
   &:focus-visible { outline: 2px solid #cfd79a; outline-offset: 6px; border-radius: 2px; }
 }
 .postContent { position: relative; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 28px; padding-right: 36px; }
-.postMeta { display: grid; gap: 6px; padding-top: 4px; font-size: 13px; line-height: 1.4; }
+.postMeta { display: grid; gap: 6px; padding-top: 4px; font-size: 14px; line-height: 1.4; }
 .topic { color: #cfd79a; }
-.date { color: #a8a8a8; }
+.date { color: #bcbcbc; }
 .metaDivider { display: none; }
 .postArrow {
   position: absolute;
@@ -40,11 +40,11 @@
 @media (max-width: 720px) {
   .postCard { padding: 20px 0; }
   .postContent { grid-template-columns: minmax(0, 1fr); gap: 10px; padding-right: 28px; }
-  .postMeta { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; font-size: 12px; }
+  .postMeta { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; font-size: 14px; }
   .metaDivider { display: inline; color: #a8a8a8; }
   .postArrow { top: 0; }
   .postTitle { font-size: 21px; }
-  .postExcerpt { font-size: 15px; }
+  .postExcerpt { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .postTitle, .postArrow { transition: none; }

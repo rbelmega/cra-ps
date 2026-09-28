@@ -1,4 +1,5 @@
 import { getContacts } from "../../domain/contacts";
+import { Contacts } from "../contacts";
 import styles from "./Footer.module.scss";
 
 export function Footer() {
@@ -7,6 +8,15 @@ export function Footer() {
 
 	return (
 		<footer className={styles.footer}>
+			<section id="contact" aria-labelledby="contact-title" className={styles.contactSection}>
+				<div className={styles.contactCopy}>
+					<h2 id="contact-title" className={styles.contactTitle}>
+						Let’s connect
+					</h2>
+					<p className={styles.contactDescription}>Continue the conversation on LinkedIn.</p>
+				</div>
+				<Contacts />
+			</section>
 			<div className={styles.footerContent}>
 				<div className={styles.footerSection}>
 					<p className={styles.copyright}>

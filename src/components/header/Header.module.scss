@@ -1,6 +1,7 @@
 .header { max-width: 1180px; margin: 0 auto; padding: 28px 40px 0; }
 .inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .identity { display: grid; gap: 5px; }
+.navigation { display: flex; align-items: center; gap: 24px; }
 .name {
   margin: 0;
   color: #ededed;
@@ -15,7 +16,7 @@
   gap: 8px;
   min-height: 44px;
   color: #c4c4c4;
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
   &:hover { color: #cfd79a; }
   &:focus-visible { outline: 2px solid #cfd79a; outline-offset: 5px; border-radius: 2px; }
@@ -23,6 +24,7 @@
 @media (max-width: 720px) {
   .header { padding: 24px 20px 0; }
   .inner { gap: 12px; }
+  .navigation { gap: 16px; }
   .name { font-size: 15px; }
   .role { font-size: 13px; }
 }

@@ -9,8 +9,8 @@
 
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 72px;
+  grid-template-columns: minmax(0, 1fr) clamp(200px, 27vw, 320px);
+  gap: clamp(28px, 5vw, 72px);
   align-items: center;
   padding: 56px 0 64px;
 }
@@ -66,8 +66,8 @@
     gap: 28px;
     padding: 36px 0;
   }
-  .sidebar { width: 100%; max-width: 320px; }
-  .imageFrame { aspect-ratio: 4 / 3; }
+  .sidebar { width: 144px; }
+  .imageFrame { aspect-ratio: 1; }
   .writingSection { padding-top: 28px; }
   .sectionHeader { margin-bottom: 16px; }
   .sectionTitle { font-size: 28px; }

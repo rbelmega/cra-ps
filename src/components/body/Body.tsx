@@ -43,7 +43,7 @@ export async function Body() {
 								alt="Rostyslav Belmeha"
 								width={1024}
 								height={1024}
-								sizes="(max-width: 720px) min(320px, calc(100vw - 40px)), 320px"
+								sizes="(max-width: 720px) 144px, (max-width: 1185px) 27vw, 320px"
 								fetchPriority="high"
 								loading="eager"
 							/>

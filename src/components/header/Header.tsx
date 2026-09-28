@@ -7,9 +7,14 @@ export function Header() {
 				<div className={styles.identity}>
 					<p className={styles.name}>Rostyslav Belmeha</p>
 				</div>
-				<a className={styles.writingLink} href="#writing">
-					Writing <span aria-hidden="true">↗</span>
-				</a>
+				<nav className={styles.navigation} aria-label="Main navigation">
+					<a className={styles.writingLink} href="#writing">
+						Writing
+					</a>
+					<a className={styles.writingLink} href="#contact">
+						Contact
+					</a>
+				</nav>
 			</div>
 		</header>
 	);
