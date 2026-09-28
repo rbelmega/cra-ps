@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
-import styles from "../../app-store-page.module.scss";
+import styles from "../../../app-store-page.module.scss";
 
 const canonicalUrl = "https://www.belmeha.com/homa/privacy-policy";
 const contactEmail = "belmega31@gmail.com";

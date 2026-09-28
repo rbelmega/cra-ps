@@ -1,21 +1,13 @@
 import type { ReactNode } from "react";
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
 
-import { SITE_URL } from "../domain/seo";
-
-import "../index.scss";
+import "../../index.scss";
 
 interface RootLayoutProps {
 	children: ReactNode;
+	lang: "en" | "uk";
 }
-
-export const metadata: Metadata = {
-	metadataBase: new URL(SITE_URL),
-	title: "Rostyslav Belmeha",
-	description: "Experienced Web Developer | Expertise in UI Frameworks and Business Intelligence",
-};
 
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_V4;
 const isProduction = process.env.NODE_ENV === "production";
@@ -29,7 +21,7 @@ gtag("config", "${googleAnalyticsId}");
 `;
 
 const myriad = localFont({
-	src: "../../public/assets/fonts/myriad-set-pro_thin.ttf",
+	src: "../../../public/assets/fonts/myriad-set-pro_thin.ttf",
 	variable: "--font-myriad",
 	display: "swap",
 	fallback: ["Arial", "sans-serif"],
@@ -43,7 +35,7 @@ const myriad = localFont({
 });
 
 const myriadMedium = localFont({
-	src: "../../public/assets/fonts/myriad-set-pro_medium.ttf",
+	src: "../../../public/assets/fonts/myriad-set-pro_medium.ttf",
 	variable: "--font-myriad-md",
 	display: "swap",
 	fallback: ["Arial", "sans-serif"],
@@ -56,9 +48,9 @@ const myriadMedium = localFont({
 	],
 });
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export function Document({ children, lang }: RootLayoutProps) {
 	return (
-		<html lang="en" className={`${myriad.variable} ${myriadMedium.variable}`}>
+		<html lang={lang} className={`${myriad.variable} ${myriadMedium.variable}`}>
 			<body>{children}</body>
 			{shouldLoadGoogleAnalytics ? (
 				<>

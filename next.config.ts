@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
 	productionBrowserSourceMaps: false,
 	experimental: {
 		inlineCss: true,
+		globalNotFound: true,
 	},
 	turbopack: {
 		resolveAlias: {

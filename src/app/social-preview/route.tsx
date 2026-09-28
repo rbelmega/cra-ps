@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import bio from "../../../public/bio.json";
 import { AUTHOR_NAME } from "../../domain/seo";
 
 export const dynamic = "force-static";
@@ -20,10 +21,8 @@ export async function GET() {
 		>
 			<div style={{ fontSize: 32 }}>{AUTHOR_NAME}</div>
 			<div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-				<div style={{ color: "#cfd79a", fontSize: 88 }}>Front-end Engineer</div>
-				<div style={{ color: "#c4c4c4", fontSize: 30 }}>
-					Frontend engineering, web applications &amp; design systems.
-				</div>
+				<div style={{ color: "#cfd79a", fontSize: 88 }}>{bio.headline}</div>
+				<div style={{ color: "#c4c4c4", fontSize: 30 }}>{bio.summary}</div>
 			</div>
 			<div
 				style={{
@@ -35,7 +34,7 @@ export async function GET() {
 					fontSize: 26,
 				}}
 			>
-				<span>React · Next.js · Angular · Node.js · NestJS</span>
+				<span>{bio.stack.join(" · ")}</span>
 				<span>belmeha.com</span>
 			</div>
 		</div>,

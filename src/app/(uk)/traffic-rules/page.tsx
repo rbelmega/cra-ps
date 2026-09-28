@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 
-import appIcon from "../../../public/traffic-rules/app-icon.webp";
+import appIcon from "../../../../public/traffic-rules/app-icon.webp";
 
 import { MotionEffects } from "./MotionEffects";
 import styles from "./page.module.scss";

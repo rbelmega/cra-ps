@@ -35,7 +35,35 @@ test("every built article has its own title, description, canonical and social m
 		assert.ok(tag(html, "rel", "canonical").includes(`${origin}/blog/${post.slug}`));
 		assert.ok(tag(html, "property", "og:type").includes('content="article"'));
 		assert.ok(tag(html, "property", "og:title").includes(post.name));
+		const imageUrl = `${origin}/blog/${post.slug}/social-preview`;
+		assert.ok(tag(html, "property", "og:image").includes(imageUrl), post.slug);
+		assert.ok(tag(html, "name", "twitter:image").includes(imageUrl), post.slug);
+		const png = await readFile(`.next/server/app/blog/${post.slug}/social-preview.body`);
+		assert.equal(png.subarray(1, 4).toString(), "PNG");
+		assert.equal(png.readUInt32BE(16), 1200);
+		assert.equal(png.readUInt32BE(20), 630);
 	}
+});
+
+test("server HTML declares the language of each page", async () => {
+	for (const [path, language] of [
+		["index", "en"],
+		["traffic-rules", "uk"],
+		["traffic-rules/support", "en"],
+		["traffic-rules/privacy-policy", "en"],
+	]) {
+		const html = await readPage(path);
+		assert.ok(tag(html, "lang", language).startsWith("<html"), `${path}: expected ${language}`);
+	}
+});
+
+test("global 404 renders the site design and current fallback metadata on the server", async () => {
+	const html = await readPage("_not-found");
+	assert.ok(tag(html, "lang", "en").startsWith("<html"));
+	assert.ok(html.includes("Page not found."));
+	assert.ok(tag(html, "name", "robots").includes("noindex"));
+	assert.ok(tag(html, "name", "description").includes("AI-assisted development workflows"));
+	assert.ok(!html.includes("Business Intelligence"));
 });
 
 test("sitemap contains only built canonical pages and robots advertises it", async () => {

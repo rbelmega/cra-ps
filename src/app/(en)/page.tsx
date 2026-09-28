@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
-import { App } from "../components";
-import { certifications } from "../domain/certifications";
-import { getContacts } from "../domain/contacts";
-import { absoluteUrl, AUTHOR_NAME, HOME_DESCRIPTION, HOME_TITLE, socialImage } from "../domain/seo";
+import { App } from "../../components";
+import { certifications } from "../../domain/certifications";
+import { getContacts } from "../../domain/contacts";
+import {
+	absoluteUrl,
+	AUTHOR_NAME,
+	HOME_DESCRIPTION,
+	HOME_TITLE,
+	socialImage,
+} from "../../domain/seo";
 
 export const metadata: Metadata = {
 	title: HOME_TITLE,

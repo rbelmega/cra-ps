@@ -5,10 +5,10 @@ import type { ComponentPropsWithoutRef } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
-import { getPostBySlug, getPostHref, getPosts } from "../../../domain/blog";
-import { rewriteMarkdownHref } from "../../../domain/markdown-href";
-import { loadPublicText } from "../../../domain/public-content";
-import { absoluteUrl, AUTHOR_NAME, socialImage } from "../../../domain/seo";
+import { getPostBySlug, getPostHref, getPosts } from "../../../../domain/blog";
+import { rewriteMarkdownHref } from "../../../../domain/markdown-href";
+import { loadPublicText } from "../../../../domain/public-content";
+import { absoluteUrl, AUTHOR_NAME } from "../../../../domain/seo";
 import styles from "./page.module.scss";
 
 type Params = Promise<{ slug: string }>;
@@ -21,8 +21,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 	// Invalid slugs are handled by the page; legacy URLs redirect in next.config.ts.
 	if (!post) return {};
 	const title = `${post.name} | ${AUTHOR_NAME}`;
-	const description = post.excerpt ?? `${post.name} — an article by ${AUTHOR_NAME}.`;
+	const description = post.excerpt ?? `${post.name}. An article by ${AUTHOR_NAME}.`;
 	const url = absoluteUrl(getPostHref(post));
+	const socialImage = {
+		url: `${url}/social-preview`,
+		width: 1200,
+		height: 630,
+		alt: post.name,
+	};
 	return {
 		title,
 		description,

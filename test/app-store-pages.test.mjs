@@ -72,7 +72,7 @@ const appRoutes = [
 test("app pages are React routes instead of markdown loaders", async () => {
 	for (const { slug } of appRoutes) {
 		for (const route of ["", "/privacy-policy", "/support"]) {
-			const filePath = `src/app/${slug}${route}/page.tsx`;
+			const filePath = `src/app/${slug === "traffic-rules" && route === "" ? "(uk)" : "(en)"}/${slug}${route}/page.tsx`;
 			const page = await readFile(filePath, "utf8");
 
 			assert.equal(page.includes("MarkdownPage"), false, `${filePath} still renders MarkdownPage`);
@@ -95,7 +95,7 @@ test("Homa and IdioMate app-specific markdown sources are removed", async () => 
 
 test("app privacy pages include metadata and required topics", async () => {
 	for (const { app, slug, privacyTopics } of appRoutes) {
-		const page = await readFile(`src/app/${slug}/privacy-policy/page.tsx`, "utf8");
+		const page = await readFile(`src/app/(en)/${slug}/privacy-policy/page.tsx`, "utf8");
 		const normalizedPage = page.replace(/\s+/g, " ");
 
 		assert.ok(page.includes("export const metadata"));
@@ -115,7 +115,7 @@ test("app privacy pages include metadata and required topics", async () => {
 
 test("app support pages include metadata and App Store support topics", async () => {
 	for (const { app, slug, supportTopics } of appRoutes) {
-		const page = await readFile(`src/app/${slug}/support/page.tsx`, "utf8");
+		const page = await readFile(`src/app/(en)/${slug}/support/page.tsx`, "utf8");
 		const normalizedPage = page.replace(/\s+/g, " ");
 
 		assert.ok(page.includes("export const metadata"));
@@ -130,8 +130,8 @@ test("app support pages include metadata and App Store support topics", async ()
 });
 
 test("Homa pages match the current offline-first maintenance app", async () => {
-	const privacyPage = await readFile("src/app/homa/privacy-policy/page.tsx", "utf8");
-	const supportPage = await readFile("src/app/homa/support/page.tsx", "utf8");
+	const privacyPage = await readFile("src/app/(en)/homa/privacy-policy/page.tsx", "utf8");
+	const supportPage = await readFile("src/app/(en)/homa/support/page.tsx", "utf8");
 	const combinedPages = `${privacyPage} ${supportPage}`.replace(/\s+/g, " ");
 	const lowerCombinedPages = combinedPages.toLowerCase();
 
@@ -167,8 +167,8 @@ test("Homa pages match the current offline-first maintenance app", async () => {
 });
 
 test("Traffic Rules pages match the current local reference app", async () => {
-	const privacyPage = await readFile("src/app/traffic-rules/privacy-policy/page.tsx", "utf8");
-	const supportPage = await readFile("src/app/traffic-rules/support/page.tsx", "utf8");
+	const privacyPage = await readFile("src/app/(en)/traffic-rules/privacy-policy/page.tsx", "utf8");
+	const supportPage = await readFile("src/app/(en)/traffic-rules/support/page.tsx", "utf8");
 	const combinedPages = `${privacyPage} ${supportPage}`.replace(/\s+/g, " ");
 	const lowerCombinedPages = combinedPages.toLowerCase();
 
@@ -203,8 +203,8 @@ test("Traffic Rules pages match the current local reference app", async () => {
 });
 
 test("Traffic Rules root route is a Ukrainian marketing page with App Store destinations", async () => {
-	const page = await readFile("src/app/traffic-rules/page.tsx", "utf8");
-	const stylesheet = await readFile("src/app/traffic-rules/page.module.scss", "utf8");
+	const page = await readFile("src/app/(uk)/traffic-rules/page.tsx", "utf8");
+	const stylesheet = await readFile("src/app/(uk)/traffic-rules/page.module.scss", "utf8");
 	const normalizedPage = page.replace(/\s+/g, " ");
 
 	assert.equal(page.includes("redirect("), false, "Traffic Rules root should not redirect");
@@ -287,16 +287,16 @@ test("Traffic Rules root route is a Ukrainian marketing page with App Store dest
 	}
 
 	for (const legacyRoute of [
-		"src/app/traffic-rules/privacy-policy/page.tsx",
-		"src/app/traffic-rules/support/page.tsx",
+		"src/app/(en)/traffic-rules/privacy-policy/page.tsx",
+		"src/app/(en)/traffic-rules/support/page.tsx",
 	]) {
 		assert.equal(await pathExists(legacyRoute), true, `${legacyRoute} should remain available`);
 	}
 });
 
 test("IdioMate pages match idiom learning product positioning", async () => {
-	const privacyPage = await readFile("src/app/idiomate/privacy-policy/page.tsx", "utf8");
-	const supportPage = await readFile("src/app/idiomate/support/page.tsx", "utf8");
+	const privacyPage = await readFile("src/app/(en)/idiomate/privacy-policy/page.tsx", "utf8");
+	const supportPage = await readFile("src/app/(en)/idiomate/support/page.tsx", "utf8");
 	const combinedPages = `${privacyPage} ${supportPage}`.replace(/\s+/g, " ");
 
 	for (const requiredText of [

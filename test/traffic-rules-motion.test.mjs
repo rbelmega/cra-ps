@@ -3,7 +3,7 @@ import test from "node:test";
 
 async function loadMotionModule() {
 	try {
-		return await import("../src/app/traffic-rules/motion.mjs");
+		return await import("../src/app/(uk)/traffic-rules/motion.mjs");
 	} catch {
 		return null;
 	}

@@ -12,15 +12,15 @@ async function pathExists(path) {
 }
 
 test("UVLY privacy policy is rendered by Next.js instead of static HTML", async () => {
-	assert.equal(await pathExists("src/app/uvly/privacy-policy/page.tsx"), true);
-	assert.equal(await pathExists("src/app/uvly/privacy-policy/page.module.scss"), true);
-	assert.equal(await pathExists("src/app/uvly/privacy-policy/route.ts"), false);
+	assert.equal(await pathExists("src/app/(en)/uvly/privacy-policy/page.tsx"), true);
+	assert.equal(await pathExists("src/app/(en)/uvly/privacy-policy/page.module.scss"), true);
+	assert.equal(await pathExists("src/app/(en)/uvly/privacy-policy/route.ts"), false);
 	assert.equal(await pathExists("public/uvly/privacy-policy/index.html"), false);
 	assert.equal(await pathExists("public/uvly/privacy-policy/styles.css"), false);
 });
 
 test("UVLY privacy policy includes route metadata", async () => {
-	const page = await readFile("src/app/uvly/privacy-policy/page.tsx", "utf8");
+	const page = await readFile("src/app/(en)/uvly/privacy-policy/page.tsx", "utf8");
 
 	assert.ok(page.includes("export const metadata"));
 	assert.ok(page.includes("UVly Privacy Policy"));
@@ -29,8 +29,8 @@ test("UVLY privacy policy includes route metadata", async () => {
 });
 
 test("UVLY privacy policy stays compact", async () => {
-	const page = await readFile("src/app/uvly/privacy-policy/page.tsx", "utf8");
-	const css = await readFile("src/app/uvly/privacy-policy/page.module.scss", "utf8");
+	const page = await readFile("src/app/(en)/uvly/privacy-policy/page.tsx", "utf8");
+	const css = await readFile("src/app/(en)/uvly/privacy-policy/page.module.scss", "utf8");
 
 	assert.ok(page.split("\n").length <= 260, "privacy policy component should stay concise");
 	assert.ok(css.split("\n").length <= 280, "privacy policy CSS module should stay concise");
@@ -38,7 +38,7 @@ test("UVLY privacy policy stays compact", async () => {
 });
 
 test("UVLY privacy policy includes Apple-required privacy topics", async () => {
-	const page = await readFile("src/app/uvly/privacy-policy/page.tsx", "utf8");
+	const page = await readFile("src/app/(en)/uvly/privacy-policy/page.tsx", "utf8");
 	const normalizedPage = page.replace(/\s+/g, " ");
 	const lowercasePage = normalizedPage.toLowerCase();
 
@@ -67,7 +67,7 @@ test("UVLY privacy policy includes Apple-required privacy topics", async () => {
 });
 
 test("UVLY privacy policy describes provider routing without exposing switch states", async () => {
-	const page = await readFile("src/app/uvly/privacy-policy/page.tsx", "utf8");
+	const page = await readFile("src/app/(en)/uvly/privacy-policy/page.tsx", "utf8");
 	const normalizedPage = page.replace(/\s+/g, " ");
 
 	assert.ok(normalizedPage.includes("directly from Open-Meteo"));
@@ -78,11 +78,11 @@ test("UVLY privacy policy describes provider routing without exposing switch sta
 });
 
 test("UVLY support page is available as a Next.js route", async () => {
-	assert.equal(await pathExists("src/app/uvly/support/page.tsx"), true);
+	assert.equal(await pathExists("src/app/(en)/uvly/support/page.tsx"), true);
 });
 
 test("UVLY support page includes route metadata", async () => {
-	const page = await readFile("src/app/uvly/support/page.tsx", "utf8");
+	const page = await readFile("src/app/(en)/uvly/support/page.tsx", "utf8");
 
 	assert.ok(page.includes("export const metadata"));
 	assert.ok(page.includes("UVly Support"));
@@ -91,7 +91,7 @@ test("UVLY support page includes route metadata", async () => {
 });
 
 test("UVLY support page includes App Store support topics", async () => {
-	const page = await readFile("src/app/uvly/support/page.tsx", "utf8");
+	const page = await readFile("src/app/(en)/uvly/support/page.tsx", "utf8");
 	const normalizedPage = page.replace(/\s+/g, " ");
 
 	for (const requiredText of [
