@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { certifications } from "../../domain/certifications";
 import { Contacts } from "../contacts";
 import styles from "./Bio.module.scss";
@@ -8,6 +9,7 @@ interface Highlight {
 }
 
 interface BioProps {
+	portrait?: ReactNode;
 	eyebrow?: string;
 	headline?: string;
 	summary?: string;
@@ -46,7 +48,7 @@ const renderHeadline = (headline: string) => {
 	);
 };
 
-export function Bio({ eyebrow, headline, summary, highlights, stack, bio }: BioProps) {
+export function Bio({ portrait, eyebrow, headline, summary, highlights, stack, bio }: BioProps) {
 	const paragraphs = bio.split("\n").filter(Boolean);
 	const technologies = stack && stack.length > 0 ? stack : extractTechnologies(bio);
 
@@ -56,6 +58,7 @@ export function Bio({ eyebrow, headline, summary, highlights, stack, bio }: BioP
 				<div className={styles.hero}>
 					{eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
 					{headline ? <h1 className={styles.headline}>{renderHeadline(headline)}</h1> : null}
+					{portrait ? <div className={styles.portrait}>{portrait}</div> : null}
 					{summary ? <p className={styles.summary}>{summary}</p> : null}
 					{highlights && highlights.length > 0 ? (
 						<dl className={styles.highlights}>
@@ -67,7 +70,9 @@ export function Bio({ eyebrow, headline, summary, highlights, stack, bio }: BioP
 							))}
 						</dl>
 					) : null}
-					<Contacts />
+					<div className={styles.contacts}>
+						<Contacts />
+					</div>
 					{technologies.length > 0 ? (
 						<div className={styles.techGrid}>
 							{technologies.map((tech) => (
@@ -77,28 +82,23 @@ export function Bio({ eyebrow, headline, summary, highlights, stack, bio }: BioP
 							))}
 						</div>
 					) : null}
-					{certifications.map((certification) => (
-						<a
-							key={certification.url}
-							className={styles.certification}
-							href={certification.url}
-							target="_blank"
-							rel="noopener noreferrer"
-							aria-label={`View ${certification.name} on Credly`}
-						>
-							<span className={styles.certificationCopy}>
-								<span className={styles.certificationLabel}>Certification</span>
-								<span className={styles.certificationName}>{certification.name}</span>
-								<span className={styles.certificationMeta}>
-									{certification.issuer} · Expires{" "}
-									<time dateTime={certification.expires}>{certification.expiresLabel}</time>
+					<div className={styles.certifications}>
+						{certifications.map((certification) => (
+							<a
+								key={certification.url}
+								className={styles.certification}
+								href={certification.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label={`View ${certification.name} on Credly`}
+							>
+								<span>{certification.name}</span>
+								<span className={styles.certificationArrow} aria-hidden="true">
+									↗
 								</span>
-							</span>
-							<span className={styles.certificationArrow} aria-hidden="true">
-								↗
-							</span>
-						</a>
-					))}
+							</a>
+						))}
+					</div>
 				</div>
 			)}
 

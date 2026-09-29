@@ -8,16 +8,10 @@
 }
 
 .intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(200px, 27vw, 320px);
-  gap: clamp(28px, 5vw, 72px);
-  align-items: center;
   padding: 56px 0 64px;
 }
 
 .copy { min-width: 0; }
-.sidebar { min-width: 0; }
-.portrait { width: 100%; }
 
 .imageFrame {
   margin: 0;
@@ -55,18 +49,11 @@
   line-height: 1.5;
 }
 
-@media (max-width: 960px) {
-  .intro { gap: 36px; }
-}
-
 @media (max-width: 720px) {
   .page { padding: 0 20px 16px; }
   .intro {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
     padding: 36px 0;
   }
-  .sidebar { width: 144px; }
   .imageFrame { aspect-ratio: 1; }
   .writingSection { padding-top: 28px; }
   .sectionHeader { margin-bottom: 16px; }

@@ -26,6 +26,19 @@ export async function Body() {
 			<section className={styles.intro}>
 				<div className={styles.copy}>
 					<Bio
+						portrait={
+							<div className={styles.imageFrame}>
+								<Image
+									src="/assets/img/me2.jpg"
+									alt="Rostyslav Belmeha"
+									width={1024}
+									height={1024}
+									sizes="(max-width: 720px) 72px, (max-width: 1185px) 27vw, 320px"
+									fetchPriority="high"
+									loading="eager"
+								/>
+							</div>
+						}
 						eyebrow={data.eyebrow}
 						headline={data.headline}
 						summary={data.summary}
@@ -34,22 +47,6 @@ export async function Body() {
 						bio={data.bio}
 					/>
 				</div>
-
-				<aside className={styles.sidebar}>
-					<div className={styles.portrait}>
-						<section className={styles.imageFrame}>
-							<Image
-								src="/assets/img/me2.jpg"
-								alt="Rostyslav Belmeha"
-								width={1024}
-								height={1024}
-								sizes="(max-width: 720px) 144px, (max-width: 1185px) 27vw, 320px"
-								fetchPriority="high"
-								loading="eager"
-							/>
-						</section>
-					</div>
-				</aside>
 			</section>
 
 			<section id="writing" aria-labelledby="writing-title" className={styles.writingSection}>

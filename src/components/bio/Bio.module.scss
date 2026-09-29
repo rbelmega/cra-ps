@@ -1,5 +1,15 @@
 .container { display: grid; gap: 24px; min-width: 0; }
-.hero { display: grid; gap: 22px; min-width: 0; }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(200px, 27vw, 320px);
+  column-gap: clamp(28px, 5vw, 72px);
+  row-gap: 22px;
+  align-items: start;
+  min-width: 0;
+  > :not(.portrait) { grid-column: 1; }
+}
+.portrait { grid-column: 2; grid-row: 1 / span 7; align-self: center; min-width: 0; }
+.contacts { min-width: 0; }
 .eyebrow {
   margin: 0;
   color: #c4c4c4;
@@ -44,36 +54,37 @@
 
 @media (max-width: 720px) {
   .container { gap: 18px; }
-  .hero { gap: 18px; }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 72px;
+    gap: 18px 16px;
+    > :not(.portrait) { grid-column: 1 / -1; }
+    > .headline { grid-column: 1; }
+  }
+  .portrait { grid-row: auto; align-self: center; }
   .headline { font-size: clamp(36px, 10vw, 48px); }
   .summary { font-size: 18px; }
 }
 
 
+.certifications { display: grid; justify-items: start; }
 .certification {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  max-width: 470px;
-  padding: 16px 0 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color: #ededed;
-  text-decoration: none;
+  gap: 8px;
+  min-height: 44px;
+  max-width: 100%;
+  color: #bcbcbc;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.25);
+  text-underline-offset: 4px;
 
-  &:hover .certificationName { color: var(--accent, #cfd79a); }
+  &:hover { color: var(--accent, #cfd79a); }
   &:focus-visible {
     outline: 2px solid var(--accent, #cfd79a);
-    outline-offset: 6px;
+    outline-offset: 4px;
     border-radius: 2px;
   }
 }
-.certificationCopy { display: grid; gap: 6px; min-width: 0; }
-.certificationLabel { color: var(--accent, #cfd79a); font-size: 14px; line-height: 1.4; }
-.certificationName {
-  font-family: var(--font-myriad-md), Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.35;
-}
-.certificationMeta { color: #bcbcbc; font-size: 14px; line-height: 1.5; }
-.certificationArrow { flex: 0 0 auto; color: #cfd79a; font-size: 22px; }
+.certificationArrow { flex: 0 0 auto; }

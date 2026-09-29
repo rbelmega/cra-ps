@@ -1,39 +1,39 @@
 import { getContacts } from "../../domain/contacts";
-import { Contacts } from "../contacts";
 import styles from "./Footer.module.scss";
 
 export function Footer() {
 	const currentYear = new Date().getFullYear();
-	const twitter = getContacts().find((contact) => contact.name === "Twitter");
+	const contacts = getContacts().filter((contact) =>
+		["LinkedIn", "Twitter"].includes(contact.name),
+	);
 
 	return (
 		<footer className={styles.footer}>
-			<section id="contact" aria-labelledby="contact-title" className={styles.contactSection}>
-				<div className={styles.contactCopy}>
-					<h2 id="contact-title" className={styles.contactTitle}>
-						Let’s connect
-					</h2>
-					<p className={styles.contactDescription}>Continue the conversation on LinkedIn.</p>
-				</div>
-				<Contacts />
-			</section>
-			<div className={styles.footerContent}>
-				<div className={styles.footerSection}>
-					<p className={styles.copyright}>
-						© {currentYear} Rostyslav Belmeha. All rights reserved.
-					</p>
-				</div>
-				{twitter ? (
-					<a
-						className={styles.footerLink}
-						href={twitter.link}
-						target="_blank"
-						rel="noreferrer noopener"
-					>
-						Twitter <span aria-hidden="true">↗</span>
-					</a>
-				) : null}
-			</div>
+			<nav id="contact" aria-label="Contact" className={styles.contacts}>
+				<ul className={styles.contactList}>
+					<li className={styles.contactItem}>
+						<a className={styles.contactLink} href="mailto:belmega31@gmail.com">
+							belmega31@gmail.com
+						</a>
+					</li>
+					{contacts.map((contact) => (
+						<li key={contact.name} className={styles.contactItem}>
+							<span className={styles.separator} aria-hidden="true">
+								·
+							</span>
+							<a
+								className={styles.contactLink}
+								href={contact.link}
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								{contact.name}
+							</a>
+						</li>
+					))}
+				</ul>
+			</nav>
+			<p className={styles.copyright}>© {currentYear} Rostyslav Belmeha. All rights reserved.</p>
 		</footer>
 	);
 }

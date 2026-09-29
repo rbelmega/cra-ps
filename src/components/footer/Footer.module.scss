@@ -1,68 +1,45 @@
 .footer {
-  margin-top: 28px;
-  padding-bottom: 24px;
-}
-
-.contactSection {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 36px 0;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin-top: 28px;
+  padding: 20px 0 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  scroll-margin-top: 28px;
 }
 
-.contactCopy { min-width: 0; }
-.contactTitle {
-  margin: 0;
-  color: #f6f6f6;
-  font-family: var(--font-myriad-md), Arial, sans-serif;
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.2;
-}
-.contactDescription {
-  margin: 10px 0 0;
-  color: #bcbcbc;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.footerContent {
+.contacts { min-width: 0; scroll-margin-top: 28px; }
+.contactList {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
-  padding-top: 20px;
-}
-.footerSection { min-width: 0; }
-.copyright {
+  gap: 0 10px;
+  list-style: none;
   margin: 0;
-  color: #bcbcbc;
-  font-size: 14px;
-  line-height: 1.5;
+  padding: 0;
 }
-.footerLink {
+.contactItem { display: flex; align-items: center; gap: 10px; }
+.separator { color: #898989; }
+.contactLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   min-height: 44px;
   color: #bcbcbc;
-  font-size: 14px;
-  text-decoration: none;
-
+  font-size: 15px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.2);
+  text-underline-offset: 4px;
   &:hover { color: #cfd79a; }
-  &:focus-visible {
-    outline: 2px solid #cfd79a;
-    outline-offset: 4px;
-    border-radius: 4px;
-  }
+  &:focus-visible { outline: 2px solid #cfd79a; outline-offset: 4px; border-radius: 2px; }
 }
+.copyright { margin: 0; color: #a8a8a8; font-size: 14px; line-height: 1.5; }
 
 @media (max-width: 720px) {
-  .contactSection { align-items: flex-start; flex-direction: column; padding: 28px 0; gap: 20px; }
-  .footer { margin-top: 20px; padding-bottom: 0; }
+  .footer { margin-top: 20px; padding: 16px 0 0; }
+}
+@media (max-width: 380px) {
+  .contactLink { font-size: 14px; }
+  .contactList, .contactItem { gap: 8px; }
 }
