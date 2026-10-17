@@ -17,9 +17,9 @@ A modern personal portfolio website built with Next.js 16, React 19, and TypeScr
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 16.2.6
-- **React**: 19.2.6
-- **TypeScript**: 6.0.3
+- **Framework**: Next.js 16.4.2
+- **React**: 19.3.1
+- **TypeScript**: 7.0.2
 - **Styling**: SCSS (Sass) with CSS Modules
 - **Markdown**: react-markdown with remark-gfm
 - **Syntax Highlighting**: rehype-highlight
