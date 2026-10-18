@@ -152,6 +152,25 @@ npm run lighthouse:desktop
 ```
 
 After changing application code, run `npm run build` first or use `npm run lighthouse`.
+
+To measure the deployed homepage, including production analytics and CDN behavior:
+
+```bash
+npm run lighthouse:production
+```
+
+This runs three mobile audits against `https://www.belmeha.com/`, saves reports in
+`lighthouse-reports/production/`, and does not build or start a local server. It measures
+the currently deployed version; local edits are included only after deployment.
+
+For a local comparison with analytics enabled, use the same public measurement ID as
+production when building, then run the mobile audits:
+
+```bash
+NEXT_PUBLIC_GOOGLE_ANALYTICS_V4=G-YOURID npm run build
+npm run lighthouse:mobile
+```
+
 For a nonstandard browser installation, set its executable path in your terminal:
 
 ```bash
@@ -162,9 +181,12 @@ npm run lighthouse
 Alternatively, save `{ "chromePath": "/absolute/path/to/chrome" }` in the ignored
 `.lighthouse-browser.json` file. `CHROME_PATH` takes precedence over this local setting.
 
-URLs, run count, and the warning threshold live in `lighthouserc.cjs`. These are local
-Lighthouse lab measurements, not PageSpeed Insights field data; compare runs using the
-same browser and machine, with other heavy tasks paused.
+Local URLs, run count, and the warning threshold live in `lighthouserc.cjs`; the deployed
+homepage has a separate `lighthouserc.production.cjs`. These are Lighthouse lab measurements.
+PageSpeed Insights also has a lab score, but runs in Google's environment and can produce
+different results. Its real-user field data is a separate measurement. Compare repeated
+runs using the same browser, machine, URL, and analytics configuration, with other heavy
+tasks paused; a localhost score does not establish the deployed site's score.
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
@@ -243,6 +265,9 @@ The project is configured for deployment on Vercel (recommended) or any Node.js 
 4. Deploy
 
 The project can load Google Analytics in production when `NEXT_PUBLIC_GOOGLE_ANALYTICS_V4` is configured.
+The external analytics library loads during idle time after the page's `load` event, so
+it is not preloaded alongside critical content. Initialization still queues events after
+hydration. Visits that end before the library loads may not be recorded.
 
 ## 📝 Blog Posts
 

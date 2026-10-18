@@ -28,6 +28,7 @@
 		"lint": "biome lint .",
 		"lighthouse": "npm run build && npm run lighthouse:mobile && npm run lighthouse:desktop",
 		"lighthouse:mobile": "lhci autorun",
+		"lighthouse:production": "lhci autorun --config=./lighthouserc.production.cjs",
 		"lighthouse:desktop": "lhci autorun --collect.settings.preset=desktop --upload.outputDir=./lighthouse-reports/desktop",
 		"format": "biome format --write .",
 		"format:check": "biome format .",

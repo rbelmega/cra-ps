@@ -76,7 +76,7 @@ export function Document({ children, lang }: RootLayoutProps) {
 					<Script
 						id="google-analytics"
 						src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-						strategy="afterInteractive"
+						strategy="lazyOnload"
 					/>
 					<Script id="google-analytics-init" strategy="afterInteractive">
 						{googleAnalyticsScript}
