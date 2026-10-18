@@ -1,6 +1,5 @@
-import Link from "next/link";
-import styles from "./BlogList.module.scss";
 import { getPostHref, getPosts } from "../../domain/blog";
+import styles from "./BlogList.module.scss";
 
 export async function BlogList() {
 	const posts = await getPosts();
@@ -17,7 +16,7 @@ export async function BlogList() {
 		<div className={styles.blog}>
 			<div className={styles.postsGrid}>
 				{posts.map((post) => (
-					<Link
+					<a
 						key={post.file}
 						href={getPostHref(post)}
 						className={styles.postCard}
@@ -50,7 +49,7 @@ export async function BlogList() {
 								{post.excerpt ? <p className={styles.postExcerpt}>{post.excerpt}</p> : null}
 							</div>
 						</div>
-					</Link>
+					</a>
 				))}
 			</div>
 		</div>

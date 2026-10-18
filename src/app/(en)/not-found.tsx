@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./not-found.module.scss";
 
 export default function NotFound() {
@@ -7,9 +6,9 @@ export default function NotFound() {
 	return (
 		<div className={styles.page}>
 			<div className={styles.chrome}>
-				<Link href="/" className={styles.brand}>
+				<a href="/" className={styles.brand}>
 					Rostyslav Belmeha
-				</Link>
+				</a>
 			</div>
 
 			<main className={styles.hero}>
@@ -20,9 +19,9 @@ export default function NotFound() {
 						The page you tried to open may have moved, expired, or never existed.
 					</p>
 					<div className={styles.actions}>
-						<Link href="/" className={styles.primaryAction}>
+						<a href="/" className={styles.primaryAction}>
 							Back Home
-						</Link>
+						</a>
 					</div>
 					<p className={styles.note}>Check the address or start again from the homepage.</p>
 				</div>

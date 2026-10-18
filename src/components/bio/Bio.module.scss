@@ -87,4 +87,8 @@
     border-radius: 2px;
   }
 }
-.certificationArrow { flex: 0 0 auto; }
+.certificationArrow {
+  flex: 0 0 auto;
+  // Myriad has no arrow glyph; use its system fallback without loading another font file.
+  font-family: Arial, sans-serif;
+}
