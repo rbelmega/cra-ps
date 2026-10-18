@@ -5,6 +5,9 @@
 			"**",
 			"!**/node_modules",
 			"!**/.next",
+			"!**/.lighthouseci",
+			"!**/lighthouse-reports",
+			"!**/.lighthouse-browser.json",
 			"!public/traffic-rules/app-store-badge-uk.svg",
 			"!public/traffic-rules/google-play-badge-uk.svg"
 		]

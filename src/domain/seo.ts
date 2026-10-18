@@ -14,9 +14,9 @@ export const defaultMetadata: Metadata = {
 	description: HOME_DESCRIPTION,
 	icons: {
 		icon: {
-			url: "/favicon.ico?v=olive-b",
-			type: "image/x-icon",
-			sizes: "16x16 24x24 32x32 48x48 64x64",
+			url: "/favicon-64.png",
+			type: "image/png",
+			sizes: "64x64",
 		},
 	},
 };

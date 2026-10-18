@@ -1,6 +1,7 @@
 .main-app {
   max-width: 1500px;
   margin: 0 auto;
+  font-family: var(--font-myriad-text-latin), var(--font-myriad-text-full);
 }
 
 .skip-link {
@@ -26,6 +27,7 @@
 }
 
 html {
+  --font-myriad-md: var(--font-myriad-md-latin), var(--font-myriad-md-full);
   background: #111111;
   color-scheme: dark;
 }

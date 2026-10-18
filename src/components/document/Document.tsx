@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
 import localFont from "next/font/local";
 import Script from "next/script";
+import type { ReactNode } from "react";
 
 import "../../index.scss";
 
@@ -21,12 +21,12 @@ gtag("config", "${googleAnalyticsId}");
 `;
 
 const myriad = localFont({
-	src: "../../../public/assets/fonts/myriad-set-pro_thin.ttf",
+	src: "../../../public/assets/fonts/myriad-set-pro_thin.woff2",
 	variable: "--font-myriad",
 	display: "swap",
 	fallback: ["Arial", "sans-serif"],
 	adjustFontFallback: "Arial",
-	preload: true,
+	preload: false,
 	declarations: [
 		{ prop: "ascent-override", value: "85%" },
 		{ prop: "descent-override", value: "15%" },
@@ -35,13 +35,29 @@ const myriad = localFont({
 });
 
 const myriadMedium = localFont({
-	src: "../../../public/assets/fonts/myriad-set-pro_medium.ttf",
-	variable: "--font-myriad-md",
+	src: "../../../public/assets/fonts/myriad-set-pro_medium.woff2",
+	variable: "--font-myriad-md-full",
 	display: "swap",
 	fallback: ["Arial", "sans-serif"],
 	adjustFontFallback: "Arial",
-	preload: true,
+	preload: false,
 	declarations: [
+		{ prop: "ascent-override", value: "85%" },
+		{ prop: "descent-override", value: "15%" },
+		{ prop: "line-gap-override", value: "0%" },
+	],
+});
+
+const myriadMediumLatin = localFont({
+	src: "../../../public/assets/fonts/myriad-set-pro_medium-latin.woff2",
+	variable: "--font-myriad-md-latin",
+	display: "swap",
+	adjustFontFallback: false,
+	declarations: [
+		{
+			prop: "unicode-range",
+			value: "U+0000-007F,U+00A0,U+00A9,U+00B7,U+2000-206F,U+20AC,U+2122,U+2212,U+FEFF,U+FFFD",
+		},
 		{ prop: "ascent-override", value: "85%" },
 		{ prop: "descent-override", value: "15%" },
 		{ prop: "line-gap-override", value: "0%" },
@@ -50,7 +66,10 @@ const myriadMedium = localFont({
 
 export function Document({ children, lang }: RootLayoutProps) {
 	return (
-		<html lang={lang} className={`${myriad.variable} ${myriadMedium.variable}`}>
+		<html
+			lang={lang}
+			className={`${myriad.variable} ${myriadMediumLatin.variable} ${myriadMedium.variable}`}
+		>
 			<body>{children}</body>
 			{shouldLoadGoogleAnalytics ? (
 				<>

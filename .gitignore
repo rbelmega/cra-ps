@@ -5,6 +5,9 @@
 
 # testing
 /coverage
+/.lighthouseci/
+/.lighthouse-browser.json
+/lighthouse-reports/
 
 # production
 /build

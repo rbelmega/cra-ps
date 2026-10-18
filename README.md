@@ -126,6 +126,46 @@ npm run analyze
 
 ## 📝 Available Scripts
 
+### Local Lighthouse tracking
+
+Install Google Chrome (or set `CHROME_PATH` to a Chrome/Chromium executable), then run:
+
+```bash
+npm run lighthouse
+```
+
+This builds the production app, starts an isolated server at `127.0.0.1:3001`, and audits
+the homepage, a blog article, and `/traffic-rules` on mobile and desktop. Each page runs
+three times; the median Performance score warns below 90 without failing the command.
+Lighthouse shuts down its server when collection finishes. Keep port 3001 available.
+
+HTML and JSON reports stay on this machine in `lighthouse-reports/mobile/` and
+`lighthouse-reports/desktop/`. Timestamped reports preserve previous runs; each folder's
+`manifest.json` lists the latest results and marks its representative runs. Open the HTML
+reports to inspect scores, LCP, CLS, TBT, and suggested improvements. Reports are ignored by Git.
+
+To repeat just one profile against an existing production build:
+
+```bash
+npm run lighthouse:mobile
+npm run lighthouse:desktop
+```
+
+After changing application code, run `npm run build` first or use `npm run lighthouse`.
+For a nonstandard browser installation, set its executable path in your terminal:
+
+```bash
+export CHROME_PATH="/absolute/path/to/chrome"
+npm run lighthouse
+```
+
+Alternatively, save `{ "chromePath": "/absolute/path/to/chrome" }` in the ignored
+`.lighthouse-browser.json` file. `CHROME_PATH` takes precedence over this local setting.
+
+URLs, run count, and the warning threshold live in `lighthouserc.cjs`. These are local
+Lighthouse lab measurements, not PageSpeed Insights field data; compare runs using the
+same browser and machine, with other heavy tasks paused.
+
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm start` - Start production server
