@@ -1,0 +1,3 @@
+# Repository-only override. Keep Superpowers installed for other projects.
+[plugins."superpowers@openai-curated-remote"]
+enabled = false

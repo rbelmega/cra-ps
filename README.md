@@ -1,294 +1,242 @@
 # Personal Portfolio Website
 
-A modern personal portfolio website built with Next.js 16, React 19, and TypeScript. Features a bio section, blog functionality with dark theme, and contact links.
+Rostyslav Belmeha’s portfolio and Markdown blog at [belmeha.com](https://www.belmeha.com),
+plus public marketing, support, and privacy pages for Homa, IdioMate, UVly, and
+Traffic Rules. The portfolio and app documents are in English; the Traffic Rules
+landing page is in Ukrainian.
 
-## 🚀 Features
+## Stack and architecture
 
-- **Personal Bio**: Dynamic bio section with profile image and description
-- **Blog**: Markdown-based blog posts with syntax highlighting and dark theme
-  - Modern card-based blog list design
-  - Dark-themed blog post pages optimized for readability
-  - Navigation between posts via clickable elements
-  - Responsive design for all screen sizes
-- **Contact Links**: Social media and professional links (LinkedIn, Twitter, Facebook, GitHub)
-- **Privacy Policy**: Dedicated privacy policy page
-- **Analytics**: Google Analytics via `next/script`
-- **Performance**: Optimized images, code splitting, and production source maps
+- Next.js 16.4.3 App Router, React 19.3.1, TypeScript 7.0.2; exact dependencies and
+  commands live in `package.json` and `package-lock.json`.
+- Server-rendered/static pages with small client boundaries for browser effects.
+- SCSS Modules, shared app-document styles, Biome linting/formatting.
+- Markdown articles rendered with `react-markdown`, `remark-gfm`, and `rehype-highlight`.
+- Local fonts and responsive WebP portraits; optional deferred Google Analytics.
+- Webpack production build; Next’s default development bundler.
 
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 16.4.2
-- **React**: 19.3.1
-- **TypeScript**: 7.0.2
-- **Styling**: SCSS (Sass) with CSS Modules
-- **Markdown**: react-markdown with remark-gfm
-- **Syntax Highlighting**: rehype-highlight
-- **Analytics**: Google Analytics via next/script
-
-## 📁 Project Structure
-
-```
+```text
+AGENTS.md                       Project instructions and workflow entry point
+.agents/skills/                 Four reusable, project-specific skills
+.codex/config.toml              Project-only Superpowers override
+.codex/agents/                  Optional reviewer and performance auditor
 src/
-├── app/                    # Next.js app router pages
-│   ├── blog/[id]/         # Dynamic blog post pages with dark theme
-│   ├── privacy-policy/    # Privacy policy page
-│   ├── layout.tsx         # Root layout with analytics
-│   └── page.tsx           # Home page
-├── components/             # React components
-│   ├── bio/               # Bio section component
-│   ├── blog-list/         # Modern blog list component with cards
-│   ├── body/              # Main body wrapper
-│   ├── contacts/          # Contact links component
-│   ├── footer/            # Footer component with copyright and links
-│   ├── header/            # Header component
-│   └── main/              # Main App component
-└── domain/                # Domain logic and data fetching
-    ├── blog.ts            # Blog post fetching (local/remote)
-    └── contacts.ts        # Contact links data
-
+├── app/
+│   ├── (en)/                   Portfolio, blog/[slug], app support/privacy pages
+│   ├── (uk)/traffic-rules/      Ukrainian landing page and client motion effects
+│   ├── social-preview/         Homepage social image
+│   ├── sitemap.ts              Canonical public pages and articles
+│   ├── robots.ts
+│   └── global-not-found.tsx
+├── components/                 Document, portfolio sections, Markdown renderer
+├── domain/                     Blog catalog, public-content loading, SEO, contacts
+└── polyfills/                  Modern-browser replacement for Next polyfills
 public/
-├── assets/
-│   ├── fonts/             # Custom fonts (Myriad Set Pro)
-│   └── img/               # Images (profile photos)
-├── posts/                 # Blog post markdown files
-│   ├── post-1.md          # "Should You Be an Engineer?"
-│   └── post-2.md          # "Cracking the PageSpeed Code"
-├── bio.json               # Bio data
-└── posts.json             # Blog posts metadata
+├── posts.json                  Article catalog: id, slug, name, date, file, etc.
+├── posts/                      Markdown article bodies
+├── bio.json                    Portfolio content
+├── assets/                     Original fonts/images and derived serving formats
+└── traffic-rules/              Screenshots, app icon, official store badges
+test/                           Node test runner: built SEO, app pages, budgets, motion
+docs/                           Engineering rules and asset regeneration reference
 ```
 
-## 🚦 Getting Started
+Route groups `(en)` and `(uk)` do not appear in public URLs. `/traffic-rules` is
+Ukrainian; its `/support` and `/privacy-policy` pages are English. Homa, IdioMate,
+and UVly root routes redirect to their privacy pages. Blog URLs use stable slugs;
+legacy `/blog/<id>` URLs permanently redirect to the matching article.
 
-### Prerequisites
+## Local development
 
-- Node.js (version compatible with Next.js 16)
-- npm or yarn
+Use a Node.js version supported by the installed Next.js release and npm. Install
+exact locked dependencies and start development:
 
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd cra
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set up environment variables (optional):
-Create a `.env.local` file in the root directory:
-```env
-NEXT_PUBLIC_GOOGLE_ANALYTICS_V4=your_google_analytics_id
-USE_LOCAL_POSTS=true  # Set to true to use local posts.json and markdown files
-```
-
-### Development
-
-Run the development server:
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [localhost:3000](http://localhost:3000). For a production server:
 
-### Build
-
-Build the production bundle:
-```bash
+```sh
 npm run build
-```
-
-Start the production server:
-```bash
 npm start
 ```
 
-### Code Formatting
+Optional `.env.local` settings:
 
-Format code using Biome:
-```bash
-npm run format
+```dotenv
+NEXT_PUBLIC_GOOGLE_ANALYTICS_V4=G-YOURID
+NEXT_PUBLIC_SITE_URL=https://www.belmeha.com
 ```
 
-Check formatting without writing changes:
-```bash
-npm run format:check
-```
+Analytics is enabled only in production with a valid measurement ID. The external
+library uses `lazyOnload` after the load event and during idle time; initialization
+uses `afterInteractive` so events can queue. Very short visits may not be recorded.
 
-### Bundle Analysis
+Public content is read from `public/` on the server first, with remote fallback to
+`NEXT_PUBLIC_SITE_URL` (default `https://www.belmeha.com`) and one-hour revalidation.
+This variable does **not** change canonical URLs: `src/domain/seo.ts` fixes them to
+the production origin. The former `USE_LOCAL_POSTS` setting is no longer used.
 
-Analyze bundle size:
-```bash
-npm run analyze
-```
+## Commands and checks
 
-## 📝 Available Scripts
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start development server |
+| `npm run build` | Build production with Webpack |
+| `npm start` | Serve the production build |
+| `npm run lint -- --error-on-warnings` | Lint with Biome, treating warnings as failures |
+| `npm run format:check` | Check supported source formatting |
+| `npm run format` | Write formatting changes; review the resulting diff |
+| `npm test` | Build production, then run `test/*.test.mjs` |
+| `npm run lighthouse` | Build and measure local mobile/desktop performance |
+| `npm run lighthouse:production` | Measure the currently deployed homepage on mobile |
 
-### Local Lighthouse tracking
+`npm test` covers built canonical/social metadata, page languages, 404 output,
+sitemap/robots, numeric article redirects, real 1200×630 PNG social previews,
+app-specific content, bounded motion, and homepage asset budgets. Some app-copy
+checks inspect source strings; these do not replace browser verification of layout,
+links, keyboard focus, or reduced motion. Tests that read `.next/` need a fresh build.
 
-Install Google Chrome (or set `CHROME_PATH` to a Chrome/Chromium executable), then run:
+`npm run analyze` remains available, but its source-map explorer requires source
+maps. Production browser source maps are currently disabled, so this diagnostic
+command needs an intentional temporary configuration change before use.
 
-```bash
+## Lighthouse and performance
+
+Install Chrome/Chromium, then run:
+
+```sh
 npm run lighthouse
 ```
 
-This builds the production app, starts an isolated server at `127.0.0.1:3001`, and audits
-the homepage, a blog article, and `/traffic-rules` on mobile and desktop. Each page runs
-three times; the median Performance score warns below 90 without failing the command.
-Lighthouse shuts down its server when collection finishes. Keep port 3001 available.
+This builds the app, starts an isolated production server at `127.0.0.1:3001`, and
+runs three audits each for `/`, `/blog/cracking-the-pagespeed-code`, and
+`/traffic-rules` on mobile and desktop. Keep port 3001 free. The server stops after
+collection; a median Performance score below 90 warns without failing the command.
 
-HTML and JSON reports stay on this machine in `lighthouse-reports/mobile/` and
-`lighthouse-reports/desktop/`. Timestamped reports preserve previous runs; each folder's
-`manifest.json` lists the latest results and marks its representative runs. Open the HTML
-reports to inspect scores, LCP, CLS, TBT, and suggested improvements. Reports are ignored by Git.
+Reports remain in ignored `lighthouse-reports/mobile/` and
+`lighthouse-reports/desktop/`. Timestamped HTML/JSON files retain past runs;
+`manifest.json` identifies the latest runs and representatives. To reuse a fresh
+production build for one profile:
 
-To repeat just one profile against an existing production build:
-
-```bash
+```sh
 npm run lighthouse:mobile
 npm run lighthouse:desktop
 ```
 
-After changing application code, run `npm run build` first or use `npm run lighthouse`.
+`npm run lighthouse:production` performs three mobile audits against the deployed
+`https://www.belmeha.com/`, saving reports in `lighthouse-reports/production/`.
+It does not build, start localhost, or deploy local changes.
 
-To measure the deployed homepage, including production analytics and CDN behavior:
+For a nonstandard browser, set `CHROME_PATH` or save
+`{ "chromePath": "/absolute/path/to/chrome" }` in ignored `.lighthouse-browser.json`;
+the environment variable takes precedence. For a local comparison with Analytics,
+build with the same public measurement ID used in production.
 
-```bash
-npm run lighthouse:production
-```
+Compare the same URL, browser/Lighthouse version, throttling and analytics settings
+under similar machine load. Report medians/ranges and successful run counts.
+Local Lighthouse, deployed/preview Lighthouse, Google PageSpeed lab scores, and
+real-user field data are separate evidence. A local or preview score of 100 does
+not establish production performance or stable 100 across runs.
 
-This runs three mobile audits against `https://www.belmeha.com/`, saves reports in
-`lighthouse-reports/production/`, and does not build or start a local server. It measures
-the currently deployed version; local edits are included only after deployment.
+The homepage has enforced budgets of **24 KiB preloaded fonts** and **140,000 gzip
+bytes initial modern-browser JavaScript**. See [performance assets](docs/performance-assets.md)
+for WOFF2 subsets, full-font fallback, responsive portraits and regeneration.
 
-For a local comparison with analytics enabled, use the same public measurement ID as
-production when building, then run the mobile audits:
+## Review of work to date
 
-```bash
-NEXT_PUBLIC_GOOGLE_ANALYTICS_V4=G-YOURID npm run build
-npm run lighthouse:mobile
-```
+Repository history, current code/tests, and the available project chats show these
+main areas of work:
 
-For a nonstandard browser installation, set its executable path in your terminal:
+| Area | Current result and lesson to preserve |
+| --- | --- |
+| Portfolio and blog | Server-rendered content, article slugs/redirects, dark article styling, internal Markdown-link rewriting |
+| SEO | Fixed production canonicals, per-article metadata/images, language-aware documents, canonical-only sitemap, global 404 |
+| App pages | React support/privacy routes for four apps; app-specific facts and stable public links matter |
+| Traffic Rules | Ukrainian marketing page, iOS/Android store links, official badges, responsive screenshots and reduced-motion-aware effects |
+| Performance/accessibility | Font subsets, responsive portraits, CSS inlining, modern-browser polyfill aliases, contrast improvements and deferred Analytics |
+| Measurement | Local/deployed Lighthouse profiles and payload tests; production claims require production evidence under comparable conditions |
+| Dependencies | Next.js/tooling refresh with lockfile and regression checks; retain static rendering unless a concrete dynamic requirement arises |
 
-```bash
-export CHROME_PATH="/absolute/path/to/chrome"
-npm run lighthouse
-```
+The project has useful regression coverage and focused performance work. The main
+maintenance gaps were stale README instructions and the lack of reusable project
+context. Framework-internal polyfill aliases need rechecking after upgrades;
+source-string app tests need browser checks for visual changes. Historical scores
+and past successful checks are not a current production audit.
 
-Alternatively, save `{ "chromePath": "/absolute/path/to/chrome" }` in the ignored
-`.lighthouse-browser.json` file. `CHROME_PATH` takes precedence over this local setting.
+## Skills, rules, and agents
 
-Local URLs, run count, and the warning threshold live in `lighthouserc.cjs`; the deployed
-homepage has a separate `lighthouserc.production.cjs`. These are Lighthouse lab measurements.
-PageSpeed Insights also has a lab score, but runs in Google's environment and can produce
-different results. Its real-user field data is a separate measurement. Compare repeated
-runs using the same browser, machine, URL, and analytics configuration, with other heavy
-tasks paused; a localhost score does not establish the deployed site's score.
+[AGENTS.md](AGENTS.md) is the instruction entry point. It links to
+[engineering rules](docs/engineering-rules.md), covering rendering/bundlers, stable
+URLs and metadata, truthful app copy, accessibility, asset budgets/caching,
+measurements, dependency updates, and verification proportional to the change.
+Rules are repository guidance loaded through AGENTS.md; no broad command-approval
+allowlists are added.
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run format` - Format code with Biome
-- `npm run format:check` - Verify formatting without writing
-- `npm run analyze` - Analyze bundle size with source-map-explorer
+Repository skills live in `.agents/skills/`, discovered by Codex for this project:
 
-## 🔧 Configuration
+| Skill | Use |
+| --- | --- |
+| [cra-performance](.agents/skills/cra-performance/SKILL.md) | Lighthouse/PageSpeed diagnosis, controlled comparisons, fonts/images, analytics and budgets |
+| [cra-content-seo](.agents/skills/cra-content-seo/SKILL.md) | Blog/catalog updates, routing, metadata, sitemap, canonical URLs and social previews |
+| [cra-app-pages](.agents/skills/cra-app-pages/SKILL.md) | App privacy/support content, Ukrainian landing page, badges, screenshots and motion |
+| [cra-maintenance](.agents/skills/cra-maintenance/SKILL.md) | npm/tooling updates, bundler compatibility and regression validation |
 
-### Next.js Configuration
+Example requests: `Use $cra-performance to compare the deployed mobile homepage`,
+`Use $cra-content-seo to add this article`, or `Use $cra-maintenance to update dependencies`.
+The skills can also be selected automatically when relevant.
 
-The project uses `next.config.ts` with:
-- Production browser source maps enabled
-- Image optimization for external CDN domains
+Optional custom agents are defined in `.codex/agents/`:
 
-### TypeScript Configuration
+- [cra_reviewer](.codex/agents/cra_reviewer.toml): inspect code, SEO, app-content and
+  accessibility regressions without editing.
+- [cra_performance_auditor](.codex/agents/cra_performance_auditor.toml): examine
+  measurement quality and performance regressions; fresh audits only when requested.
 
-TypeScript is configured with:
-- Strict mode disabled (for flexibility)
-- ES5 target with modern libs
-- React JSX transform
-- Path resolution with baseUrl
+Ask explicitly to delegate, for example: `Ask cra_reviewer to review this diff`.
+Agents inherit the session’s model preferences and permissions; no model is pinned
+and agent review is not a compulsory step for routine changes.
 
-## 🌐 Environment Variables
+### Superpowers disabled for this project
 
-- `NEXT_PUBLIC_GOOGLE_ANALYTICS_V4` - Google Analytics 4 tracking ID (optional)
-- `USE_LOCAL_POSTS` - Set to `true` to use local blog posts instead of remote (optional)
+[.codex/config.toml](.codex/config.toml) sets the Superpowers plugin’s project
+`enabled` override to `false`. Plugin enablement is controlled by configuration;
+AGENTS.md and agent prompts do not duplicate this setting. The global installation
+is retained for other projects.
+Existing `docs/superpowers/` plans are historical records, not active rules.
 
-## 📦 Dependencies
+Project configuration requires a trusted project. Start a new project chat/session
+(or reopen Codex if needed) to reload the configuration and local skills/agents;
+existing chat context can still contain previously loaded skills. Verify the plugin
+state after reloading, especially in installations with managed plugin settings.
 
-### Production
-- `next` - Next.js framework
-- `react` & `react-dom` - React library
-- `react-markdown` - Markdown rendering
-- `remark-gfm` - GitHub Flavored Markdown support
+Configuration conventions follow official OpenAI documentation for
+[project config](https://learn.chatgpt.com/docs/config-file/config-basic),
+[skills](https://learn.chatgpt.com/docs/build-skills),
+[plugin enablement](https://learn.chatgpt.com/docs/config-file/config-reference), and
+[custom agents](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
-### Development
-- `typescript` - TypeScript compiler
-- `sass` - SCSS preprocessor
-- `@biomejs/biome` - Linting and formatting
-- `source-map-explorer` - Bundle analyzer
+## Configuration and deployment
 
-## 🎨 Styling
+`next.config.ts` disables production browser source maps, enables experimental CSS
+inlining/global 404, sets image/CDN patterns, redirects numeric blog IDs and caches
+`/assets/*` immutable for a year. Change asset URLs when replacing cached content.
+TypeScript targets ES2020 with bundler resolution and `strict: false`. Browser
+minimums live in `package.json`: Chrome/Edge 120, Firefox 115, Safari/iOS 17 and
+corresponding mobile variants, excluding dead browsers and Opera Mini.
 
-The project uses SCSS modules for component styling:
-- Component-specific styles in `*.module.scss` files
-- Global styles in `index.scss`
-- Custom fonts (Myriad Set Pro) in `public/assets/fonts/`
-- Dark theme for blog posts optimized for readability
+Deploy to the existing Vercel project or compatible Node.js hosting. Set public
+build-time variables before building; verify the deployed revision, public routes
+and Analytics behavior after a release. Local build/test results do not confirm
+that a deployment contains the change.
 
-### Blog Design Features
+## Author and license
 
-- **Blog List**: Modern card-based design with hover effects
-- **Blog Posts**: Dark theme with optimized typography and code highlighting
-- **Navigation**: Clickable elements to navigate between posts
-- **Responsive**: Fully responsive design for mobile, tablet, and desktop
+**Rostyslav Belmeha** · [Website](https://www.belmeha.com) ·
+[GitHub](https://github.com/rbelmega) ·
+[LinkedIn](https://www.linkedin.com/in/rostyslav-belmega/) ·
+[Twitter](https://twitter.com/izzz0)
 
-## 📱 Browser Support
-
-The project targets modern browsers:
-- >0.2% market share
-- Not dead browsers
-- Not IE <= 11
-- Not Opera Mini
-
-## 🚢 Deployment
-
-The project is configured for deployment on Vercel (recommended) or any Node.js hosting platform that supports Next.js.
-
-### Vercel Deployment
-
-1. Push your code to GitHub/GitLab/Bitbucket
-2. Import the project in Vercel
-3. Add environment variables in Vercel dashboard (if needed)
-4. Deploy
-
-The project can load Google Analytics in production when `NEXT_PUBLIC_GOOGLE_ANALYTICS_V4` is configured.
-The external analytics library loads during idle time after the page's `load` event, so
-it is not preloaded alongside critical content. Initialization still queues events after
-hydration. Visits that end before the library loads may not be recorded.
-
-## 📝 Blog Posts
-
-The blog supports markdown-based posts stored in `public/posts/`. Each post is defined in `public/posts.json` with metadata:
-- Title
-- Date
-- ID
-- File name
-
-Current blog posts:
-- **Cracking the PageSpeed Code** - Best practices for achieving high PageSpeed Insights scores
-- **Should You Be an Engineer?** - Thoughts on engineering and algorithm efficiency
-
-## 📄 License
-
-Private project - All rights reserved.
-
-## 👤 Author
-
-**Rostyslav Belmeha**
-- LinkedIn: [rostyslav-belmega](https://www.linkedin.com/in/rostyslav-belmega/)
-- Twitter: [@izzz0](https://twitter.com/izzz0)
-- GitHub: [rbelmega](https://github.com/rbelmega)
-- Website: [belmeha.com](https://www.belmeha.com)
+Private project — all rights reserved.
