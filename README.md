@@ -7,7 +7,7 @@ landing page is in Ukrainian.
 
 ## Stack and architecture
 
-- Next.js 16.4.3 App Router, React 19.3.1, TypeScript 7.0.2; exact dependencies and
+- Next.js 16.4.6 App Router, React 19.3.1, TypeScript 7.0.2; exact dependencies and
   commands live in `package.json` and `package-lock.json`.
 - Server-rendered/static pages with small client boundaries for browser effects.
 - SCSS Modules, shared app-document styles, Biome linting/formatting.
@@ -48,8 +48,8 @@ legacy `/blog/<id>` URLs permanently redirect to the matching article.
 
 ## Local development
 
-Use a Node.js version supported by the installed Next.js release and npm. Install
-exact locked dependencies and start development:
+Use Node.js 22.19 or newer for the development tools, including Lighthouse CI.
+Install the locked dependencies with npm and start development:
 
 ```sh
 npm ci
